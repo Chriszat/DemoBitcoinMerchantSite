@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "classmap": [
+            "application",
+            "api"
+        ]
+    },
+    "require": {
+        "mobiledetect/mobiledetectlib": "^2.8",
+        "endroid/qr-code": "^3.5",
+        "sendgrid/sendgrid": "^7.4"
+    }
+}

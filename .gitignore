@@ -1,0 +1,4 @@
+uploads/*
+!uploads/.gitkeep
+81744546ec70b93f065c7321407215727ea39750f52b909dcb/barcodes/*
+!81744546ec70b93f065c7321407215727ea39750f52b909dcb/barcodes/.gitkeep
