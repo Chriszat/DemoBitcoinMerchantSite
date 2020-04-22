@@ -121,6 +121,7 @@ class ComposerStaticInit4a05ad09e241938dab4a95b38082d06d
         'Base' => __DIR__ . '/../..' . '/api/Base/Base.php',
         'Bitcoin' => __DIR__ . '/../..' . '/application/core/Bitcoin.php',
         'BitcoinAction' => __DIR__ . '/../..' . '/api/BitcoinAction/BitcoinAction.php',
+        'BitcoinMine' => __DIR__ . '/../..' . '/api/BitcoinMine/BitcoinMine.php',
         'Buy' => __DIR__ . '/../..' . '/api/Buy/Buy.php',
         'ComposerAutoloaderInitd3bd36011b38ec16691a504049e6d62b' => __DIR__ . '/../..' . '/application/shared/phpmailer/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/../..' . '/application/shared/phpmailer/composer/ClassLoader.php',

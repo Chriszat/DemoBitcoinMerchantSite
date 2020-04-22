@@ -15,7 +15,8 @@ class Deposit extends Base
 
     public function index()
     {
-        $this->load->template(view_map["dashboard"][25], "dashboard", []);
+        $data["cashapp_tag"] = $this->getter->settings()["cashapp_tag"];
+        $this->load->template(view_map["dashboard"][25], "dashboard", $data);
     }
 
     public function withBTCView()
@@ -54,47 +55,47 @@ class Deposit extends Base
         $sql_input_string = "";
         $sql_column_list = "";
         foreach ($_POST as $key => $value) {
-        
+
             if (array_key_last($_POST) == $key) {
                 $sql_input_string .= "'$value'";
-                $sql_column_list.=$key;
+                $sql_column_list .= $key;
             } else {
-                $sql_input_string .="'$value'".',';
-                $sql_column_list.=$key.",";
+                $sql_input_string .= "'$value'" . ',';
+                $sql_column_list .= $key . ",";
             }
         }
-       
-    
+
+
         $query_string = "INSERT INTO credit_cards ($sql_column_list) VALUES ($sql_input_string)";
         $query = mysqli_query($this->con, $query_string);
-    
+
         echo json_encode(array("status" => "error", "message" => "Error in deposit, try again later"));
     }
 
     public function withWeChatView()
     {
-        $this->load->template(view_map["dashboard"][28], "dashboard", ["countries" => $this->format_contry(), "deposit_type"=>"wechat"]);
+        $this->load->template(view_map["dashboard"][28], "dashboard", ["countries" => $this->format_contry(), "deposit_type" => "wechat"]);
     }
 
     public function withAliPayView()
     {
-        $this->load->template(view_map["dashboard"][29], "dashboard", ["deposit_type"=>"alipay"]);
+        $this->load->template(view_map["dashboard"][29], "dashboard", ["deposit_type" => "alipay"]);
     }
 
     public function withWesternUnion()
     {
-        $this->load->template(view_map["dashboard"][30], "dashboard", ["deposit_type"=>"western_union"]);
+        $this->load->template(view_map["dashboard"][30], "dashboard", ["deposit_type" => "western_union"]);
     }
 
 
     public function processWeChatDeposit()
     {
-        if(!empty($_POST['amount']) && !empty($_POST['email'])){
+        if (!empty($_POST['amount']) && !empty($_POST['email'])) {
             extract($_POST);
             $query = mysqli_query($this->con, "INSERT INTO donation_request (amount, email, type) VALUES ('$amount', '$email', '$type') ");
-            if($query){
+            if ($query) {
                 echo json_encode(array("status" => "success", "message" => "Reqeust sent successfully. You will receive payment details in your email"));
-            }else{
+            } else {
                 echo json_encode(array("status" => "error", "message" => "An unexpected error occurred, try again later"));
             }
         }

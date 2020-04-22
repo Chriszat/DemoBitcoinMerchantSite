@@ -5,6 +5,7 @@ angular.module("appCore")
         controller: ["$scope", "element", "request", "listen", "isEmpty", "$routeParams", "wait", "$route", "overlay", function ($scope, element, request, listen, isEmpty, $routeParams, wait, $route, overlay) {
 
             let deposit_views = {};
+            let cashapp_tag = "";
 
             let clipboard = new ClipboardJS('.bb');
             clipboard.on('success', function (e) {
@@ -187,7 +188,7 @@ angular.module("appCore")
                 overlay.show();
                 request({
                     method: "POST",
-                    url: "api/api.py.php?_=Deposit&a=withAliPayView",
+                    url: "api/api.py.php?_=Deposit&a=withWesternUnion",
                     formdata: true,
 
                 }).then(function (res) {
@@ -199,6 +200,10 @@ angular.module("appCore")
                 })
             }
 
+            let payWithCashApp = function(){
+                window.open(`https://cash.app/${cashapp_tag}`, '_blank')
+            }
+
             let applicationWindowEventListeners = function () {
                 listen("pay_with_paypal", "click", payWithPayPal);
                 listen("pay_with_btc", "click", payWithBTC);
@@ -207,6 +212,7 @@ angular.module("appCore")
                 listen("pay_with_wechat", "click", payWithWeChat)
                 listen("pay_with_alipay", "click", payWithAliPay)
                 listen("pay_with_western_union", "click", payWithWesternUnion)
+                listen("pay_with_cashapp", "click", payWithCashApp)
             }
 
             let replaceMainView = function (view) {
@@ -225,6 +231,8 @@ angular.module("appCore")
             $scope.init = function () {
                 deposit_views["main_view"] = element("b0f30e832a9fd20b97eb3ec227db30ff").innerHTML;
                 applicationWindowEventListeners();
+
+                cashapp_tag = JSON.parse(element("494ac94e15bd4d91059d86cd3fe04eff").innerHTML)["cashapp_tag"];
             }
 
             $scope.init();

@@ -10,6 +10,7 @@ return array(
     'Base' => $baseDir . '/api/Base/Base.php',
     'Bitcoin' => $baseDir . '/application/core/Bitcoin.php',
     'BitcoinAction' => $baseDir . '/api/BitcoinAction/BitcoinAction.php',
+    'BitcoinMine' => $baseDir . '/api/BitcoinMine/BitcoinMine.php',
     'Buy' => $baseDir . '/api/Buy/Buy.php',
     'ComposerAutoloaderInitd3bd36011b38ec16691a504049e6d62b' => $baseDir . '/application/shared/phpmailer/composer/autoload_real.php',
     'Composer\\Autoload\\ClassLoader' => $baseDir . '/application/shared/phpmailer/composer/ClassLoader.php',

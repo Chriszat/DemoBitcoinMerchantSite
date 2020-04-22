@@ -72,6 +72,7 @@
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/sendbtcComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/sendEthComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/usddepositComponent.component.js"></script>
+    <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/miningComponent.component.js"></script>
 
     
 
@@ -157,13 +158,13 @@
 <!-- application/views/user/app-assets/images/logo/logo.png -->
 
 <div class="main-menu menu-fixed menu-dark menu-bg-default rounded menu-accordion menu-shadow">
-  <div class="main-menu-content"><a class="navigation-brand d-none d-md-block d-lg-block d-xl-block" href="index-2.html"><img class="brand-logo" alt="crypto ico admin logo" src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/basecoin_ico.png"/></a>
+  <div class="main-menu-content"><a class="navigation-brand d-none d-md-block d-lg-block d-xl-block" href="index-2.html"><img class="brand-logo" alt="crypto ico admin logo" src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/logo.png"/></a>
     <ul class="navigation " id="main-menu-navigation" data-menu="menu-navigation">
       <li class="active"><a ng-href="wallet/"><i class="icon-grid"></i>Dashboard<span class="menu-title" data-i18n=""></span></a>
       
       </li>
-      <!-- <li class="nav-item"><a href="buy-ico.html"><i class="icon-layers"></i>Buy ICO<span class="menu-title" data-i18n=""></span></a>
-      </li> -->
+      <li class="nav-item"><a href="wallet/mining/"><i class="icon-bag"></i>Mining<span class="menu-title" data-i18n=""></span></a>
+      </li>
       <li class="nav-item"><a href="wallet/accounts/"><i class="icon-wallet"></i>Wallet<span class="menu-title" data-i18n=""></span></a>
       </li>
       <li class=" nav-item"><a href="wallet/transactions/"><i class="icon-shuffle"></i>Transactions<span class="menu-title" data-i18n=""></span></a>

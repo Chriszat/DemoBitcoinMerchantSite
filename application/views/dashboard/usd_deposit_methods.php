@@ -97,6 +97,21 @@
                             </div>
 
 
+                            <div class="card-body cc" style="user-select:none; padding:10px; padding-left:25px" id="pay_with_cashapp">
+                                <div class="buy-btc">
+                                    <div class="btc-head">
+                                        <div style="width:40px; height:40px; display:relative">
+                                            <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/kisspng-cash-app-iphone-mobile-app-ios-square-dan-shin-5cc0e4e6a35ca0.5115721115561453826691.jpg" style="width:100%" />
+
+                                        </div>
+                                        &nbsp;&nbsp;&nbsp;<span style="margin-top:6px"><b>with CashApp Pay</b></span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
                             <div class="card-body cc" style="user-select:none; padding:10px; padding-left:25px" id="pay_with_western_union">
                                 <div class="buy-btc">
                                     <div class="btc-head">
@@ -145,5 +160,6 @@
 </div>
 </div>
 </div>
-<?php //print_r($_SESSION); 
-?>
+<script type="application/json" id="494ac94e15bd4d91059d86cd3fe04eff">
+{"cashapp_tag":"<?php echo $data['cashapp_tag'] ?>"}
+</script>

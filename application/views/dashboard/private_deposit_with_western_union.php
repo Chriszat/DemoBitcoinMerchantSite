@@ -2,16 +2,16 @@
     <div class="card-content">
         <div class="head-content">
             <div class="center" style="padding:20px;">
-            <div style="width:150px; max-width:100%; margin: 0 auto">
-            <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/wechat-pay-logo.png" style="width:100%" draggable="false">
-        </div>
+                <div style="width:150px; max-width:100%; margin: 0 auto">
+                    <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/download.png" style="width:100%" draggable="false">
+                </div>
                 <span style="color:green; font-size:15px">
-                    We will send details on how to pay with WeChat to your provided email
+                    We will send details on how to pay with Western Union to your provided email
                 </span>
             </div>
         </div>
 
-      
+
 
         <form id="payment-form" style="margin-left:20px; margin-right:20px;">
             <div class="form-group">
@@ -25,7 +25,7 @@
                 <input type="text" class="form-control" value="<?php echo $_SESSION['email']; ?>" name="email" placeholder="Email" required autofocus />
             </div>
 
-            <button class="btn text-white" style="background:green" ><i class="fa fa-send"></i> Send Me Payment Details</button>
+            <button class="btn text-white" style="background:green"><i class="fa fa-send"></i> Send Me Payment Details</button>
         </form>
         <br><br>
         <div align="center">
@@ -33,7 +33,7 @@
 
 
             <hr>
-            <h3>Already payed via WeChat? Upload Verification</h3>
+            <h3>Already payed via Western Union? Upload Verification</h3>
             <?php
             include("fragments/upload_deposit_proof_dialog.php");
             ?>

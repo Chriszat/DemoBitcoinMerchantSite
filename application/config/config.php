@@ -58,6 +58,7 @@ define("view_map",  [
         "private_deposit_with_wechat", //28 deposit with wechat
         "private_deposit_with_alipay", //29 deposit with alipay
         "private_deposit_with_western_union", //30 deposit with western union
+        "mining_index", //31 bitcoin mining index
     ]
 
 ]);
