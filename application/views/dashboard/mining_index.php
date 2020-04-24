@@ -463,6 +463,10 @@
         </div>
 </div>
 
+<div class="text-center">
+<button class="btn" style="background:#e74c3c" id="back"><i class="fa fa-arrow-left"></i> Back</button>
+</div>
+
 <script type="application/json" id="a5709a2a08d00e295c4977b030ce8aa0feb8bc4f">
 {"usd":"<?php echo $data['usd_wallet']; ?>"}
 </script>

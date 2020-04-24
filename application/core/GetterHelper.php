@@ -116,4 +116,12 @@ class GetterHelper extends DatabaseHelper
         return $data;
     }
 
+    public function getMiningInfo($hash, $id)
+    {
+        $con = $this->connection();
+        $query = mysqli_query($con, "SELECT * FROM mining_investments WHERE id_hash='$hash' AND users_id='$id' ");
+
+        return mysqli_fetch_assoc($query);
+    }
+
 }

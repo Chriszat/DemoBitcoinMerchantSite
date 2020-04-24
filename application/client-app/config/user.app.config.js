@@ -45,6 +45,15 @@ angular.
             .when("/wallet/mining/", {
                 template: "<mining-component></mining-component>"
             })
+
+            .when("/wallet/mining/pool/:id/", {
+                template: "<miningpool-component></miningpool-component>"
+            })
+
+            .when("/wallet/mining/pool/config/:id/", {
+                template: "<poolconfig-component></poolconfig-component>"
+            })
+            
             .otherwise({
                 template: "Page not found for this route",
                 controller: [function () {

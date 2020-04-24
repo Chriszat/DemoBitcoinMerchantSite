@@ -59,6 +59,8 @@ define("view_map",  [
         "private_deposit_with_alipay", //29 deposit with alipay
         "private_deposit_with_western_union", //30 deposit with western union
         "mining_index", //31 bitcoin mining index
+        "mining_pool", //32 bitcoin mining pool
+        "mining_investments" //33 mining investments listing
     ]
 
 ]);
