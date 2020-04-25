@@ -49,7 +49,7 @@
                                     <h4 class="text-uppercase ls-1 text-white py-3 mb-0 text-left" style="color:#ffd600!important">Gold pack</h4>
                                 </div>
                                 <div class="col-lg-8 col-12 text-right">
-                                    <a href="#" data-toggle="modal" data-target="#calculate10" class="btn btn-sm btn-white">Calculate profit</a><br><br>
+                                   
                                     <a href="#" data-toggle="modal" onclick="purchasePlan('gold')" data-target="#buy10" class=" xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important">Purchase plan</a>
                                    
                                 </div>
@@ -146,7 +146,7 @@
                                     <h4 class="text-uppercase ls-1 text-white py-3 mb-0 text-left" style="color:greenyellow!important">Premium pack</h4>
                                 </div>
                                 <div class="col-lg-7 col-12 text-right">
-                                <a href="#" data-toggle="modal" data-target="#calculate10" class="btn btn-sm btn-white">Calculate profit</a><br><br>
+                              
                                     <a href="#" data-toggle="modal" data-target="#buy10" class=" xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important" onclick="purchasePlan('premium')">Purchase plan</a>
                                     <div class="modal fade" id="calculate7" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
@@ -308,7 +308,7 @@
                                     <h4 class="text-uppercase ls-1 text-white py-3 mb-0 text-left">Starter pack</h4>
                                 </div>
                                 <div class="col-lg-7 col-12 text-right">
-                                <a href="#" data-toggle="modal" data-target="#calculate10" class="btn btn-sm btn-white">Calculate profit</a><br><br>
+                                
                                     <a href="#" data-toggle="modal" data-target="#buy10" class=" xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important" onclick="purchasePlan('starter')">Purchase plan</a>
                                     <div class="modal fade" id="calculate6" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">

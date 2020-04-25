@@ -17,9 +17,9 @@
                 </div>
                 <div class="card-body" style="user-select:none">
                     <span class="card-text">Balance</span><br>
-                    <a href="wallet/accounts/btc/" class="card-link">BTC <?php echo $data["btc"] ?></a><br><br>
+                    <a href="wallet/accounts/btc/" class="card-link">BTC <?php echo round($data["btc"], 8) ?></a><br><br>
                     <span class="card-text">Available</span><br>
-                    <a href="wallet/accounts/btc/" class="card-link">BTC <?php echo $data["btc"] ?></a>
+                    <a href="wallet/accounts/btc/" class="card-link">BTC <?php echo round($data["btc"], 8) ?></a>
                 </div>
             </div>
             <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted" style="user-select:none">
@@ -84,7 +84,7 @@
                
                 <span class="float-right">
                     <button class="btn">WITHDRAW</button>&nbsp;&nbsp;&nbsp;
-                    <a href="wallet/deposit/"><button class="btn">DEPOSIT</button></a>
+                    <a href="wallet/accounts/usd/deposit/"><button class="btn">DEPOSIT</button></a>
                   </span>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <div class="container" id="view">
-    <div class="" style="margin:0 auto; width:800px; max-width:100%; user-select:none">
+    <div class="" style="margin:0 auto; width:900px; max-width:100%; user-select:none">
         <!-- User Profile -->
         <?php //print_r($data) 
         ?>
@@ -51,7 +51,16 @@
                                                     <td><?php echo $res['btc_address_id'] ?></td>
                                                     <td><?php echo $status ?></td>
                                                     <td><?php echo $res['full_mined_time'] ?></td>
-                                                    <td><a href="javascript:void(0)" onclick="remove('<?php echo $id ?>', '<?php echo $email['email'] ?>')"><span style='color:red'>Delete</span></a></td>
+                                                    <td>
+                                                        <a href="wallet/mining/pool/config/<?php echo $res['id_hash'] ?>/" title="Configuration">
+                                                        <span class="icon-settings" style="font-size:20px; cursor:pointer"></span>
+&nbsp;<br><br>
+                                                        <a href="wallet/mining/pool/<?php echo $res['id_hash']; ?>/" title="Start Mining">
+                                                            <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/mining-icon-4.png" alt="" style="width:30px; border-radius:50%; border:1px solid grey; box-shadow:1px 1px 0px 0px">
+                                                        </a>
+                                                    </a>
+                                                       
+                                                    </td>
                                                 </tr>
                                             <?php } ?>
                                         </tbody>
@@ -71,6 +80,5 @@
             </div>
         </section>
 
-        <br><br>
-        <div class="text-center"><a href="wallet/profile/"><button class="btn" style="background:#e74c3c" id="back"><i class="fa fa-arrow-left"></i> Back</button></a></div>
+    
     </div>

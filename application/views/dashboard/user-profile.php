@@ -9,9 +9,7 @@
                         <div class="">
                            
                             <div class="">
-                              
-                                <form class="form-horizontal form-user-profile" action="">
-
+                          
                                  <div class="card" id="name" style="background:#f2f2f2; padding:10px; cursor:pointer">
                                        <span><b>Name</b></span>
                                        <span style="color:green" id="display_name"><?php echo ucwords($data["user"]["name"]) ?></span>
@@ -45,7 +43,22 @@
                                        <span><b>Verification</b></span>
                                        <span style="color:green">Email verified</span>
                                     </div>
-                                </form>
+
+                                    <div class="card" id="ver" style="background:#f2f2f2; padding:10px; cursor:pointer">
+                                       <span><b>Identity Photo</b></span>
+                                       <div style="width:100px">
+                                           <img src="<?php echo $data['user']['image'] ?>" id="preview" style="width:100%">
+                                       </div><br>
+                                       <form id="identity_form">
+                                       <div style="display:flex; justify-content:space-between">
+                                       <input type="file" name="file" id="file" class="d-none">
+                                       <button><label for="file"><i class="fa fa-edit"></i> Change </label></button>
+                                       
+                                       <span><button disabled id="upload_btn"><i class="fa fa-check"></i> Save Changes</button></span>
+                                       </form>
+                                       
+                                    </div>
+                                    </div>
                                 
                              
                             </div>

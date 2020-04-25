@@ -19,11 +19,12 @@ angular.module("login")
             data:data
 
         }).then(function(response){
+            overlay.hide();
             response = JSON.parse(response)
             if(response.status == "success"){
                 window.location = response.redirect
             }else if(response.status == 'error'){
-                overlay.hide();
+                
                 element("error").innerHTML= response.message;
                 element("error").style.padding="3px"
             }
@@ -46,6 +47,7 @@ angular.module("login")
             formdata:true,
             data: data
         }).then(function(response){
+            overlay.hide();
             btn = document.getElementById("resend");
             spin = document.getElementById("spinner")
             setTimeout(function(){

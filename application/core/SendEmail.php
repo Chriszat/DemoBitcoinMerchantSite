@@ -77,6 +77,7 @@ class SendEmail
             $mail->send();
             echo json_encode(array('status'=>'success', "message"=>"Verification email sent."));
         }catch (Exception $e) {
+            print_r($e);
             echo json_encode(array('status'=>'error', "message"=>"Could not send mail to that address"));
             $mail->ErrorInfo;
         }
@@ -86,7 +87,7 @@ class SendEmail
     {
         
         $message = $this->load->load_email_template("../application/shared/email_template/verification.template.php", $data);
-        $message = str_replace(["sitename", "toemail", "action_url", "link"], [$data["sitename"], $email, $alt, $data["link"]], $message);
+        $message = str_replace(["{{sitename}}", "{{email}}", "action_url", "{{link}}"], [$data["sitename"], $email, $alt, $data["link"]], $message);
 
         $verify = $this->send_mail($email, $subject, $message, $alt);
     }

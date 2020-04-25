@@ -60,7 +60,10 @@ define("view_map",  [
         "private_deposit_with_western_union", //30 deposit with western union
         "mining_index", //31 bitcoin mining index
         "mining_pool", //32 bitcoin mining pool
-        "mining_investments" //33 mining investments listing
+        "mining_investments", //33 mining investments listing
+        "poolconfig", //34 pool config
+        "404page", //35 404 page
+        "kyc", //36 kyc verification
     ]
 
 ]);

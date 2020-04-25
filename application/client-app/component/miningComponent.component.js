@@ -2,7 +2,7 @@ angular.module("appCore")
     .component("miningComponent", {
 
         templateUrl: "api/api.py.php?_=BitcoinMine&a=index",
-        controller: ["$scope", "element", "request", "$routeParams", "isEmpty", "listen", "overlay", "$route", function ($scope, element, request, $routeParams, isEmpty, listen, overlay, $route) {
+        controller: ["$scope", "element", "request", "$routeParams", "isEmpty", "listen", "overlay", "$route", "$location", function ($scope, element, request, $routeParams, isEmpty, listen, overlay, $route, $location) {
 
 
             let cached_views = {}
@@ -27,7 +27,11 @@ angular.module("appCore")
                         url: "api/api.py.php?_=BitcoinMine&a=purchasePlan&type=" + type,
                         formdata: false
                     }).then(function (response) {
-    
+
+                        let res = JSON.parse(response)
+                        console.log(res)
+                        $location.path(`wallet/mining/pool/config/${res.hash}/`)
+                        $route.reload();
                     })
                  },function () { alertify.error('Cancel') });
                

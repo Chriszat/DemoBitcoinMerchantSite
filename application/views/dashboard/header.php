@@ -74,6 +74,8 @@
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/usddepositComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/miningComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/minnigpoolComponent.component.js"></script>
+    <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/poolconfigComponent.component.js"></script>
+    <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/kycverificationComponent.component.js"></script>
 
     
     
@@ -98,7 +100,7 @@
  <body class="vertical-layout vertical-compact-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-compact-menu" data-col="2-columns">
 
 <!-- fixed-top-->
-<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-bg-color">
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu navbar-without-dd-arrow fixed-top navbar-light navbar-bg-color" style="box-shadow: none!important">
   <div class="navbar-wrapper">
     <div class="navbar-header d-md-none">
       <ul class="nav navbar-nav flex-row">
@@ -118,9 +120,9 @@
           </li>
         </ul>
         <ul class="nav navbar-nav float-right">         
-          <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-gb"></i><span class="selected-language"></span></a>
+          <!-- <li class="dropdown dropdown-language nav-item"><a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-gb"></i><span class="selected-language"></span></a>
             <div class="dropdown-menu" aria-labelledby="dropdown-flag"><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-gb"></i> English</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> Chinese</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-de"></i> German</a></div>
-          </li>
+          </li> -->
           <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#" data-toggle="dropdown"  id="notification_link"><i class="ficon ft-bell"></i><span class="badge badge-pill badge-default badge-danger badge-default badge-up badge-glow" id="count1"></span></a>
             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
               <li class="dropdown-menu-header">
@@ -145,10 +147,10 @@
             </ul>
           </li>
           <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="<?php echo baseurl ?>wallet/accounts/"><i class="ficon icon-wallet"></i></a></li>
-          <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">             <span class="avatar avatar-online"><img src="application/views/user/app-assets/images/portrait/small/avatar-s-1.png" alt="avatar"></span><span class="mr-1">BTC<span class="user-name text-bold-700" id="current_btc"><?php echo $data["current_btc"] ?></span></span></a>
+          <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">             <span class="avatar avatar-online"><img src="<?php echo $data['userdata']['image']; ?>" id="identity_pix" alt="avatar"></span><span class="mr-1"><span class="user-name text-bold-700" id="current_btc"><?php echo round($data["current_btc"], 8) ?> BTC</span></span></a>
             <div class="dropdown-menu dropdown-menu-right">             <a class="dropdown-item" href="wallet/profile/"><i class="ft-award"></i><?php echo $data['user_email'] ?></a>
               <div class="dropdown-divider"></div>        </a>
-              <a class="dropdown-item" href="account-login.html"><i class="ft-power"></i> Logout</a>
+              <a class="dropdown-item" id="logout_account"><i class="ft-power"></i> Logout</a>
             </div>
           </li>
         </ul>
@@ -166,7 +168,9 @@
       <li class="active"><a ng-href="wallet/"><i class="icon-grid"></i>Dashboard<span class="menu-title" data-i18n=""></span></a>
       
       </li>
-      <li class="nav-item"><a href="wallet/mining/"><i class="icon-bag"></i>Mining<span class="menu-title" data-i18n=""></span></a>
+      <li class="nav-item"><a href="wallet/mining/">
+     <i class="fab fa-bitcoin"></i>
+      Mining<span class="menu-title" data-i18n=""></span></a>
       </li>
       <li class="nav-item"><a href="wallet/accounts/"><i class="icon-wallet"></i>Wallet<span class="menu-title" data-i18n=""></span></a>
       </li>

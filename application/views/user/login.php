@@ -33,7 +33,8 @@
                     <div class="card-body p-3">
                         <p class="text-center h5 text-capitalize">Welcome to <?php echo "<b>".$data["sitename"]."</b>" ?>!</p>
                         <p class="mb-3 text-center">Please enter your login details</p>
-                        <form class="form-horizontal form-signin" action="" method="POST" id="login_form"> 
+                        <form class="form-horizontal form-signin" action="" method="POST" id="login_form">
+                            <div id="e"></div> 
                                                        
                             <fieldset class="form-label-group">
                                 <input type="text" class="form-control" name="email" id="user-email" placeholder="Your Email"  required="" autofocus="">

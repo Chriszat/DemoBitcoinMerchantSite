@@ -1,84 +1,222 @@
 <div class="">
 
-    <div class="" style="margin:20px auto; max-width:100%; ">
+    <!-- ICO Token balance & sale progress -->
+    <div class="row">
+        <div class="col-md-8 col-12">
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <h6 class="my-2">Bitcoin Wallet</h6>
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="col-12">
+                                    <div class="">
+                                        <div class="">
+                                            <p><strong>Your balance:</strong></p>
+                                            <div style="width:50px; height:50px; position:absolute; right:0; top:0">
+                                                <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/XBT.png" style="width:100%" draggable="false">
+                                            </div>
+                                            <h1><?php echo round($data['wallet']['btc'], 8) ?> BTC</h1>
 
-        <div class=" action_btn text-center z-depth-2">
-            <ul>
-                <li><a href=""><i class="material-icons">send</i><br>Send</a></li>
-                <li> <a href=""><i class="material-icons">call_received</i><br>Recieve</a></li>
-                <li><a href="wallet/buy/"><span class="fab fa-btc" style="font-size:24px"></span><br>Buy</a></li>
-                <li><a href=""><i class="material-icons">attach_money</i><br>Deposit Money</a></li>
-            </ul>
+                                        </div>
+                                        <div class="">
+                                            <a href="wallet/sell/?quote=b">
+                                                <button type="button" class="btn btn-warning round mr-1 mb-0">SELL</button>
+                                            </a>
+
+                                            <a href="wallet/buy/?quote=b">
+                                                <button type="button" class="btn btn-warning round mr-1 mb-0">BUY</button>
+                                            </a>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-12">
+                    <h6 class="my-2">Ethereum Wallet</h6>
+                    <div class="card pull-up">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <div class="col-12">
+                                    <div class="">
+                                        <div class="">
+                                            <p><strong>Your balance:</strong></p>
+                                            <div style="width:50px; height:50px; position:absolute; right:0; top:0">
+                                                <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/ETH.png" style="width:100%" draggable="false">
+                                            </div>
+                                            <h1><?php echo round($data['wallet']['btc'], 8) ?> ETH</h1>
+
+                                        </div>
+                                        <div class="">
+                                            <a href="wallet/sell/?quote=e">
+                                                <button type="button" style="background:#673fba!important" class="btn btn-warning round mr-1 mb-0 ">SELL</button>
+                                            </a>
+                                            <a href="wallet/buy/?quote=e">
+                                                <button type="button" style="background:#673fba!important" class="btn btn-warning round mr-1 mb-0">BUY</button>
+                                            </a>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- transactions -->
+
+            <!-- Recent Transactions -->
+
+            <div id="recent-transactions" class="">
+                <h6>Recent Transactions</h6>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="table-responsive">
+                            <table id="recent-orders" class="table table-hover table-xl mb-0">
+                                <thead>
+                                    <tr>
+
+                                        <th class="border-top-0">Date</th>
+                                        <th class="border-top-0">Transaction</th>
+                                        <th class="border-top-0">Type</th>
+                                        <th class="border-top-0">Amount</th>
+                                        <th class="border-top-0">Currency</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($data['transactions_object_list'] as $transaction) : ?>
+                                        <tr>
+                                            <td class="text-truncate">
+
+                                                <?php echo date("d-m-Y", strtotime($transaction['date'])); ?>
+                                            </td>
+                                            <td class="text-truncate">
+                                                <?php echo $transaction['title']; ?>
+                                            </td>
+                                            <td class="text-truncate">
+                                                <?php echo $transaction['type']; ?>
+                                            </td>
+                                            <td class="text-truncate p-1">
+                                                $<?php echo number_format($transaction['amount'], 2); ?>
+                                            </td>
+                                            <td>
+
+                                                <?php
+                                                switch ($transaction['currency']):
+                                                    case "USD":
+                                                        echo "$ USD";
+                                                        break;
+                                                    case "BTC":
+                                                        echo '<i class="cc ETH-alt"></i>BTC';
+                                                        break;
+                                                    case "ETH":
+                                                        echo '<i class="cc ETH-alt"></i>ETH';
+                                                        break;
+                                                endswitch;
+                                                ?>
+                                            </td>
+
+                                        </tr>
+                                    <?php endforeach; ?>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <a href="wallet/transactions/" class="w-100 btn" style="background:green; color:#fff; font-weight:600">
+                    View All Transactions
+                    </a>
+                </div>
+
+                <!--/ Recent Transactions -->
+            </div>
+        </div>
+
+
+        <div class="col-md-4 col-12">
+            <h6 class="my-2">KYC Verification</h6>
+            <div class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <p><strong>Identity verification</strong></p>
+                        <br>
+                        <p>
+                            Upload an identity document, for example, driver licence, voters card, international passport, national ID.
+
+
+                        </p>
+                        <div style="width:50px; height:50px; position:absolute; right:15px; top:15px">
+                            <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/login.png" alt="" style="width:100%" draggable="false">
+                        </div>
+                        <br>
+                        <div class="font-small-3 clearfix">
+                            <?php if ($data['user_info']['kyc_status'] == 'pending') : ?>
+                                <a href="wallet/profile/kyc-verification/">
+                                    <button style="background: green; color:#fff; padding:10px; border:1px solid #fff;  font-weight:900; outline:none; cursor:pointer; ">Upload KYC Documents</button>
+                                </a>
+                            <?php elseif ($data['user_info']['kyc_status'] == 'submitted') : ?>
+                                <button style="background: lightgrey; color:#fff; padding:10px; border:1px solid #fff;  font-weight:900; outline:none; cursor:pointer; ">Already Submitted</button>
+                            <?php elseif ($data['user_info']['kyc_status'] == 'approved') : ?>
+                                <span style="color:green; font-weight:600"><i class="fa fa-check"></i> KYC Approved</span>
+                            <?php elseif ($data['user_info']['kyc_status'] == 'rejected') : ?>
+                                <small class="text-danger d-block">Your KYC Documents was disapproved</small>
+                                <a href="wallet/profile/kyc-verification/">
+                                    <button style="background: green; color:#fff; padding:10px; border:1px solid #fff;  font-weight:900; outline:none; cursor:pointer; ">Re-Upload KYC Documents</button>
+                                </a>
+                               
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <p><strong>Referal Link</strong></p>
+
+                        <br>
+                        <p>Automatically top up your account balance by sharing your referral link, Earn a percentage of whatever plan your referred user buys.
+
+                        </p>
+                        <form class="form-horizontal form-referral-link row mt-2" action="index.html">
+                            <div class="col-12">
+                                <fieldset class="form-label-group">
+                                    <input type="text" class="form-control" id="referral-link" value="https://1.envato.market/pixinvent_portfolio" required="" autofocus="">
+                                    <label for="first-name">Referral link</label>
+                                </fieldset>
+                            </div>
+                        </form>
+                        <div style="width:40px; height:40px; position:absolute; right:15px; top:15px">
+                            <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/refer.png" alt="" style="width:100%" draggable="false">
+                        </div>
+                        <br>
+                        <div class="font-small-3 clearfix">
+                            <a href="">
+                                <button style="background: green; color:#fff; padding:10px; border:1px solid #fff;  font-weight:900; outline:none; cursor:pointer; ">Copy Link</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
-    <br>
-    <div class="row match-height">
+    <!--/ ICO Token balance & sale progress -->
 
 
 
 
 
-
-        <div class="col-xl-4 col-lg-12">
-
-            <div class="card">
-                <div class="card-content">
-                    <img class="img-fluid" src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/Bitcoin-security.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">
-                            We help store your bitcoin and wallet in a complex secure way.
-                        </p>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-        <div class="col-xl-4 col-lg-12">
-
-            <div class="card">
-                <div class="card-content">
-                    <img class="img-fluid" src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/slider-security.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">
-                            Learn how to secure your wallet with 2 factor authentication so as to prevent attackers from having access
-                        </p>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-        <div class="col-xl-4 col-lg-12">
-
-            <div class="card">
-                <div class="card-content">
-                    <img class="img-fluid" src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/ill_help.refresh.png" alt="Card image cap">
-                    <div class="card-body">
-                        <p class="card-text">
-                            Search the help docs for any thing about using the system.
-                        </p>
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-
-
-
-
-
-    </div>
-
-
-</div>
-</div>
-</div>
 </div>

@@ -23,5 +23,7 @@
      {
          echo $this->load("index", "user");
      }
+
+     
      
  }

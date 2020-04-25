@@ -77,7 +77,7 @@ class BitcoinMine extends Base
             $r = random_bytes(16);
             $hash = bin2hex($r);
 
-            $query = mysqli_query($this->con, "INSERT INTO mining_investments (users_id, id_hash) VALUES ('$_SESSION[id]', '$hash')");
+            $query = mysqli_query($this->con, "INSERT INTO mining_investments (mining_plans_id, users_id, id_hash) VALUES ('$data[id]', '$_SESSION[id]', '$hash')");
             if ($query) {
                 echo json_encode(array("status" => "success", "message" => "started", "hash" => $hash));
                 return;
@@ -85,6 +85,32 @@ class BitcoinMine extends Base
                 echo json_encode(array("status" => "error", "message" => "An Unexpected error occurred"));
                 return;
             }
+        }
+    }
+
+    public function poolConfigIndex()
+    {
+        $query = mysqli_query($this->con, "SELECT * FROM btc_address WHERE user='$_SESSION[id]' ");
+        $data["btc_addresses"] = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $query=mysqli_query($this->con, "SELECT * FROM mining_investments WHERE id_hash='$_POST[id]' ");
+       
+        if(mysqli_num_rows($query) > 0){
+            $data["mining_info"] = mysqli_fetch_assoc($query);
+            $this->load->template(view_map["dashboard"][34], "dashboard", $data);
+        }else{
+            $this->show404();
+        }
+        
+    }
+
+    public function savePoolConfig()
+    {
+        extract($_POST);
+        $query = mysqli_query($this->con, "UPDATE mining_investments SET btc_address_id='$_POST[btc_address]' WHERE id_hash='$id' ");
+        if($query){
+            echo json_encode(array("status"=>"success", "message"=>"Updated"));
+        }else{
+            echo json_encode(array("status"=>"error", "message"=>"Updated"));
         }
     }
 }

@@ -26,6 +26,12 @@ class Base
         return baseurl;
     }
 
+    public function show404()
+    {
+        $this->load->template(view_map["dashboard"][35], "dashboard", []);
+        die();
+    }
+
     public function loader()
     {
         return new CoreLoader();

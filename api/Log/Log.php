@@ -44,6 +44,7 @@ class Log extends Base
                         $this->set_logins();
                         return;
                     }else{
+                        $_SESSION['confirm_email'] = $email;
                         echo json_encode(array("status"=>"error", "message"=>"<p>You havent verified your email <b>".$email."</b> <button class='btn' id='resend' onclick='resend_email(\"$email\")'><a href='javascript:void(0)' class='white'><div class='lds-ring' style='display:none' id='spinner'><div></div><div></div><div></div><div></div></div>&nbsp;&nbsp;&nbsp;Resend Verification</a></button>"));
                         return;
                     }

@@ -31,6 +31,7 @@ class Wallet extends Controller
         $data["sitename_split"] = $newstring;
         $data["current_btc"] = $this->getter->user_wallet()["btc"];
         $data["user_email"] = $_SESSION['email'];
+        $data["userdata"] = $this->getter->user_data($_SESSION['id']);
         if($this->model->num_login_times() == 1){
             $this->load->view(view_map["dashboard"][0], "dashboard", $data);
         }else{

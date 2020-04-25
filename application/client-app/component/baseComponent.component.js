@@ -25,4 +25,20 @@ angular.module("appCore")
     }, function(error){
 
     })
+
+    let logout = function()
+    {
+        alertify.confirm('Confirm Logout', '<b>Do you really want to logout from this device?</b>', function () {
+            request({
+                method: "POST",
+                url: "api/api.py.php?_=profile&a=logout",
+                formdata: false
+            }).then(function (response) {
+                response = JSON.parse(response)
+                window.location = response.redirect_url
+            })
+         },function () { });
+    }
+
+    listen("logout_account", "click", logout)
 }])

@@ -20,18 +20,24 @@ class Dashboard extends Base
 
     public function index()
     {
+        
         if($this->num_login_times() == 1){
             $this->setter->increment_login_times(2);
             $this->load->template(view_map["dashboard"][0], "dashboard");
         }else{
-            $data = $this->getter->settings();
-            $sitename = $data["sitename"];
-            $split = str_split($sitename);
-            $newstring = "";
-            for ($i=0; $i<count($split); $i++){
-                $newstring.=$split[$i].' ';
-            }
-            $data["sitename_split"] = $newstring;
+            // $data = $this->getter->settings();
+            // $sitename = $data["sitename"];
+            // $split = str_split($sitename);
+            // $newstring = "";
+            // for ($i=0; $i<count($split); $i++){
+            //     $newstring.=$split[$i].' ';
+            // }
+            // $data["sitename_split"] = $newstring;
+
+            $query = mysqli_query($this->con, "SELECT * FROM transactions ORDER BY id DESC LIMIT 5");
+            $data["transactions_object_list"] = mysqli_fetch_all($query, MYSQLI_ASSOC);
+            $data["wallet"] = $this->getter->user_wallet($_SESSION['id']);
+            $data["user_info"] = $this->getter->user_data($_SESSION['id']);
             $this->load->template(view_map["dashboard"][1], "dashboard", $data);
         }
     }

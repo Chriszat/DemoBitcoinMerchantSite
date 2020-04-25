@@ -1,7 +1,7 @@
 angular.module("appCore")
     .component("miningpoolComponent", {
         template: "<div id='page'></div>",
-        controller: ["$scope", "element", "request", "$routeParams", "isEmpty", "listen", "overlay", "$route", function ($scope, element, request, $routeParams, isEmpty, listen, overlay, $route) {
+        controller: ["$scope", "element", "request", "$routeParams", "isEmpty", "listen", "overlay", "$route", "$location", function ($scope, element, request, $routeParams, isEmpty, listen, overlay, $route, $location) {
 
             let plan_info = {};
             let mining_info = {};
@@ -45,7 +45,10 @@ angular.module("appCore")
                     url: "api/api.py.php?_=BitcoinMine&a=purchasePlan&type=" + type,
                     formdata: false
                 }).then(function (response) {
-
+                    let res = JSON.parse(response)
+                    console.log(res)
+                    $location.path(`wallet/mining/pool/config/${res.hash}/`)
+                    $route.reload();
                 })
             }
 
@@ -152,7 +155,7 @@ angular.module("appCore")
                 let command_string6 = `GPU 1: 64.OC 2563RPM : 432.3K/599.9Kh/s : A:1024 R:0 AW:0 WU:548.9/n 1.13`
                 let command_string7 = ` [${new Date().toLocaleString()}] Switching to pool 0 stratun+tcp://cu2.multipool.us:7777`
                 let command_string8 = `Network diff set to 1.26K`
-                let command_string9 = `Accepted ${generateRandomHash()} Diff ${random3Bits()}/${random3Bits()} GPU 1 pool ${("" + Math.random()).substring(2, 3)} pool ${("" + Math.random()).substring(2, 3)}`
+                let command_string9 = `Accepted ${generateRandomHash ()} Diff ${random3Bits()}/${random3Bits()} GPU 1 pool ${("" + Math.random()).substring(2, 3)} pool ${("" + Math.random()).substring(2, 3)}`
                 let command_string10 = `Stratum from pool ${("" + Math.random()).substring(2, 3)} requested work restart `
 
                 let time_interval = [3000, 6000, 9000];

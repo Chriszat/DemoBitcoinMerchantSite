@@ -70,10 +70,7 @@
                         <div class="">
 
                             <div class="">
-                                <i class="icon-settings" style="font-size:30px; cursor:pointer; color:grey"></i>
-                                &nbsp;&nbsp;
-                                <i class="material-icons" style="font-size:35px; cursor:pointer; ">pause</i>
-
+                              
                                 <hr>
                                 <div style="text-align:center">
                                     <button class="start-btn" id="7a667ca282aa1fd8994d98b897dc86d3627f7514" style="outline:none">START MINING</button>
@@ -115,13 +112,7 @@
                                     <?php echo $data['mining_info']['btc_address_id']; ?>
                                 </div>
                                 <br>
-                                <p>Total BTC Mined: </p>
-                                <div style="background:lightgray; padding:10px;">
-                                    <b>
-                                        0.005BTC
-
-                                    </b>
-                                </div>
+                               
 <br>
                                 <p>Mining Time: </p>
                                 <div style="background:lightgray; padding:10px;">
@@ -143,7 +134,7 @@
         </section>
 
         <br><br>
-        <div class="text-center"><a href="wallet/profile/"><button class="btn" style="background:#e74c3c" id="back"><i class="fa fa-arrow-left"></i> Back</button></a></div>
+        <div class="text-center"><a href="wallet/mining/"><button class="btn" style="background:#e74c3c" id="back"><i class="fa fa-arrow-left"></i> Back</button></a></div>
     </div>
 
     <script type="application/json" id="365f836ce5cf50e4ad4608a5a586ce26d19df25d">

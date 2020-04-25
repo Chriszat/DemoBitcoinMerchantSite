@@ -114,6 +114,7 @@ class Reg extends Base
             mysqli_stmt_bind_param($stmt, "ss", $token, $email);
             $exec = mysqli_stmt_execute($stmt);
             if($exec){
+                
                 $subject = "Confirm your email address";
                 $data["email"] = $email;
                 $data["extra"] = "verify this email address";
