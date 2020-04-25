@@ -64,6 +64,7 @@ define("view_map",  [
         "poolconfig", //34 pool config
         "404page", //35 404 page
         "kyc", //36 kyc verification
+        "index", // 37 blank index page
     ]
 
 ]);

@@ -32,12 +32,13 @@ class Wallet extends Controller
         $data["current_btc"] = $this->getter->user_wallet()["btc"];
         $data["user_email"] = $_SESSION['email'];
         $data["userdata"] = $this->getter->user_data($_SESSION['id']);
-        if($this->model->num_login_times() == 1){
-            $this->load->view(view_map["dashboard"][0], "dashboard", $data);
-        }else{
+        $this->load->view(view_map["dashboard"][37], "dashboard", $data);
+        // if($this->model->num_login_times() == 1){
+        //     $this->load->view(view_map["dashboard"][0], "dashboard", $data);
+        // }else{
            
-            $this->load->view(view_map["dashboard"][1], "dashboard", $data);
-        }
+        //     $this->load->view(view_map["dashboard"][1], "dashboard", $data);
+        // }
     }
 
     public function call()
