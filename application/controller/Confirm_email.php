@@ -23,7 +23,7 @@ class Confirm_email extends Controller
         $response = json_decode($confirm);
         
         if($response->status == 'success'){
-            header("location:".baseurl.'wallet/');
+            header("location:".baseurl.'login/?f=1');
         }else if ($response->status =='token_invalid' || $response->status =='error'){
             $data["state"] = "token_invalid";
             $data["display"] = ucwords($response->status);

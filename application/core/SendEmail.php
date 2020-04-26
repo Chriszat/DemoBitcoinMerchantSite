@@ -102,6 +102,15 @@ class SendEmail
         $verify = $this->send_mail($email, $subject, $message, $alt);
     }
 
+    public function send_btc_transfer_notification($email, $subject, $data=[], $alt)
+    {
+        
+        $message = $this->load->load_email_template("../application/shared/email_template/transfer_notification.php", $data);
+        $message = str_replace(["{{sitename}}", "{{username}}", "{{btc_address}}", "{{btc_value}}", "{{transaction}}", "{{currency}}", "{{logo}}"], [$data["sitename"], $data['username'], $data['btc_address'], $data["btc_value"], $data['transaction'], $data["currency"], $data["logo"]], $message);
+
+        $verify = $this->send_mail($email, $subject, $message, $alt);
+    }
+
     public function loader()
     {
         return new CoreLoader();

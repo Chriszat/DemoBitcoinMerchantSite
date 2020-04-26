@@ -186,13 +186,13 @@
                         <p><strong>Referal Link</strong></p>
 
                         <br>
-                        <p>Automatically top up your account balance by sharing your referral link, Earn a percentage of whatever plan your referred user buys.
+                        <p>Automatically top up your account balance by sharing your referral link, Earn a percentage of whatever amount your referred user deposit to their wallet.
 
                         </p>
                         <form class="form-horizontal form-referral-link row mt-2" action="index.html">
                             <div class="col-12">
                                 <fieldset class="form-label-group">
-                                    <input type="text" class="form-control" id="referral-link" value="https://1.envato.market/pixinvent_portfolio" required="" autofocus="">
+                                    <input type="text" class="form-control" id="referral-link" value="<?php echo baseurl.'referal/'.$data['user_info']['referal_link'] ?>" required="" autofocus="">
                                     <label for="first-name">Referral link</label>
                                 </fieldset>
                             </div>
@@ -202,9 +202,7 @@
                         </div>
                         <br>
                         <div class="font-small-3 clearfix">
-                            <a href="">
-                                <button style="background: green; color:#fff; padding:10px; border:1px solid #fff;  font-weight:900; outline:none; cursor:pointer; ">Copy Link</button>
-                            </a>
+                        <button style="background: green; color:#fff; padding:10px; border:1px solid #fff;  font-weight:900; outline:none; cursor:pointer; " data-clipboard-text="<?php echo baseurl.'referal/'.$data['user_info']['referal_link'] ?>" class="bb">Copy Link</button>
                         </div>
                     </div>
                 </div>

@@ -76,6 +76,7 @@
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/minnigpoolComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/poolconfigComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/kycverificationComponent.component.js"></script>
+    <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/faqComponent.component.js"></script>
 
     
     
@@ -176,7 +177,7 @@
       </li>
       <li class=" nav-item"><a href="wallet/transactions/"><i class="icon-shuffle"></i>Transactions<span class="menu-title" data-i18n=""></span></a>
       </li>
-      <li class=" nav-item"><a href="faq.html"><i class="icon-support"></i>FAQ<span class="menu-title" data-i18n=""></span></a>
+      <li class=" nav-item"><a href="wallet/faq/"><i class="icon-support"></i>FAQ<span class="menu-title" data-i18n=""></span></a>
       </li>
       <li class=" nav-item"><a href="wallet/profile/"><i class="icon-user-following"></i>Account<span class="menu-title" data-i18n=""></span></a>
        

@@ -50,6 +50,9 @@ angular.module("appCore")
                         </div>
                     </div>`;
                     element("384004ddf67b7c514ca6275a741d29cb").innerHTML = html_view;
+                    }else{
+                        alertify.error(`<span style='color:#fff'>${response.message}</span>`).dismissOthers()
+                        return false
                     }
                 })
             }
@@ -70,8 +73,11 @@ angular.module("appCore")
                     alertify.error("<span style='color:#fff'>Enter BTC amount to send</span>").dismissOthers()
                     return false
                 }
-
-                if(parseInt(form.amount.value) > $scope.btcBalanceObject['btc_balance']){
+                
+                // console.log(typeof(parseFloat(form.amount.value)))
+                // console.log(parseFloat(form.amount.value) > parseFloat($scope.btcBalanceObject['btc_balance']))
+                // return
+                if(parseFloat(form.amount.value) > parseFloat($scope.btcBalanceObject['btc_balance'])){
                     alertify.error("<span style='color:#fff'>Insufficent BTC</span>").dismissOthers()
                     return false
                 }

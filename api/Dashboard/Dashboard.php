@@ -94,4 +94,10 @@ class Dashboard extends Base
         return;
     }
 
+    public function faqIndex()
+    {
+        $this->load->template(view_map["dashboard"][38], "dashboard", []);
+    }
+
+
 } 

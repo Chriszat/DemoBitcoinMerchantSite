@@ -57,6 +57,9 @@ angular.
             .when("/wallet/profile/kyc-verification/", {
                 template:"<kycverification-component></kycverification-component>"
             })
+            .when("/wallet/faq/", {
+                template:"<faq-component></faq-component>"
+            })
             
             .otherwise({
                 template: `
