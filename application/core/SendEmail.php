@@ -25,10 +25,12 @@ class SendEmail
     public function configuration()
     {
         $config=[];
+        $settings = $this->getter->settings()['from_email'];
         // $config["name_from_email"]=explode("@", $info['email'])[0];
-        $config["username"]=$this->getter->settings()['from_email'];
-        $config["password"]=$this->getter->settings()['email_password'];;
-        $config["sitename"]=$this->getter->settings()['sitename'];
+        $config["username"]=$settings['from_email'];
+        $config["password"]=$settings['email_password'];;
+        $config["sitename"]=$settings['sitename'];
+        $config["smtp"] =$settings['email_smtp'];
         return $config;
     }
 
@@ -45,7 +47,7 @@ class SendEmail
             //Server settings
             //$mail->SMTPDebug = 2;                               // Enable verbose debug output
             $mail->isSMTP();                                      // Set mailer to use SMTP
-            $mail->Host = 'smtp.gmail.com';  					  // Specify main and backup SMTP servers
+            $mail->Host = $smtp;				  // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                               // Enable SMTP authentication
             $mail->Username = $username;           // SMTP username
             $mail->Password = $password;                // SMTP password
