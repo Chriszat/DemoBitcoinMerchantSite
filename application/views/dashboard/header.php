@@ -173,7 +173,7 @@
      <i class="fab fa-bitcoin"></i>
       Mining<span class="menu-title" data-i18n=""></span></a>
       </li>
-      <li class="nav-item"><a href="wallet/accounts/"><i class="icon-wallet"></i>Wallets<span class="menu-title" data-i18n=""></span></a>
+      <li class="nav-item"><a href="wallet/accounts/"><i class="icon-wallet"></i>Wallet<span class="menu-title" data-i18n=""></span></a>
       </li>
       <li class=" nav-item"><a href="wallet/transactions/"><i class="icon-shuffle"></i>Transactions<span class="menu-title" data-i18n=""></span></a>
       </li>
