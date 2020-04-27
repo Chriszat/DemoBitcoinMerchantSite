@@ -105,7 +105,7 @@
   <div class="navbar-wrapper">
     <div class="navbar-header d-md-none">
       <ul class="nav navbar-nav flex-row">
-        <li class="nav-item mobile-menu d-md-none mr-auto"><a class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
+        <li class="nav-item mobile-menu d-md-none mr-auto"><a id="tog_nav" class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i class="ft-menu font-large-1"></i></a></li>
         <li class="nav-item d-md-none"><a class="navbar-brand" href="index-2.html"><img class="brand-logo d-none d-md-block" alt="crypto ico admin logo" src="application/views/user/app-assets/images/logo/logo.png"><img class="brand-logo d-sm-block d-md-none" alt="crypto ico admin logo sm" src="application/views/user/app-assets/images/logo/logo-sm.png"></a></li>
         <li class="nav-item d-md-none"><a class="nav-link open-navbar-container" data-toggle="collapse" data-target="#navbar-mobile"><i class="fas fa-ellipsis-v"></i></a></li>
       </ul>
@@ -166,20 +166,20 @@
 <div class="main-menu menu-fixed menu-dark menu-bg-default rounded menu-accordion menu-shadow">
   <div class="main-menu-content"><a class="navigation-brand d-none d-md-block d-lg-block d-xl-block" href="index-2.html"><img class="brand-logo" alt="crypto ico admin logo" src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/logo.png"/></a>
     <ul class="navigation " id="main-menu-navigation" data-menu="menu-navigation">
-      <li class="active"><a ng-href="wallet/"><i class="icon-grid"></i>Dashboard<span class="menu-title" data-i18n=""></span></a>
+      <li class="active nav_item"><a ng-href="wallet/"><i class="icon-grid"></i>Dashboard<span class="menu-title" data-i18n=""></span></a>
       
       </li>
-      <li class="nav-item"><a href="wallet/mining/">
+      <li class="nav-item nav_item"><a href="wallet/mining/">
      <i class="fab fa-bitcoin"></i>
       Mining<span class="menu-title" data-i18n=""></span></a>
       </li>
-      <li class="nav-item"><a href="wallet/accounts/"><i class="icon-wallet"></i>Wallet<span class="menu-title" data-i18n=""></span></a>
+      <li class="nav-item nav_item"><a href="wallet/accounts/"><i class="icon-wallet"></i>Wallet<span class="menu-title" data-i18n=""></span></a>
       </li>
-      <li class=" nav-item"><a href="wallet/transactions/"><i class="icon-shuffle"></i>Transactions<span class="menu-title" data-i18n=""></span></a>
+      <li class=" nav-item nav_item"><a href="wallet/transactions/"><i class="icon-shuffle"></i>Transactions<span class="menu-title" data-i18n=""></span></a>
       </li>
-      <li class=" nav-item"><a href="wallet/faq/"><i class="icon-support"></i>FAQ<span class="menu-title" data-i18n=""></span></a>
+      <li class=" nav-item nav_item"><a href="wallet/faq/"><i class="icon-support"></i>FAQ<span class="menu-title" data-i18n=""></span></a>
       </li>
-      <li class=" nav-item"><a href="wallet/profile/"><i class="icon-user-following"></i>Account<span class="menu-title" data-i18n=""></span></a>
+      <li class=" nav-item nav_item"><a href="wallet/profile/"><i class="icon-user-following"></i>Account<span class="menu-title" data-i18n=""></span></a>
        
       </li>
     </ul>
