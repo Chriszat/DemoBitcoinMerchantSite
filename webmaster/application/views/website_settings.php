@@ -39,7 +39,17 @@
                         </div>
                         
                     </div>
-
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="show_mining_price" class=" form-control-label">Show Mining Plans Prices</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="checkbox" name="show_mining_price" value="1" <?php if(set_value("show_mining_price") == 1){ echo "checked='checked'";} ?>><br>
+                           
+                        </div>
+                        
+                    </div>
+                    
 
                     <div class="row form-group">
                         <div class="col col-md-3">

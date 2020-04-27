@@ -48,7 +48,7 @@
                                             <div style="width:50px; height:50px; position:absolute; right:0; top:0">
                                                 <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/ETH.png" style="width:100%" draggable="false">
                                             </div>
-                                            <h1><?php echo round($data['wallet']['btc'], 8) ?> ETH</h1>
+                                            <h1><?php echo round($data['wallet']['eth'], 8) ?> ETH</h1>
 
                                         </div>
                                         <div class="">

@@ -102,6 +102,9 @@ class Settings extends MY_Controller
             if(!isset($_POST['confirm_accounts'])){
                 $_POST['confirm_accounts'] = 0;
             }
+            if(!isset($_POST['show_mining_price'])){
+                $_POST['show_mining_price'] = 0;
+            }
             $this->db->update("settings", $_POST);
 
             return $this->view("website_settings", ["updated" => TRUE, 'web_settings_active' => TRUE]);

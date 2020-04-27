@@ -37,6 +37,7 @@
 <div class="">
     <br><br>
     <h1 align="center">Choose Investment Plan</h1>
+   
     <div class="content-wrapper">
         <div class="row">
             <div class="col-md-6">
@@ -56,9 +57,27 @@
                             </div>
                         </div>
                         <div class="card-body px-lg-7">
-                            <div class="display-4 text-yellow">$5,000.00</div>
+                            <?php if($data['settings']['show_mining_price'] == 1): ?>
+                            <div class="display-4 text-yellow">$<?php echo number_format($data['plans'][0]['price'], 2); ?></div>
+                            <?php else: ?>
+                                <div class="display-4 text-yellow">
+                                    <?php echo $data['plans'][0]['btc_reward']; ?> BTC REWARD
+                                </div>
+                            <?php endif; ?>
                             <span class="text-muted">For 5 days</span>
                             <ul class="list-unstyled my-4">
+                            <li>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <div class="icon icon-xs icon-shape shadow rounded-circle text-yellow">
+                                                <i class="fa fa-check"></i>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <span class="pl-2">  <?php echo $data['plans'][0]['btc_reward']; ?> BTC REWARD</span>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li>
                                     <div class="d-flex align-items-center">
                                         <div>
@@ -218,10 +237,16 @@
                             </div>
                         </div>
                         <div class="card-body px-lg-7">
-                            <div class="display-4 text-yellow">$2,000.00</div>
-                            <span class="text-muted">For 48Hrs</span>
+                        <?php if($data['settings']['show_mining_price'] == 1): ?>
+                            <div class="display-4 text-yellow">$<?php echo number_format($data['plans'][1]['price'], 2); ?></div>
+                            <?php else: ?>
+                                <div class="display-4 text-yellow">
+                                    <?php echo $data['plans'][1]['btc_reward']; ?> BTC REWARD
+                                </div>
+                            <?php endif; ?>
+                            <span class="text-muted">For 48hrs</span>
                             <ul class="list-unstyled my-4">
-                                <li>
+                            <li>
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <div class="icon icon-xs icon-shape shadow rounded-circle text-yellow">
@@ -229,7 +254,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">3.0% daily top up</span>
+                                            <span class="pl-2">  <?php echo $data['plans'][1]['btc_reward']; ?> BTC REWARD</span>
                                         </div>
                                     </div>
                                 </li>
@@ -380,10 +405,17 @@
                             </div>
                         </div>
                         <div class="card-body px-lg-7">
-                            <div class="display-4 text-yellow">$500.00</div>
-                            <span class="text-muted">For 24Hrs</span>
+                            
+                        <?php if($data['settings']['show_mining_price'] == 1): ?>
+                            <div class="display-4 text-yellow">$<?php echo number_format($data['plans'][2]['price'], 2); ?></div>
+                            <?php else: ?>
+                                <div class="display-4 text-yellow">
+                                    <?php echo $data['plans'][0]['btc_reward']; ?> BTC REWARD
+                                </div>
+                            <?php endif; ?>
+                            <span class="text-muted">For 24hrs</span>
                             <ul class="list-unstyled my-4">
-                                <li>
+                            <li>
                                     <div class="d-flex align-items-center">
                                         <div>
                                             <div class="icon icon-xs icon-shape shadow rounded-circle text-yellow">
@@ -391,7 +423,7 @@
                                             </div>
                                         </div>
                                         <div>
-                                            <span class="pl-2">2.5% daily top up</span>
+                                            <span class="pl-2">  <?php echo $data['plans'][2]['btc_reward']; ?> BTC REWARD</span>
                                         </div>
                                     </div>
                                 </li>
