@@ -4,15 +4,15 @@
             <div>
                 <h4 class="font-weight-bold mb-0">Bitcoin Admin Dashboard</h4>
             </div>
-            <div>
+            <!-- <div>
                 <button type="button" class="btn btn-primary btn-icon-text btn-rounded">
                     <i class="ti-clipboard btn-icon-prepend"></i>Report
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-md-3 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
@@ -61,4 +61,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
