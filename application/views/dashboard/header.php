@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr" ng-app="appCore" ng-controller="baseController">
   
-<!-- Mirrored from pixinvent.com/demo/crypto-ico-admin/html/ltr/vertical-menu/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 21 Nov 2018 19:59:17 GMT -->
+
 <head>
     
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Crypto ICO admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities with bitcoin dashboard.">
-    <meta name="keywords" content="admin template, crypto ico admin template, dashboard template, flat admin template, responsive admin template, web app, crypto dashboard, bitcoin dashboard">
-    <meta name="author" content="PIXINVENT">
-    <title>BaseWallet Dashboard - Cryptocurrency </title>
+    <meta name="description" content="Buy Bitcoin and Ethereum. We make it safe and easy to buy, store and learn about cryptocurrencies. Get Started">
+    <meta name="keywords" content="bitcoin, bitcoin mining, ethereum">
+    <meta name="author" content="">
+    <title>Dashboard</title>
 
     <base href="<?php echo baseurl ?>" />
   
