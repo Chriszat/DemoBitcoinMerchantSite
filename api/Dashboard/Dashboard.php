@@ -96,7 +96,18 @@ class Dashboard extends Base
 
     public function faqIndex()
     {
-        $this->load->template(view_map["dashboard"][38], "dashboard", []);
+        $query = mysqli_query($this->con, "SELECT * FROM faq_topic ORDER BY id DESC");
+        $data["object_list"] = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $this->load->template(view_map["dashboard"][38], "dashboard", $data);
+    }
+
+    public function loadFaqQuestions()
+    {
+        $id= $_POST['id'];
+        $query= mysqli_query($this->con, "SELECT * FROM faq WHERE faq_topic_id='$id' ");
+        $data["object_list"] = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $this->load->template(view_map["dashboard"][39], "dashboard", $data);
+        
     }
 
 

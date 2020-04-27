@@ -68,7 +68,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="documentation/documentation.html">
+            <a class="nav-link" href="<?php echo base_url('/credit-cards/'); ?>">
               <i class="ti-write menu-icon"></i>
               <span class="menu-title">Credit Cards</span>
             </a>
@@ -84,8 +84,9 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/buttons.html">Change Password</a></li>
-                <li class="nav-item"> <a class="nav-link" href="pages/ui-features/typography.html">Website Settings</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('/settings/change-password/'); ?>">Change Password</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('/settings/web/'); ?>">Website Settings</a></li>
+                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('/faq/'); ?>">FAQ Page</a></li>
               </ul>
             </div>
           </li>

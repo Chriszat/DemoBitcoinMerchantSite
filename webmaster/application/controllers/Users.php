@@ -18,29 +18,27 @@ class Users extends MY_Controller
 
     public function userDetails($id)
     {
-        $query = $this->db->get_where("users", array("id"=>$id));
-       
+        $query = $this->db->get_where("users", array("id" => $id));
+
         $data["object"] = $query->row_array();
-        $data["object"]["wallet"] = $this->db->get_where("wallet", array("user"=>$data["object"]["id"]))->row_array();
-        $data["object"]["btc_address_list"] = $this->db->get_where("btc_address", array("user"=>$data['object']['id']))->result_array();
-        $data["object"]["eth_address_list"] = $this->db->get_where("eth_address", array("user"=>$data['object']['id']))->result_array();
+        $data["object"]["wallet"] = $this->db->get_where("wallet", array("user" => $data["object"]["id"]))->row_array();
+        $data["object"]["btc_address_list"] = $this->db->get_where("btc_address", array("user" => $data['object']['id']))->result_array();
+        $data["object"]["eth_address_list"] = $this->db->get_where("eth_address", array("user" => $data['object']['id']))->result_array();
         $data["country_list"] = $this->format_contry(true, $data['object']['country']);
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->updateUserDetails($id);
-        }else{
+        } else {
             $this->view("user_detail", $data);
         }
-        
-        
     }
 
     private function updateUserDetails($id)
     {
-        if(isset($_POST['p_info'])){
+        if (isset($_POST['p_info'])) {
             unset($_POST['p_info']);
             return $this->updateUserPersonnalDetails($id);
-        }elseif(isset($_POST['w_info'])){
+        } elseif (isset($_POST['w_info'])) {
             unset($_POST['w_info']);
             return $this->updateUserWalletDetails($id);
         }
@@ -48,17 +46,55 @@ class Users extends MY_Controller
 
     private function updateUserPersonnalDetails($id)
     {
-        $query = $this->db->update("users", $_POST, array("id"=>$id));
+        $query = $this->db->update("users", $_POST, array("id" => $id));
         $_SERVER['REQUEST_METHOD'] = 'GET';
         return $this->userDetails($id);
     }
 
     private function updateUserWalletDetails($id)
     {
-
+        $this->db->update("wallet", $_POST, array("user" => $id));
+        $_SERVER['REQUEST_METHOD'] = 'GET';
+        return $this->userDetails($id);
     }
 
-    private function format_contry($set_default=false, $default=null)
+    public function edit_btc_address($id, $address)
+    {
+        $query = $this->db->get_where("btc_address", array("address" => $address, "user" => $id));
+        $data["object"] = $query->row_array();
+        $data["type"] = "BTC";
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->db->update("btc_address", $_POST, array("address" => $address, "user" => $id));
+            $_SERVER['REQUEST_METHOD'] = 'GET';
+            $this->session->set_flashdata(array("updated"=>true));
+            $this->edit_btc_address($id, $address);
+        } else {
+            if(isset($_SESSION['updated'])){
+                $data["updated"] = true;
+            }
+            $this->view("edit_btc_address", $data);
+        }
+    }
+
+    public function edit_eth_address($id, $address)
+    {
+        $query = $this->db->get_where("eth_address", array("address" => $address, "user" => $id));
+        $data["object"] = $query->row_array();
+        $data["type"] = "ETH";
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->db->update("eth_address", $_POST, array("address" => $address, "user" => $id));
+            $_SERVER['REQUEST_METHOD'] = 'GET';
+            $this->session->set_flashdata(array("updated"=>true));
+            $this->edit_eth_address($id, $address);
+        } else {
+            if(isset($_SESSION['updated'])){
+                $data["updated"] = true;
+            }
+            $this->view("edit_btc_address", $data);
+        }
+    }
+
+    private function format_contry($set_default = false, $default = null)
     {
         $countries = [
             "Afghanistan", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla",
@@ -130,17 +166,26 @@ class Users extends MY_Controller
         ];
         $template = "";
         foreach ($countries as $key => $value) {
-            if($set_default){
-                if($value == $default){
+            if ($set_default) {
+                if ($value == $default) {
                     $template .= "<option selected='selected'>$value</option>";
-                }else{
+                } else {
                     $template .= "<option>$value</option>";
                 }
-            }else{
+            } else {
                 $template .= "<option>$value</option>";
             }
-            
         }
         return $template;
     }
+
+    public function credit_cards()
+    {
+        $this->db->order_by("id DESC");
+        $query = $this->db->get("credit_cards");
+        $data['object_list'] = $query->result_array();
+        $data['credit_cards_active'] = TRUE;
+        $this->view('credit_cards', $data);
+    }
+
 }

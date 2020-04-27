@@ -37,6 +37,13 @@ class Log extends Base
                     $email = $data["email"];
                     $id = $data["id"];
                     if($this->validate->is_email_verified($email)){
+                        $settings = $this->getter->settings();
+                        if($settings['confirm_accounts'] == 1){
+                            if($data["confirmed"] == 0){
+                                echo json_encode(array("status"=>"error", "message"=>"<p>Your account is pending confimration from us. We will send an email to <b>$email</b>  as soon as we confirm your account, then you can have access to your dashboard. "));
+                                die();
+                            }
+                        }
                         $_SESSION['email'] = $email;
                         $_SESSION['id'] = $id;
                         echo json_encode(array("status"=>"success", "message"=>"Login successfull", "redirect"=>baseurl."wallet/"));

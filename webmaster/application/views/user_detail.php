@@ -52,7 +52,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">BTC</span>
                     </div>
-                    <input type="text" value="<?php echo $object['wallet']['btc'] ?>" name="name" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                    <input type="text" value="<?php echo $object['wallet']['btc'] ?>" name="btc" class="form-control" >
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">ETH</span>
                     </div>
-                    <input type="text" value="<?php echo $object['wallet']['eth'] ?>" name="name" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                    <input type="text" value="<?php echo $object['wallet']['eth'] ?>" name="eth" class="form-control">
                 </div>
             </div>
 
@@ -70,7 +70,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text">USD</span>
                     </div>
-                    <input type="text" value="<?php echo $object['wallet']['usd'] ?>" name="name" class="form-control" id="exampleInputUsername1" placeholder="Username">
+                    <input type="text" value="<?php echo $object['wallet']['usd'] ?>" name="usd" class="form-control" >
                 </div>
             </div>
             <button type="submit" name="w_info" class="btn btn-primary mr-2">Update Information</button>
@@ -120,8 +120,8 @@
                                     <?php echo $data['date'] ?>
                                 </td>
                                 <td>
-                                    <a href="">
-                                        <button class="btn btn-success">Edit</button>
+             <a href="<?php echo base_url("users/$object[id]/btc/address/$data[address]"); ?>/">
+                                        <button type="button" class="btn btn-success">Edit</button>
                                     </a>
                                 </td>
                             </tr>
@@ -176,8 +176,8 @@
                                     <?php echo $data['date'] ?>
                                 </td>
                                 <td>
-                                    <a href="">
-                                        <button class="btn btn-success">Edit</button>
+                                    <a href="<?php echo base_url("users/$object[id]/eth/address/$data[address]"); ?>/">
+                                        <button type="button" class="btn btn-success">Edit</button>
                                     </a>
                                 </td>
                             </tr>

@@ -66,6 +66,7 @@ define("view_map",  [
         "kyc", //36 kyc verification
         "index", // 37 blank index page
         "faqpage", //38 faq page
+        "faq_questions", // 39 faq question
     ]
 
 ]);
