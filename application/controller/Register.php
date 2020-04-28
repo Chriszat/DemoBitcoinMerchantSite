@@ -15,6 +15,7 @@ class Register extends Controller
         $this->token = $this->csrf()->generate_token();
         $this->location  = $this->helper("LocationHelper");
         $this->getter = $this->helper("GetterHelper");
+        $this->con = $this->load->helper("application\core\DatabaseHelper\DatabaseHelper")::connection();
         $this->index();
 
     }
@@ -24,6 +25,23 @@ class Register extends Controller
         $data["csrf_token"] =  $this->token;
         $data["country"] = $this->location->location->country;
         $data["sitename"] = $this->getter->settings()["sitename"];
+        $refered = false;
+        if(isset($_GET['ref'])){
+            $ref= $_GET['ref'];
+            $query = mysqli_query($this->con, "SELECT * FROM users WHERE referal_link='$ref'");
+            if(mysqli_num_rows($query) > 0){
+                $_SESSION['refered_by'] = mysqli_fetch_assoc($query)["id"];
+            }else{
+                if(isset($_SESSION['refered_by'])){
+                    unset($_SESSION['refered_by']);
+                }
+            }
+        }else{
+            if(isset($_SESSION['refered_by'])){
+                unset($_SESSION['']);
+            }
+        }
+        
         if(isset($_GET['confirmation']) && isset($_SESSION['confirm_email'])){
             if($_GET['confirmation'] == 'true'){
                 $data['confirm_email'] = $_SESSION['confirm_email'];

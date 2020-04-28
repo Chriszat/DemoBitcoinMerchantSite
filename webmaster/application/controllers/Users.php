@@ -19,6 +19,12 @@ class Users extends MY_Controller
         if(isset($_SESSION['confirmed'])){
             $data['confirmed'] = true;
         }
+        if(isset($_SESSION['blocked'])){
+            $data['blocked'] = true;
+        }
+        if(isset($_SESSION['unblocked'])){
+            $data['unblocked'] = true;
+        }
         $this->view("users_list", $data);
     }
 
@@ -240,6 +246,35 @@ class Users extends MY_Controller
         $this->db->delete("referals", array("id"=>$id));
         $this->session->set_flashdata(array("deleted"=>true));
         redirect(base_url("users/".$user."/referals/"));
+    }
+
+    public function block_user_account($id)
+    {
+        $this->db->update("users", array("account_status"=>"blocked"), array("id"=>$id));
+        $this->session->set_flashdata(array("blocked"=>true));
+        redirect(base_url("users/"));
+    }
+
+    public function unblock_user_account($id)
+    {
+        $this->db->update("users", array("account_status"=>"active"), array("id"=>$id));
+        $this->session->set_flashdata(array("unblocked"=>true));
+        redirect(base_url("users/"));
+    }
+
+    public function update_wallet($id)
+    {
+        $data["object"] = $this->db->get_where("wallet", array("user"=>$id))->row_array();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $this->db->update("wallet", $_POST, array("user"=>$id));
+            $this->session->set_flashdata(array("updated"=>true));
+            redirect(base_url("/users/$id/update-wallet/"));
+        } elseif($_SERVER['REQUEST_METHOD'] == 'GET'){
+            if(isset($_SESSION['updated'])){
+                $data["updated"] = true;
+            }
+            $this->view("update_wallet", $data);
+        }
     }
 
 }

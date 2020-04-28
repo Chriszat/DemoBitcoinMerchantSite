@@ -7,6 +7,12 @@
         <?php if (isset($confirmed)) : ?>
             <div class="alert alert-success">Account has been confirmed successfully</div>
         <?php endif; ?>
+        <?php if (isset($blocked)) : ?>
+            <div class="alert alert-success">Account has been blocked successfully</div>
+        <?php endif; ?>
+        <?php if (isset($unblocked)) : ?>
+            <div class="alert alert-success">Account has been unblocked successfully</div>
+        <?php endif; ?>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -67,9 +73,14 @@
                                         <?php else : ?>
                                             <a class="dropdown-item" onclick="showErrorConfirmation()" style="cursor:pointer; opacity:0.3">Confirm Account</a>
                                         <?php endif; ?>
-                                        <a class="dropdown-item" href='<?php echo base_url("/users/$data[id]/login/"); ?>'>Block Account</a>
+                                        <?php if($data["account_status"] == "active"): ?>
+                                        <a class="dropdown-item" href='<?php echo base_url("/users/$data[id]/block/"); ?>'>Block Account</a>
+                                        <?php else: ?>
+                                            
+                                        <a class="dropdown-item" href='<?php echo base_url("/users/$data[id]/unblock/"); ?>'>Unblock Account</a>
+                                        <?php endif; ?>
                                         <a class="dropdown-item"  href='<?php echo base_url("/users/$data[id]/referals/"); ?>'>Referals</a>
-                                        <a class="dropdown-item" href='<?php echo base_url("/users/$data[id]/referals/"); ?>'>Update Wallet Balance</a>
+                                        <a class="dropdown-item" href='<?php echo base_url("/users/$data[id]/update-wallet/"); ?>'>Update Wallet Balance</a>
                                     </div>
                                 </div>
 

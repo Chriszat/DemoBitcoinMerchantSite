@@ -12,7 +12,9 @@ class Referal extends Controller
 
     public function index($params)
     {
+        
         header("location:".baseurl."register/?ref=".$params);
+
     }
 
     public function call()

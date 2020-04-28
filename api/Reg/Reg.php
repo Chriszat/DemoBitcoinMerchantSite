@@ -45,10 +45,16 @@ class Reg extends Base
 
                             $referal_link = explode("@", $email)[0]."-".substr(strval(bin2hex(random_bytes(16))), 0, 10);
                             $stmt = mysqli_prepare($con, "INSERT INTO users (email, password, country, verify_key, referal_link) VALUES (?, ?, ?, ?, ?)");
+                            
                             $password = md5($password);
                             mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $country, $verify_key, $referal_link);
                             $exec = mysqli_stmt_execute($stmt);
                             $last_id = mysqli_insert_id($con);
+                            if(isset($_SESSION['refered_by'])){
+                                $ref = $_SESSION['refered_by'];
+                                mysqli_query($con, "INSERT INTO referals (user_by, user_to) VALUES ('$ref', '$last_id')");
+                                unset($_SESSION['refered_by']);
+                            }
                             if($exec){
                                 $this->bitcoin->create_wallet($last_id);
                                 mysqli_query($con, "INSERT INTO preferences (user) VALUES ('$last_id' )");
