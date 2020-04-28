@@ -31,6 +31,8 @@ angular.module("register")
        }).then(function(response){
            response = JSON.parse(response);
            if(response.status == "error"){
+               element("error").innerHTML = response.message
+               element("error").style.padding="15px;"
                overlay.hide()
            }else if(response.status =="success"){
                window.location = location.origin+location.pathname+'?confirmation=true';

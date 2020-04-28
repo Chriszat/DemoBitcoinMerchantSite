@@ -38,6 +38,7 @@ return array(
     'PHPMailer\\PHPMailer\\POP3' => $baseDir . '/application/shared/phpmailer/phpmailer/src/POP3.php',
     'PHPMailer\\PHPMailer\\SMTP' => $baseDir . '/application/shared/phpmailer/phpmailer/src/SMTP.php',
     'Profile' => $baseDir . '/api/Profile/Profile.php',
+    'Referal' => $baseDir . '/application/controller/Referal.php',
     'Reg' => $baseDir . '/api/Reg/Reg.php',
     'Register' => $baseDir . '/application/controller/Register.php',
     'ScriptLoader' => $baseDir . '/application/core/ScriptLoader.php',

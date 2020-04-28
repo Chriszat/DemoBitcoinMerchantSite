@@ -24,7 +24,7 @@ angular.module("login")
             if(response.status == "success"){
                 window.location = response.redirect
             }else if(response.status == 'error'){
-                
+                console.log(response)
                 element("error").innerHTML= response.message;
                 element("error").style.padding="3px"
             }

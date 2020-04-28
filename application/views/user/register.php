@@ -2,6 +2,7 @@
  <body class="vertical-layout vertical-compact-menu 1-column  bg-full-screen-image menu-expanded blank-page blank-page" data-open="click" data-menu="vertical-compact-menu" data-col="1-column" ng-app="register" ng-controller="registerCtrl">
  <link rel="stylesheet" href="<?php echo baseurl ?>application/views/user/country-select-js-master/build/css/countrySelect.css">
  <!-- ////////////////////////////////////////////////////////////////////////////-->
+
  <div class="app-content content">
    <div class="content-wrapper">
      <div class="content-header row">
@@ -29,7 +30,9 @@
             <div class="card border-grey border-lighten-3 m-0 box-shadow-0 card-account-right height-400">  
 
                 <div class="card-content">     
-                                   
+                <div class="z-depth-2" style="background:#d63031; color:#fff" id="error">
+                
+                </div>
                     <div class="card-body p-3">
                         <p class="text-center h5 text-capitalize">Sign Up</p>
                         

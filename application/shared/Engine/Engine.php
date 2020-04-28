@@ -33,8 +33,15 @@ class Engine extends UrlHelper
             $controller->index();
         }else{
             $ctrl = ucwords($this->url[0]);
+           
             if(class_exists($ctrl)){
                 $controller = new $ctrl();
+                if(isset($this->url[1])){
+                    if(method_exists($controller, $this->url[1])){
+                        call_user_func_array(array($controller, $this->url[1]), array_slice($this->url, 2));
+                    }
+                }
+                
             }else{
                 $error = new ErrorPage();
                 $error->index();

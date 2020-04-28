@@ -149,6 +149,7 @@ class ComposerStaticInit4a05ad09e241938dab4a95b38082d06d
         'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/../..' . '/application/shared/phpmailer/phpmailer/src/POP3.php',
         'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/../..' . '/application/shared/phpmailer/phpmailer/src/SMTP.php',
         'Profile' => __DIR__ . '/../..' . '/api/Profile/Profile.php',
+        'Referal' => __DIR__ . '/../..' . '/application/controller/Referal.php',
         'Reg' => __DIR__ . '/../..' . '/api/Reg/Reg.php',
         'Register' => __DIR__ . '/../..' . '/application/controller/Register.php',
         'ScriptLoader' => __DIR__ . '/../..' . '/application/core/ScriptLoader.php',

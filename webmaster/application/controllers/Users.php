@@ -222,14 +222,24 @@ class Users extends MY_Controller
 
     public function referals_list($id)
     {
+        if(isset($_SESSION['deleted'])){
+            $data["deleted"] = true;
+        }
         $query = $this->db->get_where("referals", array("user_by"=>$id));
         $datas = $query->result_array();
         foreach($datas as $key => $info){
-            $datas[$key]["info"] = $this->db->get_where("users", array("id"=>$info["user_by"]))->row_array();
+            $datas[$key]["info"] = $this->db->get_where("users", array("id"=>$info["user_to"]))->row_array();
         }
-        print_r($datas);
+       
         $data["object_list"] = $datas;
         $this->view("referals", $data);
+    }
+
+    public function delete_referal($user, $id)
+    {
+        $this->db->delete("referals", array("id"=>$id));
+        $this->session->set_flashdata(array("deleted"=>true));
+        redirect(base_url("users/".$user."/referals/"));
     }
 
 }
