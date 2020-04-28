@@ -71,7 +71,7 @@
 
 <br>
                                 <div>
-                                        <a href="javascript:void(0)" id="new_plan" class="btn " style="background:green;color:#fff"><b><span class="fa fa-plus"></span> <span>New Mining Pool</span></span></b></a>
+                                        <a  id="new_plan" class="btn " style="background:green;color:#fff; cursor:pointer"><b><span class="fa fa-plus"></span> <span>New Mining Pool</span></span></b></a>
                                     </div>
                             </div>
                         </div>

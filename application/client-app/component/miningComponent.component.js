@@ -29,13 +29,36 @@ angular.module("appCore")
                     }).then(function (response) {
 
                         let res = JSON.parse(response)
-                        console.log(res)
-                        $location.path(`wallet/mining/pool/config/${res.hash}/`)
-                        $route.reload();
+                        if(res.status == "success"){
+                            $location.path(`wallet/mining/pool/config/${res.hash}/`)
+                            $route.reload();
+                        }else{
+                            alertify.error(`<span style="color:#fff">${res.message}</span>`)
+                        }
+                       
                     })
                  },function () { alertify.error('Cancel') });
                
             }
+
+          
+
+            let e = document.getElementsByClassName("purchase_plan");
+            for (let index in e) {
+                if (typeof [index] == "object") {
+                    console.log(e[index])
+                    try {
+                        e[index].addEventListener("click", function (evt) {
+                            purchasePlan(e[index].getAttribute("data-plan"))
+                        })
+                    }catch{
+
+                    }
+                } else {
+                    console.log(typeof (e[index]))
+                }
+            }
+
 
             let loadMiningPlansView = function () {
                 if (cached_views.hasOwnProperty("plans")) {

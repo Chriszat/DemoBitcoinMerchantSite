@@ -33,7 +33,7 @@
 }
 </style>
 
-<div class="">
+<div class="" id="view">
     <br><br>
     <h1 align="center">Choose Investment Plan</h1>
    
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="col-lg-8 col-12 text-right">
                                    
-                                    <a href="#" data-toggle="modal" onclick="purchasePlan('gold')" data-target="#buy10" class=" xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important">Purchase plan</a>
+                                    <a  data-plan="gold" data-target="#buy10" class="purchase_plan xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important">Purchase plan</a>
                                    
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
                                 </div>
                                 <div class="col-lg-7 col-12 text-right">
                               
-                                    <a href="#" data-toggle="modal" data-target="#buy10" class=" xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important" onclick="purchasePlan('premium')">Purchase plan</a>
+                                    <a  class="purchase_plan xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important" data-plan="premium">Purchase plan</a>
                                     <div class="modal fade" id="calculate7" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
                                             <div class="modal-content">
@@ -333,7 +333,7 @@
                                 </div>
                                 <div class="col-lg-7 col-12 text-right">
                                 
-                                    <a href="#" data-toggle="modal" data-target="#buy10" class=" xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important" onclick="purchasePlan('starter')">Purchase plan</a>
+                                    <a class ="purchase_plan xx-btn btn-white" style="background:green!important; color:#fff!important; font-size:25px;!important" data-plan="starter">Purchase plan</a>
                                     <div class="modal fade" id="calculate6" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                                         <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
                                             <div class="modal-content">

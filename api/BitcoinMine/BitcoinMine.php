@@ -76,7 +76,7 @@ class BitcoinMine extends Base
         if (mysqli_num_rows($query) > 0) {
             $data = mysqli_fetch_assoc($query);
             if ($usd_balance < $data['price']) {
-                echo json_encode(array("status" => "low_funds"));
+                echo json_encode(array("status" => "low_funds", "message"=>"Insufficent USD balance. Deposit to your usd wallet."));
                 return;
             }
 
