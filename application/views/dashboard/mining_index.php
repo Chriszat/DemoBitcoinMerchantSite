@@ -16,8 +16,7 @@
         line-height: 1.5;
         padding: .25rem .5rem;
         border-radius: .25rem;
-        
-
+    
     }
 
     .btn-white {
@@ -61,7 +60,7 @@
                             <div class="display-4 text-yellow">$<?php echo number_format($data['plans'][0]['price'], 2); ?></div>
                             <?php else: ?>
                                 <div class="display-4 text-yellow">
-                                    <?php echo $data['plans'][0]['btc_reward']; ?> BTC REWARD
+                                    <?php  echo $data['plans'][0]['btc_reward']; ?> BTC REWARD
                                 </div>
                             <?php endif; ?>
                             <span class="text-muted">For 5 days</span>

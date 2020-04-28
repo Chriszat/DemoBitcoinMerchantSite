@@ -25,7 +25,7 @@ class SendEmail
     public function configuration()
     {
         $config=[];
-        $settings = $this->getter->settings()['from_email'];
+        $settings = $this->getter->settings();
         // $config["name_from_email"]=explode("@", $info['email'])[0];
         $config["username"]=$settings['from_email'];
         $config["password"]=$settings['email_password'];;

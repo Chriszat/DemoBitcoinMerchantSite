@@ -12,7 +12,8 @@ class MY_Controller extends CI_Controller
 
     public function view($template = null, $args = [])
     {
-        $data=["base_site_url"=>$this->config->item('base_site_url')] ;
+        $settings = $this->db->get("settings")->row_array();
+        $data=["base_site_url"=>$this->config->item('base_site_url'), "settings"=>$settings] ;
         $data = array_merge($data, $args);
         $this->load->view("fragments/header", $data);
         $this->load->view($template, $args);

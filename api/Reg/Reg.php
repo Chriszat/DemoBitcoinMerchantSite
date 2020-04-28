@@ -51,7 +51,7 @@ class Reg extends Base
                             $last_id = mysqli_insert_id($con);
                             if($exec){
                                 $this->bitcoin->create_wallet($last_id);
-                                mysqli_query($this->con, "INSERT INTO preferences (user) VALUES ('$last_id' )");
+                                mysqli_query($con, "INSERT INTO preferences (user) VALUES ('$last_id' )");
                                 $subject = "Confirm your email address";
                                 $data["email"] = $email;
                                 $data["extra"] = "verify this email address";

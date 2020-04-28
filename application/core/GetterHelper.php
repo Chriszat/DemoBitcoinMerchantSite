@@ -41,7 +41,12 @@ class GetterHelper extends DatabaseHelper
         $con = $this->connection();
         $query = mysqli_query($con, "SELECT * FROM users WHERE id='$id' ");
         $data = mysqli_fetch_assoc($query);
-        return $data;
+        if(mysqli_num_rows($query) > 0){
+            return $data;
+        }else{
+            return false;
+        }
+       
     }
 
     /**

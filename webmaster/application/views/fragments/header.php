@@ -69,28 +69,35 @@
 
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('/credit-cards/'); ?>">
-              <i class="ti-write menu-icon"></i>
+              <i class="ti-credit-card menu-icon"></i>
               <span class="menu-title">Credit Cards</span>
             </a>
           </li>
 
-    
-
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="ti-settings menu-icon"></i>
-              <span class="menu-title">Settings</span>
-              <i class="menu-arrow"></i>
+            <a class="nav-link" href="<?php echo base_url('/faq/'); ?>">
+              <i class="ti-write menu-icon"></i>
+              <span class="menu-title">FAQ Page</span>
             </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('/settings/change-password/'); ?>">Change Password</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('/settings/web/'); ?>">Website Settings</a></li>
-                <li class="nav-item"> <a class="nav-link" href="<?php echo base_url('/faq/'); ?>">FAQ Page</a></li>
-              </ul>
-            </div>
           </li>
 
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('/settings/payments/'); ?>">
+              <i class="ti-money menu-icon"></i>
+              <span class="menu-title">Payment Settings</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('/settings/web/'); ?>">
+              <i class="ti-settings menu-icon"></i>
+              <span class="menu-title">Website Settings</span>
+            </a>
+          </li>
+
+         
+
+  
         </ul>
       </nav>
       <div class="main-panel">

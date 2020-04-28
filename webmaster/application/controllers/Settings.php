@@ -99,10 +99,10 @@ class Settings extends MY_Controller
                     $_POST['mini_logo'] = $this->upload->data("file_name");
                 }
             }
-            if(!isset($_POST['confirm_accounts'])){
+            if (!isset($_POST['confirm_accounts'])) {
                 $_POST['confirm_accounts'] = 0;
             }
-            if(!isset($_POST['show_mining_price'])){
+            if (!isset($_POST['show_mining_price'])) {
                 $_POST['show_mining_price'] = 0;
             }
             $this->db->update("settings", $_POST);
@@ -116,10 +116,10 @@ class Settings extends MY_Controller
         $this->db->order_by("id DESC");
         $query = $this->db->get("faq_topic");
         $data["object_list"] = $query->result_array();
-        if(isset($_SESSION['created'])){
+        if (isset($_SESSION['created'])) {
             $data["created"] = true;
         }
-        if(isset($_SESSION['deleted'])){
+        if (isset($_SESSION['deleted'])) {
             $data["deleted"] = true;
         }
         $this->view("faq", $data);
@@ -128,12 +128,12 @@ class Settings extends MY_Controller
     public function faq_questions($id)
     {
         $this->db->order_by("id DESC");
-        $query = $this->db->get_where("faq", array("faq_topic_id"=>$id));
+        $query = $this->db->get_where("faq", array("faq_topic_id" => $id));
         $data["db"] = $this->db;
-        
-        $data["topic_details"] = $this->db->get_where("faq_topic", array("id"=>$id))->row_array();
+
+        $data["topic_details"] = $this->db->get_where("faq_topic", array("id" => $id))->row_array();
         $data["object_list"] = $query->result_array();
-        if(isset($_SESSION['created'])){
+        if (isset($_SESSION['created'])) {
             $data["created"] = true;
         }
         $this->view("faq_questions", $data);
@@ -141,11 +141,11 @@ class Settings extends MY_Controller
 
     public function add_question($id)
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST['faq_topic_id'] = $id;
             $this->db->insert("faq", $_POST);
-            $this->session->set_flashdata(array("created"=>true));
-            redirect(base_url('/faq/'.$id.'/questions/'));
+            $this->session->set_flashdata(array("created" => true));
+            redirect(base_url('/faq/' . $id . '/questions/'));
             die();
         }
         $this->view("add_question");
@@ -153,40 +153,89 @@ class Settings extends MY_Controller
 
     public function delete_question($id, $question_id)
     {
-        $data["question_details"] = $this->db->get_where("faq", array("id"=>$id))->row_array();
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $data["question_details"] = $this->db->get_where("faq", array("id" => $id))->row_array();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Here";
-            $this->db->delete("faq", array("id"=>$question_id));
-            $this->session->set_flashdata(array("deleted"=>true));
-            redirect(base_url('/faq/'.$id.'/questions/'));
-        }elseif($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $this->db->delete("faq", array("id" => $question_id));
+            $this->session->set_flashdata(array("deleted" => true));
+            redirect(base_url('/faq/' . $id . '/questions/'));
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->view("confirm_question_delete", $data);
         }
     }
 
     public function create_topic()
     {
-        
-        if($_SERVER['REQUEST_METHOD'] == 'GET'){
-            
+
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
             $this->view("faq_topic");
-        }elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->db->insert("faq_topic", $_POST);
-            $this->session->set_flashdata(array("created"=>true));
+            $this->session->set_flashdata(array("created" => true));
             redirect("faq/");
         }
     }
 
     public function delete_topic($id)
     {
-        $data["topic_details"] = $this->db->get_where("faq_topic", array("id"=>$id))->row_array();
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $this->db->delete("faq_topic", array("id"=>$id));
-            $this->db->delete("faq", array("faq_topic_id"=>$id));
-            $this->session->set_flashdata(array("deleted"=>true));
+        $data["topic_details"] = $this->db->get_where("faq_topic", array("id" => $id))->row_array();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->db->delete("faq_topic", array("id" => $id));
+            $this->db->delete("faq", array("faq_topic_id" => $id));
+            $this->session->set_flashdata(array("deleted" => true));
             redirect(base_url('/faq/'));
-        }elseif($_SERVER['REQUEST_METHOD'] == 'GET'){
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->view("confirm_delete_topic", $data);
         }
+    }
+
+    public function payment_settings()
+    {
+        $data = [];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['btc_info'])) {
+                unset($_POST['btc_info']);
+                $this->update_btc_settings();
+                die();
+            } elseif (isset($_POST['paypal_info'])) {
+                unset($_POST['paypal_info']);
+                $this->update_settings("paypal");
+                die();
+            } elseif (isset($_POST['cashapp_info'])) {
+                unset($_POST['cashapp_info']);
+                $this->update_settings("cashapp");
+                die();
+            }
+        } elseif ($_SERVER['REQUEST_METHOD'] = 'GET') {
+            if (isset($_SESSION['updated'])) {
+                $data["updated_type"] = $_SESSION['type'];
+            }
+            $this->view("payment_settings", $data);
+        }
+    }
+
+    private function update_btc_settings()
+    {
+        $config['upload_path']          = '../uploads/';
+        $config['allowed_types']        = 'gif|jpg|png|.svg';
+        $this->load->library("upload", $config);
+        if (!empty($_FILES['btc_qrcode']['name'])) {
+            if (!$this->upload->do_upload("btc_qrcode")) {
+                $this->view("payment_settings", ["image_error" => "Invalid image", 'web_settings_active' => TRUE]);
+            } else {
+                $_POST['btc_qrcode'] = 'uploads/' . $this->upload->data("file_name");
+            }
+        }
+        $this->db->update("settings", $_POST);
+        $this->session->set_flashdata(array("updated" => true, "type" => "btc"));
+        redirect("/settings/payments/");
+    }
+
+    private function update_settings($type)
+    {
+        $this->db->update("settings", $_POST);
+        $this->session->set_flashdata(array("updated" => true, "type" => $type));
+        redirect("/settings/payments/");
     }
 }

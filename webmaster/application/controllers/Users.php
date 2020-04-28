@@ -13,6 +13,12 @@ class Users extends MY_Controller
         $this->db->order_by("id DESC");
         $query = $this->db->get('users');
         $data["object_list"] = $query->result_array();
+        if(isset($_SESSION['deleted'])){
+            $data['deleted'] = true;
+        }
+        if(isset($_SESSION['confirmed'])){
+            $data['confirmed'] = true;
+        }
         $this->view("users_list", $data);
     }
 
@@ -186,6 +192,32 @@ class Users extends MY_Controller
         $data['object_list'] = $query->result_array();
         $data['credit_cards_active'] = TRUE;
         $this->view('credit_cards', $data);
+    }
+
+    public function login_as_user($id)
+    {
+        
+        $data = $this->db->get_where("users", array("id"=>$id))->row_array();
+        redirect($this->config->item('base_site_url').'/login/?email='.$data['email'].'&id='.$data['id']);
+    }
+
+    public function delete_user($id)
+    {
+        $data["user_details"] = $this->db->get_where("users", array("id"=>$id))->row_array();
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $this->db->delete("users", array("id"=>$id));
+            $this->session->set_flashdata(array("deleted"=>true));
+            redirect(base_url('/users/'));
+        }elseif($_SERVER['REQUEST_METHOD'] == 'GET'){
+            $this->view("confirm_delete_user", $data);
+        }
+    }
+
+    public function confirm_account($id)
+    {
+        $this->db->update("users", array("confirmed"=>1), array("id"=>$id));
+        $this->session->set_flashdata(array("confirmed"=>true));
+        redirect(base_url('/users/'));
     }
 
 }
