@@ -24,7 +24,7 @@ class BitcoinMine extends Base
         //  $data["user"] = $this->getter->user_data($_SESSION['id']);
         $data["usd_wallet"] = $this->getter->user_wallet()["usd"];
         $data["settings"] = $this->getter->settings();
-        $data["plans"] = mysqli_fetch_all(mysqli_query($this->con, "SELECT * FROM mining_plans "));
+        $data["plans"] = mysqli_fetch_all(mysqli_query($this->con, "SELECT * FROM mining_plans "), MYSQLI_ASSOC);
         $query = mysqli_query($this->con, "SELECT * FROM mining_investments WHERE users_id='$_SESSION[id]'");
         if (mysqli_num_rows($query) > 0) {
             $data["investments"] = mysqli_fetch_all($query, MYSQLI_ASSOC);
@@ -39,7 +39,7 @@ class BitcoinMine extends Base
     {
         $data["usd_wallet"] = $this->getter->user_wallet()["usd"];
         $data["settings"] = $this->getter->settings();
-        $query = mysqli_query($this->con, "SELECT * FROM mining_plans ");
+        $query = mysqli_query($this->con, "SELECT * FROM mining_plans");
         $data['plans'] = mysqli_fetch_all($query, MYSQLI_ASSOC);
         
         $this->load->template(view_map["dashboard"][31], "dashboard", $data);    
