@@ -192,4 +192,14 @@
         <div class="content-header row">
         </div>
         <div class="content-body">
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+            {
+                "symbol": "BITSTAMP:BTCUSD",
+                "width": "100%",
+                "colorTheme": "light",
+                "isTransparent": false,
+                "locale": "en"
+            }
+        </script>
+        <br>
 <div ng-view id="content_view">
