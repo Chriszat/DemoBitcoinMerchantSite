@@ -3,7 +3,7 @@
 </a>
 
 <div class="card mt-5">
-<?php  if(isset($created)): ?>
+<?php print_r($object_list); if(isset($created)): ?>
     <div class="alert alert-success">Created Successfully</div>
 <?php endif; ?>
 <?php if(isset($deleted)): ?>

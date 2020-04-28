@@ -220,4 +220,16 @@ class Users extends MY_Controller
         redirect(base_url('/users/'));
     }
 
+    public function referals_list($id)
+    {
+        $query = $this->db->get_where("referals", array("user_by"=>$id));
+        $datas = $query->result_array();
+        foreach($datas as $key => $info){
+            $datas[$key]["info"] = $this->db->get_where("users", array("id"=>$info["user_by"]))->row_array();
+        }
+        print_r($datas);
+        $data["object_list"] = $datas;
+        $this->view("referals", $data);
+    }
+
 }

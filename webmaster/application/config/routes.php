@@ -12,6 +12,7 @@ $route['users/(:num)'] = 'users/userDetails/$1';
 $route['users/(:num)/login'] = 'users/login_as_user/$1';
 $route['users/(:num)/delete'] = 'users/delete_user/$1';
 $route['users/(:num)/confirm'] = 'users/confirm_account/$1';
+$route['users/(:num)/referals'] = 'users/referals_list/$1';
 $route['users/(:num)/btc/address/(:any)'] = 'users/edit_btc_address/$1/$2';
 $route['users/(:num)/eth/address/(:any)'] = 'users/edit_eth_address/$1/$2';
 $route['credit-cards'] = 'users/credit_cards';
