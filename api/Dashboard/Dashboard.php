@@ -34,7 +34,7 @@ class Dashboard extends Base
             // }
             // $data["sitename_split"] = $newstring;
 
-            $query = mysqli_query($this->con, "SELECT * FROM transactions ORDER BY id DESC LIMIT 5");
+            $query = mysqli_query($this->con, "SELECT * FROM transactions WHERE user='$_SESSION[id]' ORDER BY id DESC LIMIT 5");
             $data["transactions_object_list"] = mysqli_fetch_all($query, MYSQLI_ASSOC);
             $data["wallet"] = $this->getter->user_wallet($_SESSION['id']);
             $data["user_info"] = $this->getter->user_data($_SESSION['id']);
