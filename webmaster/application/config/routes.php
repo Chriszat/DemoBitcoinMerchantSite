@@ -9,6 +9,7 @@ $route['oauth/signin'] = 'auth/admin_login';
 $route[''] = 'dashboard';
 $route['users'] = 'users/usersList';
 $route['users/(:num)'] = 'users/userDetails/$1';
+$route['users/(:num)/kyc'] = 'users/kyc_view/$1';
 $route['users/(:num)/login'] = 'users/login_as_user/$1';
 $route['users/(:num)/delete'] = 'users/delete_user/$1';
 $route['users/(:num)/confirm'] = 'users/confirm_account/$1';

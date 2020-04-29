@@ -80,6 +80,21 @@ angular.module("appCore")
                         element("view").innerHTML = cached_views["main_view"]
                         listen("new_plan", "click", loadMiningPlansView)
                     })
+                    let e = document.getElementsByClassName("purchase_plan");
+            for (let index in e) {
+                if (typeof [index] == "object") {
+                    console.log(e[index])
+                    try {
+                        e[index].addEventListener("click", function (evt) {
+                            purchasePlan(e[index].getAttribute("data-plan"))
+                        })
+                    }catch{
+
+                    }
+                } else {
+                    console.log(typeof (e[index]))
+                }
+            }
                 })
             }
 

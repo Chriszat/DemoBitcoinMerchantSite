@@ -231,6 +231,8 @@ class Profile extends Base
             die();
         }
 
+        mysqli_query($this->con, "DELETE  FROM kyc_documents WHERE user='$_SESSION[id]' ");
+
         $rand_file_name = strval(bin2hex(random_bytes(16))) . '_' . $file['name'];
         move_uploaded_file($file["tmp_name"], "../uploads/" . $rand_file_name);
         $query = mysqli_query($this->con, "INSERT INTO kyc_documents (user, doc) VALUES ('$_SESSION[id]','$rand_file_name' )");

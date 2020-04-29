@@ -81,6 +81,7 @@
                                         <?php endif; ?>
                                         <a class="dropdown-item"  href='<?php echo base_url("/users/$data[id]/referals/"); ?>'>Referals</a>
                                         <a class="dropdown-item" href='<?php echo base_url("/users/$data[id]/update-wallet/"); ?>'>Update Wallet Balance</a>
+                                        <a class="dropdown-item" href='<?php echo  base_url("/users/$data[id]/kyc/") ?>'>View KYC Document</a>
                                     </div>
                                 </div>
 

@@ -312,4 +312,20 @@ class Users extends MY_Controller
         $this->session->set_flashdata(array("deleted" => true));
         redirect(base_url("/payments-proof/"));
     }
+
+    public function kyc_view($id)
+    {
+        $query = $this->db->get_where('kyc_documents', array("user"=>$id));
+        $data["object"] = $query->row_array();
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $f = "../uploads/".$data["object"]["doc"];
+            $e = unlink($f);
+            $this->db->delete("kyc_documents", array("user"=>$id));
+            redirect(base_url("/users/"));
+        }else{
+            $this->view("kyc", $data);
+        }
+        
+    }
 }
