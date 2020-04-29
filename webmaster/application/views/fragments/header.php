@@ -75,6 +75,20 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('/payments-requests/'); ?>">
+              <i class="ti-announcement menu-icon"></i>
+              <span class="menu-title">Payment Requests</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('/payments-proof/'); ?>">
+              <i class="ti-thumb-up menu-icon"></i>
+              <span class="menu-title">Proof of Payments</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('/faq/'); ?>">
               <i class="ti-write menu-icon"></i>
               <span class="menu-title">FAQ Page</span>

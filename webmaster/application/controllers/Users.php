@@ -13,16 +13,16 @@ class Users extends MY_Controller
         $this->db->order_by("id DESC");
         $query = $this->db->get('users');
         $data["object_list"] = $query->result_array();
-        if(isset($_SESSION['deleted'])){
+        if (isset($_SESSION['deleted'])) {
             $data['deleted'] = true;
         }
-        if(isset($_SESSION['confirmed'])){
+        if (isset($_SESSION['confirmed'])) {
             $data['confirmed'] = true;
         }
-        if(isset($_SESSION['blocked'])){
+        if (isset($_SESSION['blocked'])) {
             $data['blocked'] = true;
         }
-        if(isset($_SESSION['unblocked'])){
+        if (isset($_SESSION['unblocked'])) {
             $data['unblocked'] = true;
         }
         $this->view("users_list", $data);
@@ -78,10 +78,10 @@ class Users extends MY_Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->db->update("btc_address", $_POST, array("address" => $address, "user" => $id));
             $_SERVER['REQUEST_METHOD'] = 'GET';
-            $this->session->set_flashdata(array("updated"=>true));
+            $this->session->set_flashdata(array("updated" => true));
             $this->edit_btc_address($id, $address);
         } else {
-            if(isset($_SESSION['updated'])){
+            if (isset($_SESSION['updated'])) {
                 $data["updated"] = true;
             }
             $this->view("edit_btc_address", $data);
@@ -96,10 +96,10 @@ class Users extends MY_Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->db->update("eth_address", $_POST, array("address" => $address, "user" => $id));
             $_SERVER['REQUEST_METHOD'] = 'GET';
-            $this->session->set_flashdata(array("updated"=>true));
+            $this->session->set_flashdata(array("updated" => true));
             $this->edit_eth_address($id, $address);
         } else {
-            if(isset($_SESSION['updated'])){
+            if (isset($_SESSION['updated'])) {
                 $data["updated"] = true;
             }
             $this->view("edit_btc_address", $data);
@@ -202,79 +202,114 @@ class Users extends MY_Controller
 
     public function login_as_user($id)
     {
-        
-        $data = $this->db->get_where("users", array("id"=>$id))->row_array();
-        redirect($this->config->item('base_site_url').'/login/?email='.$data['email'].'&id='.$data['id']);
+
+        $data = $this->db->get_where("users", array("id" => $id))->row_array();
+        redirect($this->config->item('base_site_url') . '/login/?email=' . $data['email'] . '&id=' . $data['id']);
     }
 
     public function delete_user($id)
     {
-        $data["user_details"] = $this->db->get_where("users", array("id"=>$id))->row_array();
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $this->db->delete("users", array("id"=>$id));
-            $this->session->set_flashdata(array("deleted"=>true));
+        $data["user_details"] = $this->db->get_where("users", array("id" => $id))->row_array();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->db->delete("users", array("id" => $id));
+            $this->session->set_flashdata(array("deleted" => true));
             redirect(base_url('/users/'));
-        }elseif($_SERVER['REQUEST_METHOD'] == 'GET'){
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $this->view("confirm_delete_user", $data);
         }
     }
 
     public function confirm_account($id)
     {
-        $this->db->update("users", array("confirmed"=>1), array("id"=>$id));
-        $this->session->set_flashdata(array("confirmed"=>true));
+        $this->db->update("users", array("confirmed" => 1), array("id" => $id));
+        $this->session->set_flashdata(array("confirmed" => true));
         redirect(base_url('/users/'));
     }
 
     public function referals_list($id)
     {
-        if(isset($_SESSION['deleted'])){
+        if (isset($_SESSION['deleted'])) {
             $data["deleted"] = true;
         }
-        $query = $this->db->get_where("referals", array("user_by"=>$id));
+        $query = $this->db->get_where("referals", array("user_by" => $id));
         $datas = $query->result_array();
-        foreach($datas as $key => $info){
-            $datas[$key]["info"] = $this->db->get_where("users", array("id"=>$info["user_to"]))->row_array();
+        foreach ($datas as $key => $info) {
+            $datas[$key]["info"] = $this->db->get_where("users", array("id" => $info["user_to"]))->row_array();
         }
-       
+
         $data["object_list"] = $datas;
         $this->view("referals", $data);
     }
 
     public function delete_referal($user, $id)
     {
-        $this->db->delete("referals", array("id"=>$id));
-        $this->session->set_flashdata(array("deleted"=>true));
-        redirect(base_url("users/".$user."/referals/"));
+        $this->db->delete("referals", array("id" => $id));
+        $this->session->set_flashdata(array("deleted" => true));
+        redirect(base_url("users/" . $user . "/referals/"));
     }
 
     public function block_user_account($id)
     {
-        $this->db->update("users", array("account_status"=>"blocked"), array("id"=>$id));
-        $this->session->set_flashdata(array("blocked"=>true));
+        $this->db->update("users", array("account_status" => "blocked"), array("id" => $id));
+        $this->session->set_flashdata(array("blocked" => true));
         redirect(base_url("users/"));
     }
 
     public function unblock_user_account($id)
     {
-        $this->db->update("users", array("account_status"=>"active"), array("id"=>$id));
-        $this->session->set_flashdata(array("unblocked"=>true));
+        $this->db->update("users", array("account_status" => "active"), array("id" => $id));
+        $this->session->set_flashdata(array("unblocked" => true));
         redirect(base_url("users/"));
     }
 
     public function update_wallet($id)
     {
-        $data["object"] = $this->db->get_where("wallet", array("user"=>$id))->row_array();
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $this->db->update("wallet", $_POST, array("user"=>$id));
-            $this->session->set_flashdata(array("updated"=>true));
+        $data["object"] = $this->db->get_where("wallet", array("user" => $id))->row_array();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->db->update("wallet", $_POST, array("user" => $id));
+            $this->session->set_flashdata(array("updated" => true));
             redirect(base_url("/users/$id/update-wallet/"));
-        } elseif($_SERVER['REQUEST_METHOD'] == 'GET'){
-            if(isset($_SESSION['updated'])){
+        } elseif ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            if (isset($_SESSION['updated'])) {
                 $data["updated"] = true;
             }
             $this->view("update_wallet", $data);
         }
     }
 
+    public function payment_request()
+    {
+        $this->db->order_by("id DESC");
+        $query = $this->db->get("donation_request");
+        $data["object_list"] = $query->result_array();
+        if(isset($_SESSION['deleted'])){
+            $data["deleted"] = true;
+        }
+        $this->view("payment_requests", $data);
+    }
+
+    public function delete_payment_request($id)
+    {
+        $this->db->delete("donation_request", array("id" => $id));
+        $this->session->set_flashdata(array("deleted" => true));
+        redirect(base_url("/payments-requests/"));
+    }
+
+    public function payments_proof()
+    {
+        $this->db->order_by("id DESC");
+        $query = $this->db->get("deposit_proof");
+        $data["object_list"] = $query->result_array();
+        if(isset($_SESSION['deleted'])){
+            $data["deleted"] = true;
+        }
+        $this->view("deposit_proof", $data);
+    }
+
+    public function delete_payment_proof($id)
+    {
+        $this->db->delete("deposit_proof", array("id" => $id));
+        $this->session->set_flashdata(array("deleted" => true));
+        redirect(base_url("/payments-proof/"));
+    }
 }

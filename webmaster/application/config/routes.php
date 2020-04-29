@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 $route['default_controller'] = 'dashboard';
 
@@ -29,5 +29,9 @@ $route['faq/(:num)/questions/add'] = 'settings/add_question/$1';
 $route['faq/(:num)/questions/(:num)/delete'] = 'settings/delete_question/$1/$2';
 $route["faq/create-topic"] = 'settings/create_topic';
 $route["faq/(:num)/delete"] = "settings/delete_topic/$1";
+$route["payments-requests"] = "users/payment_request";
+$route["payments-requests/(:num)/delete"] = "users/delete_payment_request/$1";
+$route["payments-proof"] = "users/payments_proof";
+$route["payments-proof/(:num)/delete"] = "users/delete_payment_proof/$1";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
