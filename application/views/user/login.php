@@ -21,6 +21,10 @@
                 <div class="alert alert-success ">
                    <i class="icon-check"></i> Your email has been verified, enter your details to login
                 </div>
+                <?php elseif(isset($_GET['c'])): ?>
+                    <div class="alert alert-success ">
+                   <i class="icon-info"></i> If you have verified your email, login with your credentials.
+                </div>
                 <?php endif; ?>
                 <!--/ Demo fullscreen-overlay -->
                 <section id="account-login" class="flexbox-container">

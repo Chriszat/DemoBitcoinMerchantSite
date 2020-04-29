@@ -55,6 +55,7 @@ class Reg extends Base
                                 mysqli_query($con, "INSERT INTO referals (user_by, user_to) VALUES ('$ref', '$last_id')");
                                 unset($_SESSION['refered_by']);
                             }
+                            $_SESSION['c_mail'] = $email;
                             if($exec){
                                 $this->bitcoin->create_wallet($last_id);
                                 mysqli_query($con, "INSERT INTO preferences (user) VALUES ('$last_id' )");
@@ -67,7 +68,7 @@ class Reg extends Base
                                 $send_mail = $this->mail->send_verification_email($email, $subject, $data, $data["link"]);
                                 ob_end_clean();
                                 echo json_encode(array("status"=>"success", "message"=>""));
-                                $_SESSION['confirm_email'] = $email;
+                                $_SESSION['c_mail'] = $email;
                                 
                                 return;
                             }
@@ -96,8 +97,9 @@ class Reg extends Base
     public function is_confirmed()
     {
         $con = $this->connection;
-        if(isset($_SESSION['confirm_email'])){
-            $email = $_SESSION['confirm_email'];
+       
+        if(isset($_SESSION['c_mail'])){
+            $email = $_SESSION['c_mail'];
             $query = mysqli_query($con, "SELECT * FROM users WHERE email='$email' AND verify='y' ");
             if(mysqli_num_rows($query)>0){
                 echo  json_encode(array('status'=>'success', 'message'=>'true'));
@@ -107,7 +109,7 @@ class Reg extends Base
                 return;
             }
         }else{
-            echo  json_encode(array('status'=>'error', 'message'=>'false'));
+            echo  json_encode(array('status'=>'error', 'message'=>'false', 'dfd'=>$_SESSION));
             return;
         }
     }
@@ -115,8 +117,9 @@ class Reg extends Base
     public function resend_link()
     {
         $con = $this->connection;
-        if(isset($_SESSION['confirm_email'])){
-            $email = $_SESSION['confirm_email'];
+       
+        if(isset($_SESSION['c_mail'])){
+            $email = $_SESSION['c_mail'];
             $settings = $this->getter->settings();
             $token = $this->mail->generate_email_token();
             $stmt = mysqli_prepare($con, "UPDATE users SET verify_key=? WHERE email=? ");
@@ -131,7 +134,7 @@ class Reg extends Base
                 $data["link"] = baseurl."confirm_email/?email=".strtolower($email)."&token=".$token;
                 $send_mail = $this->mail->send_verification_email($email, $subject, $data, $data["link"]);
                 echo $send_mail;
-                $_SESSION['confirm_email'] = $email;
+                $_SESSION['c_mail'] = $email;
             }
         }
     }

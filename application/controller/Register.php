@@ -42,11 +42,11 @@ class Register extends Controller
             }
         }
         
-        if(isset($_GET['confirmation']) && isset($_SESSION['confirm_email'])){
+        if(isset($_GET['confirmation']) && isset($_SESSION['c_mail'])){
             if($_GET['confirmation'] == 'true'){
-                $data['confirm_email'] = $_SESSION['confirm_email'];
+                $data['c_mail'] = $_SESSION['c_mail'];
                 $this->view(view_map["user"][2], "user", $data);
-                unset($_SESSION['confirm_email']);
+                unset($_SESSION['c_mail']);
             }else{
                 $this->view(view_map["user"][1], "user", $data);
             }
