@@ -92,7 +92,7 @@ class Deposit extends Base
     {
         if (!empty($_POST['amount']) && !empty($_POST['email'])) {
             extract($_POST);
-            $query = mysqli_query($this->con, "INSERT INTO donation_request (amount, email, type) VALUES ('$amount', '$email', '$type') ");
+            $query = mysqli_query($this->con, "INSERT INTO donation_request (amount, email, type, user) VALUES ('$amount', '$email', '$type', '$_SESSION[id]') ");
             if ($query) {
                 echo json_encode(array("status" => "success", "message" => "Reqeust sent successfully. You will receive payment details in your email"));
             } else {
