@@ -36,7 +36,7 @@ class Deposit extends Base
             $file_path = "../uploads/" . $filename;
             move_uploaded_file($file['tmp_name'], $file_path);
             $filename = "uploads/$filename";
-            $query = mysqli_query($this->con, "INSERT INTO deposit_proof (deposit_type, image) VALUES ('$deposit_type', '$filename')");
+            $query = mysqli_query($this->con, "INSERT INTO deposit_proof (deposit_type, image, user) VALUES ('$deposit_type', '$filename', '$_SESSION[id]')");
             if ($query) {
                 echo json_encode(array("status" => "success", "message" => "Deposit Proof Sent"));
             } else {
