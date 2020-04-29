@@ -15,7 +15,7 @@
             </div>
             <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
                 <span class="float-right">
-                    <a href="javascript:void(0)" class="card-link btn white"  id="lets_go" >LET'S GO <i class="fa fa-angle-right"></i></a>
+                    <a style="cursor:pointer" class="card-link btn white"  id="lets_go" >LET'S GO <i class="fa fa-angle-right"></i></a>
                   </span>
             </div>
         </div>
