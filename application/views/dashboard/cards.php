@@ -133,6 +133,12 @@
 
                                     </tbody>
                                 </table>
+
+                                <?php if(empty($data["transactions_object_list"])): ?>
+                                    <div style="width:500px; margin:20px auto; max-width:100%">
+                                        <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/await.png" alt="" style="width:100%" draggable="false">
+                                    </div>
+                                <?php endif; ?>
                             </div>
 
                         </div>
