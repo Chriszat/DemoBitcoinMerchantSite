@@ -2,7 +2,7 @@ angular.module("appCore")
     .component("faqComponent", {
 
         templateUrl: "api/api.py.php?_=dashboard&a=faqIndex",
-        controller: ["element", "request", function (element, request) {
+        controller: ["element", "request", "overlay", function (element, request, overlay) {
 
             let clipboard = new ClipboardJS('.bb');
             clipboard.on('success', function (e) {
@@ -10,6 +10,7 @@ angular.module("appCore")
             });
 
             loadQuestions = function(id){
+                overlay.show();
                 formdata = new FormData();
                 formdata.append("id", id);
                 request({
@@ -18,6 +19,7 @@ angular.module("appCore")
                     formdata:true,
                     data:formdata
                 }).then(function(response){
+                    overlay.hide();
                     element("accordion").innerHTML = response
                 })
             }
