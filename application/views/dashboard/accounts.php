@@ -83,7 +83,10 @@
             <div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted" style="user-select:none">
                
                 <span class="float-right">
-                    <button class="btn">WITHDRAW</button>&nbsp;&nbsp;&nbsp;
+                    <a href="wallet/accounts/usd/?tab=withdraw">
+                    <button class="btn">WITHDRAW</button>
+                </a>
+                    &nbsp;&nbsp;&nbsp;
                     <a href="wallet/accounts/usd/deposit/"><button class="btn">DEPOSIT</button></a>
                   </span>
             </div>

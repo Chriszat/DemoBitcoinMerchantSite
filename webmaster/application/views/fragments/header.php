@@ -75,6 +75,13 @@
           </li>
 
           <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('/withdraws/'); ?>">
+              <i class="ti-money menu-icon"></i>
+              <span class="menu-title">Witdraw Requests</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('/payments-requests/'); ?>">
               <i class="ti-announcement menu-icon"></i>
               <span class="menu-title">Payment Requests</span>

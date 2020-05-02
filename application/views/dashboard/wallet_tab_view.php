@@ -45,4 +45,7 @@ if($data["show"] == "usd"){
 </p>
 
 <p><button class="btn" style="background:#f7f1e3; color:black" id="withdraw_btn">WITHDRAW MONEY</button></p>
+<p>
+    <a href="wallet/accounts/usd/history/"><button class="btn" style="background:#f7f1e3; color:black">WITHDRAW HISTORY</button></a>
+</p>
 <?php } ?>

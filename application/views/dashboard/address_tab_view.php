@@ -89,18 +89,32 @@ if (isset($data['show'])) {
         
 ?>
         <div style="text-align:left">
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="to" style="color:black">To:</label>
                 <select class="form-control" id='to'>
                     <option>Diamond Bank x6699 via Bank Transfer</option>
                 </select>
+            </div> -->
+           <form id="6051019cc4f58b2d132c3323d37636cb">
+           <div class="form-group">
+                <label for="to" style="color:black">Account Name:</label>
+               <input type="text" name="account_name" class="form-control">
             </div>
-            <br><br>
+            
+            <div class="form-group">
+                <label for="to" style="color:black">Account Number:</label>
+               <input type="text" name="account_no" class="form-control">
+            </div>
+            
             <div class="form-group">
                 <label for="amount" style="color:black">USD Amount:</label>
-                <input class="form-control" id="amount">
+                <input class="form-control" name="amount" id="amount" >
+            </div>
+            <div class="form-group">
+                <button  class="btn " style="background:green; color:#fff">Place Withdraw</button>
             </div>
 
+           </form>
             <div>
                 <table class="table">
                     <tbody>

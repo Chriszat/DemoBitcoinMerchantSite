@@ -3,7 +3,7 @@
 <script>
     tinymce.init({
   selector: 'textarea#full-featured',
-  plugins: ' fullscreen image link  preview',
+  plugins: ' fullscreen image link  preview media mediaembed',
  
   mobile: {
     plugins: 'print preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker textpattern noneditable help formatpainter pageembed charmap mentions quickbars linkchecker emoticons advtable'

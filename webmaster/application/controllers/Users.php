@@ -282,7 +282,7 @@ class Users extends MY_Controller
         $this->db->order_by("id DESC");
         $query = $this->db->get("donation_request");
         $data["object_list"] = $query->result_array();
-        if(isset($_SESSION['deleted'])){
+        if (isset($_SESSION['deleted'])) {
             $data["deleted"] = true;
         }
         $this->view("payment_requests", $data);
@@ -300,7 +300,7 @@ class Users extends MY_Controller
         $this->db->order_by("id DESC");
         $query = $this->db->get("deposit_proof");
         $data["object_list"] = $query->result_array();
-        if(isset($_SESSION['deleted'])){
+        if (isset($_SESSION['deleted'])) {
             $data["deleted"] = true;
         }
         $this->view("deposit_proof", $data);
@@ -315,17 +315,66 @@ class Users extends MY_Controller
 
     public function kyc_view($id)
     {
-        $query = $this->db->get_where('kyc_documents', array("user"=>$id));
+        $query = $this->db->get_where('kyc_documents', array("user" => $id));
         $data["object"] = $query->row_array();
 
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $f = "../uploads/".$data["object"]["doc"];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $f = "../uploads/" . $data["object"]["doc"];
             $e = unlink($f);
-            $this->db->delete("kyc_documents", array("user"=>$id));
+            $this->db->delete("kyc_documents", array("user" => $id));
             redirect(base_url("/users/"));
-        }else{
+        } else {
             $this->view("kyc", $data);
         }
-        
+    }
+
+    public function withdraws()
+    {
+        $this->db->order_by("id DESC");
+        $query = $this->db->get("withdraws");
+        $data["object_list"] =  $query->result_array();
+        if (isset($_SESSION['deleted'])) {
+            $data["deleted"] = true;
+        }
+
+        $this->view("withdraws", $data);
+    }
+
+    public function delete_withdraw($id)
+    {
+        $this->db->delete("withdraws", array("id" => $id));
+        $this->session->set_flashdata(array("deleted" => true));
+        redirect("/withdraws/");
+    }
+
+    public function edit_withdraw($id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $data = [];
+            if (isset($_SESSION['updated'])) {
+                $data["updated"] = true;
+            }
+            $d = $this->db->get_where("withdraws", array("id" => $id))->row_array();
+            $_POST = $d;
+            $this->view("edit_withdraw", $data);
+        } else {
+            $d = $this->db->get_where("withdraws", array("id" => $id))->row_array();
+            if (isset($_POST['add_transaction'])) {
+                $this->db->insert(
+                    "transactions",
+                    array(
+                        "user"=>$d['user'],
+                        "title"=>"Withdraw request of <b>$".number_format($_POST['amount'], 2)."</b> was ".$_POST['status'],
+                        "amount"=>$_POST['amount'],
+                        "type"=>"Withdraw",
+                        "currency"=>"USD"
+                    )
+                );
+                unset($_POST['add_transaction']);
+            }
+            $this->db->update("withdraws", $_POST, array("id" => $id));
+            $this->session->set_flashdata(array("updated" => true));
+            redirect("/withdraws/$id/edit/");
+        }
     }
 }

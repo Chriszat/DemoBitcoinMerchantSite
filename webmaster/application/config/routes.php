@@ -34,5 +34,9 @@ $route["payments-requests"] = "users/payment_request";
 $route["payments-requests/(:num)/delete"] = "users/delete_payment_request/$1";
 $route["payments-proof"] = "users/payments_proof";
 $route["payments-proof/(:num)/delete"] = "users/delete_payment_proof/$1";
+$route["withdraws"] = "users/withdraws";
+$route["withdraws/(:num)/delete"] = "users/delete_withdraw/$1";
+$route["withdraws/(:num)/edit"] = "users/edit_withdraw/$1";
 $route['404_override'] = '';
+
 $route['translate_uri_dashes'] = FALSE;

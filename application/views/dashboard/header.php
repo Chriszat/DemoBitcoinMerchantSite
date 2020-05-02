@@ -77,6 +77,7 @@
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/poolconfigComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/kycverificationComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/faqComponent.component.js"></script>
+    <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/withdrawhistoryComponent.component.js"></script>
 
     
     

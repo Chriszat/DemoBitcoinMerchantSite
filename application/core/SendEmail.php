@@ -113,6 +113,16 @@ class SendEmail
         $verify = $this->send_mail($email, $subject, $message, $alt);
     }
 
+    public function send_btc_mining_success($email, $subject, $data=[], $alt)
+    {
+        
+        $message = $this->load->load_email_template("../application/shared/email_template/btc_mine_success.php", $data);
+        $message = str_replace(["{{sitename}}", "{{username}}", "{{btc_address}}", "{{btc_reward}}",  "{{logo}}", "{{dashboard_link}}","{{year}}", "{{mining_plan}}", "{{time_mined}}", "{{support_link}}", "{{ref_code}}", ], [$data["sitename"], $data['username'], $data['btc_address'], $data["btc_value"],  $data["logo"], $data["dashboard_link"], $data["year"], $data["mining_plan"], $data["time_mined"], $data["support_link"], $data["ref_code"]], $message);
+
+        $verify = $this->send_mail($email, $subject, $message, $alt);
+    }
+
+
     public function loader()
     {
         return new CoreLoader();

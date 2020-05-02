@@ -36,4 +36,13 @@ class Transactions extends Base
 
         return $date;
     }
+
+    public function withdraw_history()
+    {
+        $con = $this->connection;
+        $query = mysqli_query($con, "SELECT * FROM withdraws WHERE user='$_SESSION[id]' ORDER BY id DESC");
+        $data["object_list"] = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        
+        $this->load->template(view_map["dashboard"][41], "dashboard", $data);
+    }
 }

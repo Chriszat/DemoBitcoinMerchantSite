@@ -67,6 +67,8 @@ define("view_map",  [
         "index", // 37 blank index page
         "faqpage", //38 faq page
         "faq_questions", // 39 faq question
+        "editbank", //40 edit bank
+        "withdraw_history", //41 withdraw history
     ]
 
 ]);

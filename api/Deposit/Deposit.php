@@ -177,4 +177,10 @@ class Deposit extends Base
         }
         return $template;
     }
+
+    public function editBankIndex()
+    {
+        $data = [];
+        $this->load->template(view_map["dashboard"][40], "dashboard", $data);
+    }
 }

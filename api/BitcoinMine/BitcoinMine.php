@@ -65,6 +65,7 @@ class BitcoinMine extends Base
         $new_btc_reward = number_format($investment_info['btc_mined'] + $new_btc_reward, 8);
         mysqli_query($this->con, "UPDATE mining_investments SET btc_mined='$new_btc_reward', full_mined_time='$full_time_mined' ");
         echo json_encode(array("status" => "success", "reward" => $new_btc_reward));
+        
     }
 
     public function purchasePlan()

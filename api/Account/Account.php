@@ -8,6 +8,7 @@ class Account extends Base
         //TODO
         parent::__construct();
         $this->getter = $this->load->helper("GetterHelper");
+        $this->setter = $this->load->helper("SetterHelper");
         $this->wallet = $this->getter->user_wallet();
         $this->con = $this->connection;
     }
@@ -356,6 +357,24 @@ class Account extends Base
         }else{
             echo json_encode(array("status"=>"error"));
             return FALSE;
+        }
+    }
+
+    public function placeWithdraw()
+    {
+        extract($_POST);
+        $wallet = $this->getter->user_wallet();
+        if($wallet["usd"] < $amount){
+            echo json_encode(array("status"=>"error", "message"=>"Insufficient account balance, you have only <b>$".number_format($wallet["usd"], 2)."</b> available in your wallet"));
+            return;
+        }
+        $query = mysqli_query($this->con, "INSERT INTO withdraws (user, account_name, account_no, amount) VALUES ('$_SESSION[id]', '$account_name', '$account_no', '$amount')");
+        if($query){
+            $t_title = "Placed withdraw request of $".number_format($amount, 2);
+            $this->setter->set_transaction($_SESSION['id'], $t_title, "Withdraw", $amount, $currency="USD");
+            echo json_encode(array("status"=>"success", "message"=>"Withdraw has been placed, it will be processed in the next 24hrs"));
+        }else{
+            echo json_encode(array("status"=>"error", "message"=>"Could not place a withdraw at the moment."));
         }
     }
     

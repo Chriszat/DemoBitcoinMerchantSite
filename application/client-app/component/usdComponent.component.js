@@ -6,9 +6,8 @@ angular.module("appCore")
     controller:["element", "request", "listen", "isEmpty", "$routeParams", function(element, request, listen, isEmpty, $routeParams){
         console.log($routeParams)
        quote = "btc";
-       if(!isEmpty($routeParams)){
-           quote = $routeParams.quote
-       }
+      
+       
         request({
             method:"POST",
             url:"api/api.py.php?_=account&a=usd&t",
@@ -40,11 +39,26 @@ angular.module("appCore")
                 element("address").style="background:#bdc3c7; "
                 element("wallet").style="background:#2c3e50; "
                 element("trans").style="background:#2c3e50; "
-                listen("add_address", "click", function(event){
-                    add_bitcoin_address()
-                })
+                if(element("add_address")){
+                    listen("add_address", "click", function(event){
+                        add_bitcoin_address()
+                    })
+                }
+               
+                listen("6051019cc4f58b2d132c3323d37636cb", "submit", placeWithdraw)
             })
             element("wallet").click()
+
+            if(!isEmpty($routeParams)){
+                quote = $routeParams.quote
+                if($routeParams.hasOwnProperty("tab")){
+                    switch($routeParams["tab"]){
+                        case "withdraw":
+                            element("address").click();
+                         break;
+                    }
+                }
+            }
         }, function(error){
 
         })
@@ -59,6 +73,29 @@ angular.module("appCore")
                 element("view").innerHTML=response.view
             }, function(error){})
         }
+
+        let placeWithdraw = function(evt){
+            evt.preventDefault()
+            evt.stopPropagation();
+            formdata = new FormData(element("6051019cc4f58b2d132c3323d37636cb"))
+            request({
+                method:"POST",
+                url:"api/api.py.php?_=account&a=placeWithdraw",
+                formdata:true,
+                data : formdata
+            }).then(function(response){
+                response = JSON.parse(response)
+                if(response.status == 'success'){
+                    element("6051019cc4f58b2d132c3323d37636cb").reset()
+                    alertify.success(`<span style='color:#fff' >${response.message}</span>`);
+                }else{
+                    alertify.error(`<span style='color:#fff' >${response.message}</span>`);
+                }
+               
+            }, function(error){})
+        }
+
+        
         
     }]
     
