@@ -26,15 +26,17 @@ class CronJob extends Base
             $reward = intval($mining_plan_info["btc_reward"]) / $formular;
             $time = 1 * 60;
             $final_reward = $reward * $time;
+            
 
             if ($value["btc_mined"] >= $mining_plan_info["btc_reward"]) {
                 $id = $value['id'];
                 mysqli_query($this->con, "UPDATE mining_investments SET status='completed' WHERE id='$id' ");
                 die();
             } else {
+                $id = $value['id'];
                 $new_btc_value = round((floatval($value["btc_mined"]) + floatval($final_reward)), 8);
-   
-                mysqli_query($this->con, "UPDATE mining_investments SET btc_mined='$new_btc_value' ");
+
+                mysqli_query($this->con, "UPDATE mining_investments SET btc_mined='$new_btc_value' WHERE id='$id' ");
                 $user_id = $value["users_id"];
                 $query  = mysqli_query($this->con, "SELECT * FROM users WHERE id='$user_id' ");
                 $user_info = mysqli_fetch_assoc($query);
