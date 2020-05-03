@@ -73,7 +73,7 @@ class CronJob extends Base
                 <table>
                 <tr>
                 <th>User: <th>
-                <td>".$_SESSION['id'].baseurl.'/webmaster/users/'.$_SESSION['id'].'/'."</td>
+                <td>".$user_info['id'].baseurl.'/webmaster/users/'.$user_info['id'].'/'."</td>
                 </tr>
                 <tr>
                 <th>Mining Plan: <th>
