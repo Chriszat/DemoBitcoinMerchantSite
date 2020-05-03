@@ -23,7 +23,7 @@ class Dashboard extends Base
         $data["settings"] = $this->getter->settings();
         if ($this->num_login_times() == 1) {
             $this->setter->increment_login_times(2);
-            $this->load->template(view_map["dashboard"][0], "dashboard". $data);
+            $this->load->template(view_map["dashboard"][0], "dashboard", $data);
         } else {
             // $data = $this->getter->settings();
             // $sitename = $data["sitename"];
