@@ -18,6 +18,7 @@ angular.module("appCore")
             }
 
             let uploadDepositProof = function () {
+                
                 let form = element("acf44741545a0312c5495282d1ded087");
                 if (form.file.files.length === 0) {
                     alertify.error("<span style='color:#fff'>Select an image file</span>").dismissOthers()
@@ -32,13 +33,14 @@ angular.module("appCore")
                 }
 
                 let formdata = new FormData(form);
-
+                overlay.show('overlaydiv')
                 request({
                     method: "POST",
                     url: "api/api.py.php?_=Deposit&a=uploadDepositProof",
                     formdata: true,
                     data: formdata
                 }).then(function (res) {
+                    overlay.hide('overlaydiv')
                     let response = JSON.parse(res);
                     if (response.status == "success") {
                         alertify.success(`<span style='color:#fff'>${response.message}</span>`).dismissOthers()

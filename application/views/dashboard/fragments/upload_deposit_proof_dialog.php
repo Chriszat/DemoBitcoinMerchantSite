@@ -17,4 +17,5 @@
         <input type="hidden" value="<?php echo $data['deposit_type']; ?>" name="deposit_type">
     </form><br>
     <button id="upload" class="btn text-white btn-sm" style="background:seagreen">Upload</button>
+    <div id="overlaydiv"></div>
 </div>
