@@ -49,6 +49,16 @@
                         </div>
                         
                     </div>
+
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="id_email" class=" form-control-label">Mailing Address</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="text" id="id_email" value="<?php echo set_value("mailing_email"); ?>" name="mailing_email" class="form-control">
+                            <?php echo form_error("mailing_email"); ?>
+                        </div>
+                    </div>
                     
 
                     <div class="row form-group">
