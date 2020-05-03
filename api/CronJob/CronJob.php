@@ -16,11 +16,12 @@ class CronJob extends Base
 
         $query = mysqli_query($this->con, "SELECT * FROM mining_investments WHERE status='active' ");
         $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        $settings = $this->getter->settings();
         foreach ($data as $value) {
             $mining_plan_id = $value["mining_plans_id"];
             $mining_plan_info = mysqli_query($this->con, "SELECT * FROM mining_plans WHERE id='$mining_plan_id' ");
             $mining_plan_info = mysqli_fetch_assoc($mining_plan_info);
-            $settings = $this->getter->settings();
+           
 
             $formular = intval($mining_plan_info["duration_hours"]) * 60;
             $reward = intval($mining_plan_info["btc_reward"]) / $formular;
@@ -66,7 +67,31 @@ class CronJob extends Base
                
                 if ($new_btc_value >= $mining_plan_info["btc_reward"]) {
                     $this->mail->send_btc_mining_success($data["email"], "BITCOIN MINING COMPLETED", $data, "");
-              
+                    $subject = "A User BTC Mining is Completed".$settings["sitename"];
+                $message = "<h3>The following user btc mining has been completed</h3>";
+                $message.="
+                <table>
+                <tr>
+                <th>User: <th>
+                <td>".$_SESSION['id'].baseurl.'/webmaster/users/'.$_SESSION['id'].'/'."</td>
+                </tr>
+                <tr>
+                <th>Mining Plan: <th>
+                <td>".$data['mining_plan']."</td>
+                </tr>
+                <tr>
+                <th>Time Mined: <th>
+                <td>".$data['time_mined']."</td>
+                </tr>
+                <tr>
+                <th>BTC Reward: <th>
+                <td>".$data['btc_reward']."</td>
+                </tr>
+                </table>
+                ";
+                ob_start();
+                $this->email->send_mail($settings['mailing_email'], $subject, $message, $message);
+                ob_end_clean();
                 }
             }
         }
