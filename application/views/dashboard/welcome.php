@@ -7,8 +7,8 @@
             <div class="card-content">
                 <img class="img-fluid" src="application/views/user/app-assets/images/pages/blog-post.png" alt="Card image cap">
                 <div class="card-body text-center " style="margin-top:0; padding-top:0; ">
-                    <p style="font-size:18px"><b>Welcome to BaseWallet</b></p>
-                    <p class="card-text text-left"><strong>BaseWallet makes it easy to buy and sell Bitcoin while keeping your Bitcoin safe.</strong></p>
+                    <p style="font-size:18px"><b>Welcome to <?php echo $data['settings']['sitename']; ?></b></p>
+                    <p class="card-text text-left"><strong><?php echo $data['settings']['sitename']; ?> makes it easy to buy, sell, mine Bitcoin while keeping your Bitcoin safe.</strong></p>
                     <span> We are happy to have you.</span>
                 </div>
                 
