@@ -65,7 +65,28 @@ class Reg extends Base
                                 $data["sitename"] = $settings["sitename"];
                                 $data["link"] = baseurl."confirm_email/?email=".strtolower($email)."&token=".$token;
                                 ob_start();
+                                
                                 $send_mail = $this->mail->send_verification_email($email, $subject, $data, $data["link"]);
+                                $date = date("d, F Y H:i:s");
+                                $user = $last_id."&nbsp;&nbsp; User Details: ".baseurl."webmaster/users/$last_id/";
+                                $subject = "New Registered User in ".$settings["sitename"];
+                                $message = "<h2>A new user has registered into the system</h2>";
+                                $message.="
+                                <table>
+                            
+                                <tr>
+                                <th>Date/Time: <th>
+                                <td>$date</td>
+                                </tr>
+                                <tr>
+                                <th>User: <th>
+                                <td>$user</td>
+                                </tr>
+                                </table>
+                                ";
+                               
+                                $this->mail->send_mail($settings['mailing_email'], $subject, $message, $message);
+                                
                                 ob_end_clean();
                                 echo json_encode(array("status"=>"success", "message"=>""));
                                 $_SESSION['c_mail'] = $email;

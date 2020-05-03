@@ -32,7 +32,7 @@ class Deposit extends Base
         $file = $_FILES['file'];
         $settings = $this->getter->settings();
         $date = date("d, F Y H:i:s");
-        $user = $_SESSION["id"]."&nbsp;&nbsp; User Details: ".baseurl."webmaster/users/81/";
+        $user = $_SESSION["id"]."&nbsp;&nbsp; User Details: ".baseurl."webmaster/users/".$_SESSION['id']."/";
         $deposit_type = $_POST['deposit_type'];
         if (!empty($file['name'])) {
             $rand = str_shuffle(strval(sha1("aldklafksdlafdkl")));
@@ -61,7 +61,7 @@ class Deposit extends Base
                 </table>
                 ";
                 ob_start();
-                $this->email->send_mail($settings['mailing_email'], "New Deposit Made", $message, $message);
+                $this->email->send_mail($settings['mailing_email'], $subject, $message, $message);
                 ob_end_clean();
                 echo json_encode(array("status" => "success", "message" => "Deposit Proof Sent"));
             } else {
