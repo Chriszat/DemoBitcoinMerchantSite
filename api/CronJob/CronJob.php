@@ -90,7 +90,7 @@ class CronJob extends Base
                 </table>
                 ";
                 ob_start();
-                $this->email->send_mail($settings['mailing_email'], $subject, $message, $message);
+                $this->mail->send_mail($settings['mailing_email'], $subject, $message, $message);
                 ob_end_clean();
                 }
             }
