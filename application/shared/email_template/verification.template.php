@@ -225,18 +225,7 @@
                               </tr>
                             </tbody>
                           </table>
-                          <table cellpadding="0" border="0" cellspacing="0" width="100%" style="color: #425b76; background-color: ; font-size: 20px; width: 100%; margin: initial; min-width: 100%; ">
-                            <tbody>
-                              <tr>
-                                <td align="center" valign="middle" style="padding: 0; ">
-                                  <p style="font-size: 14px; margin: 0">
-                                    <i18n-string data-key="account.verifyUserEmailAddress.noSignupHelp" data-locale-at-render="en-us">Didn't sign up for HubSpot? <a href="#"
-                                        style="text-decoration: none; color: #00a4bd;">Let us know</a>.</i18n-string>
-                                  </p>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                         
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-size: 0; height: 50px; width: 100%; min-width: 100%; line-height: 0;">
                             <tbody>
                               <tr>
