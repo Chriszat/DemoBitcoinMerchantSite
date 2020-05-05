@@ -59,7 +59,10 @@ function validateSession($REQUEST_TYPE, $REQUEST_ACTION){
 
 if(isset($_GET))
 {
-    $REQUEST_TYPE = isset($_GET['_']) ? $_GET['_'] : NULL;
+
+    $REQUEST_TYPE = isset($_GET['_']) ? ucfirst($_GET['_']) : NULL;
+
+   
     $REQUEST_ACTION = isset($_GET['a']) ? $_GET['a'] : NULL;
 
     if(!isset($_GET["AVOID"])){
