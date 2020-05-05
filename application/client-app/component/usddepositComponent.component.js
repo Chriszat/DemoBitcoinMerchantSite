@@ -96,6 +96,8 @@ angular.module("appCore")
             let payWithStripe = function(){
                 if(deposit_views.hasOwnProperty("with_stripe")){
                     replaceMainView("with_stripe");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                   
                     return;
                 }
                 overlay.show();
@@ -145,6 +147,8 @@ angular.module("appCore")
             let payWithWeChat = function(){
                 if(deposit_views.hasOwnProperty("with_wechat")){
                     replaceMainView("with_wechat");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                    listen("upload", "click", uploadDepositProof)
                     return;
                 }
                 overlay.show();
@@ -165,6 +169,8 @@ angular.module("appCore")
             let payWithAliPay = function(){
                 if(deposit_views.hasOwnProperty("with_alipay")){
                     replaceMainView("with_alipay");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                    listen("upload", "click", uploadDepositProof)
                     return;
                 }
                 overlay.show();
@@ -185,6 +191,8 @@ angular.module("appCore")
             let payWithWesternUnion = function(){
                 if(deposit_views.hasOwnProperty("with_western_union")){
                     replaceMainView("with_western_union");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                    listen("upload", "click", uploadDepositProof)
                     return;
                 }
                 overlay.show();
@@ -206,6 +214,8 @@ angular.module("appCore")
             let payWithSkrill = function(){
                 if(deposit_views.hasOwnProperty("with_skrill")){
                     replaceMainView("with_skrill");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                    listen("upload", "click", uploadDepositProof)
                     return;
                 }
                 overlay.show();
