@@ -38,6 +38,7 @@
                         <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%); text-align:center">
                         <p><img src="../81744546ec70b93f065c7321407215727ea39750f52b909dcb/confirm_email.refresh.png" /></p> 
                         <p class="text-center h5 text-capitalize">We have sent a confirmation email to your address</p>
+                        <p><b>Please check your inbox or spam box for a link</b></p>
                         <a href="mailto:<?php echo $data['c_mail'] ?>"><?php echo $data['c_mail'] ?></a><br><br><br>
                        <a href="<?php echo baseurl.'login/?c=1' ?>">
                        <button class="waves-effect waves-light btn" id="validate"><div class="lds-ring" style="display:none" id="spinner"><div></div><div></div><div></div><div></div></div>&nbsp;&nbsp;&nbsp;I HAVE CONFIRMED ALREADY</button>

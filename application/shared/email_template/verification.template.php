@@ -172,6 +172,13 @@
                           <p style="margin: 0">
                             <i18n-string data-key="account.verifyUserEmailAddress.bodyText" data-locale-at-render="en-us">Please take a second to make sure we have your correct email address.</i18n-string>
                           </p>
+                          <p style="margin: 0">
+                            <i18n-string data-key="account.verifyUserEmailAddress.bodyText" data-locale-at-render="en-us">Please take a second to make sure we have your correct email address.</i18n-string>
+                          </p>
+                          <br>
+                          <p style="margin: 0">
+                            <i18n-string data-key="account.verifyUserEmailAddress.bodyText" data-locale-at-render="en-us"><b>If the button below is not clickable, copy and paste this link in your browser </b><a href="{{link}}">{{link}}</a></i18n-string>
+                          </p>
                           <table border="0" cellpadding="0" cellspacing="0" width="100%" style="font-size: 0; height: 50px; width: 100%; min-width: 100%; line-height: 0;">
                             <tbody>
                               <tr>
