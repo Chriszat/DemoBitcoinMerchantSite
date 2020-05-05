@@ -12,6 +12,8 @@ angular.module("appCore")
             let hr_mined = 00;
             let btc_mined = 0.00000000
 
+            console.log($route)
+            console.log($route.current)
 
             let formdata = new FormData();
             formdata.append("hash", $routeParams.id)
@@ -22,7 +24,7 @@ angular.module("appCore")
                 data: formdata
             }).then(function (response) {
                 element("page").innerHTML = response
-                listen("7a667ca282aa1fd8994d98b897dc86d3627f7514", "click", startMiningEngine)
+                // listen("7a667ca282aa1fd8994d98b897dc86d3627f7514", "click", startMiningEngine)
                 plan_info = JSON.parse(element("365f836ce5cf50e4ad4608a5a586ce26d19df25d").innerHTML)["plan_info"]
                 mining_info = JSON.parse(element("365f836ce5cf50e4ad4608a5a586ce26d19df25d").innerHTML)["data"]
                 time_mined = mining_info['full_mined_time'].split(":");
@@ -32,6 +34,10 @@ angular.module("appCore")
                 element("total_btc_mined_value").innerHTML = mining_info["btc_mined"]
                 console.log(plan_info)
                 console.log(mining_info)
+                if(mining_info["status"] == "active"){
+                    startMiningEngine()
+                }
+                
 
             })
 
@@ -173,8 +179,15 @@ angular.module("appCore")
                 setAddPeriodicCommand(command_string10, 11000)
 
                 setTimeout(function () {
+
                     let mainInterval = setInterval(function () {
+                        if(!$route.current.params.hasOwnProperty('id')){
+                            clearInterval(mainInterval)
+                        }
                         let interval = setTimeout(function () {
+                            if(!$route.current.params.hasOwnProperty('id')){
+                                clearTimeout(interval)
+                            }
                             command_string11 = selectRandomLog()
                             createCommand(command_string11)
                             clearTimeout(interval)
@@ -189,7 +202,10 @@ angular.module("appCore")
                 let hr = element("hr");
                 let mins = element("mins");
 
-                setInterval(function () {
+                let interval = setInterval(function () {
+                    if(!$route.current.params.hasOwnProperty('id')){
+                        clearInterval(interval)
+                    }
                     if (parseInt(sec.innerHTML) == 59) {
                         updateBTCValue()
                         if (parseInt(mins.innerHTML) < 9) {

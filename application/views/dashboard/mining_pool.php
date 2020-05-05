@@ -73,7 +73,12 @@
                               
                                 <hr>
                                 <div style="text-align:center">
-                                    <button class="start-btn" id="7a667ca282aa1fd8994d98b897dc86d3627f7514" style="outline:none">START MINING</button>
+                                    <?php if($data['mining_info']['status'] == 'active'): ?>
+                                        <div style="background:purple; text-align:center; padding:10px; color:#fff; font-size:20px;">Running...</div>
+                                        <?php elseif($data['mining_info']['status'] == 'completed'): ?>
+                                            <div style="background:green; text-align:center; padding:10px; color:#fff;font-size:20px;">Completed</div>
+                                        <?php endif; ?>
+                                    <!-- <button class="start-btn" id="7a667ca282aa1fd8994d98b897dc86d3627f7514" style="outline:none">START MINING</button> -->
                                 </div>
                                 <br>
                                 <?php
