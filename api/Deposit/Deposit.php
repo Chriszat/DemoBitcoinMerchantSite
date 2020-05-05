@@ -42,7 +42,7 @@ class Deposit extends Base
             $filename = "uploads/$filename";
             $query = mysqli_query($this->con, "INSERT INTO deposit_proof (deposit_type, image, user) VALUES ('$deposit_type', '$filename', '$_SESSION[id]')");
             if ($query) {
-                $subject = "New deposit made in ".$settings["sitename"];
+                $subject = "New deposit proof submitted in".$settings["sitename"];
                 $message = "<h3>The following deposit has been made</h3>";
                 $message.="
                 <table>
@@ -58,6 +58,7 @@ class Deposit extends Base
                 <th>User: <th>
                 <td>$user</td>
                 </tr>
+                
                 </table>
                 ";
                 ob_start();
@@ -123,7 +124,45 @@ class Deposit extends Base
         if (!empty($_POST['amount']) && !empty($_POST['email'])) {
             extract($_POST);
             $query = mysqli_query($this->con, "INSERT INTO donation_request (amount, email, type, user) VALUES ('$amount', '$email', '$type', '$_SESSION[id]') ");
+            $userinfo = $this->getter->user_data($_SESSION['id']);
             if ($query) {
+                $settings = $this->getter->settings();
+                $date = date("d, F Y");
+                $profile_link = baseurl."webmaster/users/$_SESSION[id]";
+                $subject = "New Payment Details Requested in ".$settings["sitename"];
+                $message = "<h3>A User has requested payment deposit details</h3>";
+                $message.="
+                <table style='text-align:left'>
+                <tr>
+                <th>Request Deposit Type: <th>
+                <td>$type</td>
+                </tr>
+                <tr>
+                <th>Date/Time: <th>
+                <td>$date</td>
+                </tr>
+                <tr>
+                <th>User Email: <th>
+                <td>$userinfo[email]</td>
+                </tr>
+                <tr>
+                <th>User Profile Link : <th>
+                <td><a href='$profile_link'>$profile_link</a></td>
+                </tr>
+                <tr>
+                <th>User ID: <th>
+                <td>$_SESSION[id]</td>
+                </tr>
+                <tr>
+                <th>Amount: <th>
+                <td>$$amount</td>
+                </tr>
+                
+                </table>
+                ";
+                ob_start();
+                $this->email->send_mail($settings['mailing_email'], $subject, $message, $message);
+                ob_end_clean();
                 echo json_encode(array("status" => "success", "message" => "Reqeust sent successfully. You will receive payment details in your email"));
             } else {
                 echo json_encode(array("status" => "error", "message" => "An unexpected error occurred, try again later"));

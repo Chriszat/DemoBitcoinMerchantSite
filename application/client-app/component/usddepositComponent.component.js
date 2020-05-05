@@ -56,6 +56,7 @@ angular.module("appCore")
             }
 
             let payWithBTC = function () {
+               
                 if(deposit_views.hasOwnProperty("with_btc")){
                     replaceMainView("with_btc");
                     listen("upload", "click", uploadDepositProof)
@@ -125,12 +126,14 @@ angular.module("appCore")
                 evt.preventDefault();
                 evt.stopPropagation();
                 let formdata = new FormData(element("payment-form"));
+                overlay.show();
                 request({
                     method: "POST",
                     url: "api/api.py.php?_=Deposit&a="+method,
                     formdata: true,
                     data: formdata
                 }).then(function (res) {
+                    overlay.hide()
                     let response  = JSON.parse(res);
                     if(response.status == "success"){
                         alertify.success(`<span style='color:#fff'>${response.message}</span>`).dismissOthers()
