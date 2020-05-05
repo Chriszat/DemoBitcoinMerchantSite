@@ -202,12 +202,36 @@ angular.module("appCore")
                 })
             }
 
+
+            let payWithSkrill = function(){
+                if(deposit_views.hasOwnProperty("with_skrill")){
+                    replaceMainView("with_skrill");
+                    return;
+                }
+                overlay.show();
+                request({
+                    method: "POST",
+                    url: "api/api.py.php?_=Deposit&a=withSkrillPayView",
+                    formdata: true,
+
+                }).then(function (res) {
+                    overlay.hide();
+                    deposit_views["with_skrill"] = res;
+                    replaceMainView("with_skrill");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                    listen("upload", "click", uploadDepositProof)
+                })
+            }
+
             let payWithCashApp = function(){
                 window.open(`https://cash.app/${cashapp_tag}`, '_blank')
             }
 
             let applicationWindowEventListeners = function () {
-                listen("pay_with_paypal", "click", payWithPayPal);
+                if(element("pay_with_paypal")){
+                    listen("pay_with_paypal", "click", payWithPayPal);
+                }
+                
                 listen("pay_with_btc", "click", payWithBTC);
                 listen("pay_with_stripe", "click", payWithStripe)
                 listen("pay_with_wechat", "click", payWithWeChat)
@@ -215,6 +239,8 @@ angular.module("appCore")
                 listen("pay_with_alipay", "click", payWithAliPay)
                 listen("pay_with_western_union", "click", payWithWesternUnion)
                 listen("pay_with_cashapp", "click", payWithCashApp)
+                listen("pay_with_cashapp", "click", payWithCashApp)
+                listen("pay_with_skrill", "click", payWithSkrill);
             }
 
             let replaceMainView = function (view) {

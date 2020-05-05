@@ -127,7 +127,7 @@
                             </div>
 
 
-                            <div class="card-body cc" style="user-select:none; padding:10px; padding-left:25px" id="buy_ethereum_btc">
+                            <div class="card-body cc" style="user-select:none; padding:10px; padding-left:25px" id="pay_with_skrill">
                                 <div class="buy-btc">
                                     <div class="btc-head">
                                         <div style="width:40px; height:40px; display:relative">

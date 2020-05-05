@@ -107,6 +107,11 @@ class Deposit extends Base
         $this->load->template(view_map["dashboard"][29], "dashboard", ["deposit_type" => "alipay"]);
     }
 
+    public function withSkrillPayView()
+    {
+        $this->load->template(view_map["dashboard"][42], "dashboard", ["deposit_type" => "skrill"]);
+    }
+
     public function withWesternUnion()
     {
         $this->load->template(view_map["dashboard"][30], "dashboard", ["deposit_type" => "western_union"]);

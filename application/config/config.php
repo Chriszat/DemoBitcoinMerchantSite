@@ -69,6 +69,7 @@ define("view_map",  [
         "faq_questions", // 39 faq question
         "editbank", //40 edit bank
         "withdraw_history", //41 withdraw history
+        "private_deposit_with_skrill", //42 deposit with skrill
     ]
 
 ]);
