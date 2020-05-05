@@ -25,7 +25,7 @@ class Auth extends CI_Controller
             if (!empty($data->result_array())) {
                 $_SESSION["admin_verified"] = TRUE;
                 $_SESSION['site'] = 'adminsite';
-                header("location:" . base_url('/webmaster/') . "");
+                header("location:" . base_url() . "");
             } else {
 
                 $this->load->view("signin", ["login_error" => TRUE]);
