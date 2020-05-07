@@ -22,7 +22,7 @@
                                                 <th><b>Mining Plan</b></th>
                                                 <th><b>Receiving BTC Address</b></th>
                                                 <th><b>Status</b></th>
-                                                <th><b>Total Time Mined</b></th>
+                                                <!-- <th><b>Total Time Mined</b></th> -->
                                                 <th><b>Action</b></th>
                                             </tr>
                                         </thead>
@@ -50,7 +50,7 @@
                                                 <td><?php echo strtoupper($plan_info['plan']); ?></td>
                                                     <td><?php echo $res['btc_address_id'] ?></td>
                                                     <td><?php echo $status ?></td>
-                                                    <td><?php echo $res['full_mined_time'] ?></td>
+                                                    <!-- <td><?php echo $res['full_mined_time'] ?></td> -->
                                                     <td>
                                                         <a href="wallet/mining/pool/config/<?php echo $res['id_hash'] ?>/" title="Configuration">
                                                         <span class="icon-settings" style="font-size:20px; cursor:pointer"></span>
@@ -61,7 +61,8 @@
                                                         </a>
 
 <?php else: ?>
-    <span class="badge badge-danger">Configure a <br>receiving address</span>
+    <button class="btn" style="background:orange; color:#fff">Configure BTC Address</button>
+   
 <?php endif; ?>
                                                     </td>
                                                 </tr>
