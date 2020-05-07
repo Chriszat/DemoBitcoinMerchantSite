@@ -37,7 +37,7 @@ class SendEmail
     public function send_mail($email, $subject, $message, $alt)
     {
         
-        $name = stripslashes($_POST['name']);
+        // $name = stripslashes($_POST['name']);
         $email = $email;
         $message = stripslashes($message);
         $url = baseurl;
@@ -63,6 +63,9 @@ class SendEmail
         $headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
 
         if (mail($email, $msg, $headers, $e_content)) {
+             echo json_encode(array('status'=>'success', "message"=>"Email sent."));
+        }else{
+             echo json_encode(array('status'=>'error', "message"=>"Could not send mail to that address"));
         }
     }
 
