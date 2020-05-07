@@ -55,11 +55,14 @@
                                                         <a href="wallet/mining/pool/config/<?php echo $res['id_hash'] ?>/" title="Configuration">
                                                         <span class="icon-settings" style="font-size:20px; cursor:pointer"></span>
 &nbsp;<br><br>
+<?php if($res['btc_address_id'] != ""): ?>
                                                         <a href="wallet/mining/pool/<?php echo $res['id_hash']; ?>/" title="Start Mining">
                                                             <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/mining-icon-4.png" alt="" style="width:30px; border-radius:50%; border:1px solid grey; box-shadow:1px 1px 0px 0px">
                                                         </a>
-                                                    </a>
-                                                       
+
+<?php else: ?>
+    <span class="badge badge-danger">Configure a <br>receiving address</span>
+<?php endif; ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
