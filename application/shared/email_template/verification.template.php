@@ -64,7 +64,7 @@
 							  </tr>
 							  <tr>
 								<td style="padding:0 80px 0 0;font-size:18px;line-height:167%;font-weight:400;color:#343333" mc:edit="copy 1">
-																						<p>Hit the button to verify your email—and get back to bitcoin investment 💪</p>
+																						<p>Hit the button to verify your email—and get back to bitcoin investment </p>
 																		 </td>
 							  </tr>
 							  <tr>
