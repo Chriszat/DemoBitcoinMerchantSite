@@ -11,6 +11,7 @@ require '../application/shared/phpmailer/phpmailer/src/Exception.php';
 require '../application/shared/phpmailer/phpmailer/src/PHPMailer.php';
 require '../application/shared/phpmailer/phpmailer/src/SMTP.php';
 require '../application/shared/phpmailer/autoload.php';
+require '../vendor/autoload.php';
 
 class SendEmail
 {
@@ -35,7 +36,35 @@ class SendEmail
         return $config;
     }
 
-    public function send_mail($email, $subject, $message, $alt)
+    public function send_mail($to_email, $subject, $message, $alt)
+    {
+
+        $email = new \SendGrid\Mail\Mail();
+        $settings = $this->getter->settings();
+        $email->setFrom($settings["from_email"], $settings["sitename"]);
+        $email->setSubject($subject);
+        $email->addTo($to_email, "user");
+        $email->addContent("text/plain", "and easy to do anywhere, even with PHP");
+        $email->addContent(
+            "text/html",
+            $message
+        );
+
+        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        try {
+            
+            $response = $sendgrid->send($email);
+            // print $response->statusCode() . "\n";
+            // print_r($response->headers());
+            // print $response->body() . "\n";
+            echo json_encode(array('status' => 'success', "message" => "Email sent."));
+        } catch (Exception $e) {
+            echo json_encode(array('status' => 'error', "message" => "Could not send mail to that address"));
+            // echo 'Caught exception: ' . $e->getMessage() . "\n";
+        }
+    }
+
+    public function send_mail_old_old($email, $subject, $message, $alt)
     {
 
         // $name = stripslashes($_POST['name']);

@@ -411,17 +411,17 @@
     },
     {
         "name": "sendgrid/sendgrid",
-        "version": "7.4.6",
-        "version_normalized": "7.4.6.0",
+        "version": "7.5.0",
+        "version_normalized": "7.5.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/sendgrid/sendgrid-php.git",
-            "reference": "f3d17a2607f062447ed8356e4cb3ee7b5d3c15c8"
+            "reference": "efdd358557f7b51c339dbca049e46e8855cdb9ca"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/f3d17a2607f062447ed8356e4cb3ee7b5d3c15c8",
-            "reference": "f3d17a2607f062447ed8356e4cb3ee7b5d3c15c8",
+            "url": "https://api.github.com/repos/sendgrid/sendgrid-php/zipball/efdd358557f7b51c339dbca049e46e8855cdb9ca",
+            "reference": "efdd358557f7b51c339dbca049e46e8855cdb9ca",
             "shasum": ""
         },
         "require": {
@@ -440,7 +440,7 @@
             "squizlabs/php_codesniffer": "3.*",
             "swaggest/json-diff": "^3.4"
         },
-        "time": "2020-04-01T20:01:38+00:00",
+        "time": "2020-04-29T20:22:56+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -450,7 +450,9 @@
                 "SendGrid\\Stats\\": "lib/stats/"
             },
             "files": [
-                "lib/SendGrid.php"
+                "lib/BaseInterface.php",
+                "lib/SendGrid.php",
+                "lib/TwilioEmail.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",

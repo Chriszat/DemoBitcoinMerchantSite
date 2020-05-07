@@ -8,5 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     '320cde22f66dd4f5d3fd621d3e88b98f' => $vendorDir . '/symfony/polyfill-ctype/bootstrap.php',
     'a9ed0d27b5a698798a89181429f162c5' => $vendorDir . '/khanamiryan/qrcode-detector-decoder/lib/Common/customFunctions.php',
+    'fe81f4db7ca976f7e113f097866cf957' => $vendorDir . '/sendgrid/sendgrid/lib/BaseInterface.php',
     '3f8bdd3b35094c73a26f0106e3c0f8b2' => $vendorDir . '/sendgrid/sendgrid/lib/SendGrid.php',
+    '0596c9fb5a9dba3cf8abc2fdaa05141c' => $vendorDir . '/sendgrid/sendgrid/lib/TwilioEmail.php',
 );

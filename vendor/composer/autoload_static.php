@@ -9,7 +9,9 @@ class ComposerStaticInit4a05ad09e241938dab4a95b38082d06d
     public static $files = array (
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'a9ed0d27b5a698798a89181429f162c5' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/Common/customFunctions.php',
+        'fe81f4db7ca976f7e113f097866cf957' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/BaseInterface.php',
         '3f8bdd3b35094c73a26f0106e3c0f8b2' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/SendGrid.php',
+        '0596c9fb5a9dba3cf8abc2fdaa05141c' => __DIR__ . '/..' . '/sendgrid/sendgrid/lib/TwilioEmail.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -132,7 +134,6 @@ class ComposerStaticInit4a05ad09e241938dab4a95b38082d06d
         'Cron' => __DIR__ . '/../..' . '/application/cron_scripts/Cron.php',
         'CronEmailSender' => __DIR__ . '/../..' . '/api/CronEmailSender/CronEmailSender.php',
         'CronJob' => __DIR__ . '/../..' . '/api/CronJob/CronJob.php',
-        'CronMailer' => __DIR__ . '/../..' . '/application/cron_scripts/CronMailer.php',
         'Csrf' => __DIR__ . '/../..' . '/application/core/Csrf.php',
         'Dashboard' => __DIR__ . '/../..' . '/api/Dashboard/Dashboard.php',
         'DateHelper' => __DIR__ . '/../..' . '/application/core/DateHelper.php',
@@ -146,7 +147,6 @@ class ComposerStaticInit4a05ad09e241938dab4a95b38082d06d
         'Login' => __DIR__ . '/../..' . '/application/controller/Login.php',
         'LoginModel' => __DIR__ . '/../..' . '/application/model/login_model.php',
         'MainSite' => __DIR__ . '/../..' . '/api/MainSite/mainsite.php',
-        'MinerServiceWorker' => __DIR__ . '/../..' . '/application/cron_scripts/MinerServiceWorker.php',
         'Mobile_Detect' => __DIR__ . '/..' . '/mobiledetect/mobiledetectlib/Mobile_Detect.php',
         'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/../..' . '/application/shared/phpmailer/phpmailer/src/Exception.php',
         'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/../..' . '/application/shared/phpmailer/phpmailer/src/OAuth.php',
