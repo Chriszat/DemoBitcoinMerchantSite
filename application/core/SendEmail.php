@@ -49,7 +49,7 @@ class SendEmail
         // You can change this if you feel that you need to.
         // Developers, you may wish to add more fields to the form, in which case you must be sure to add them here.
 
-        $e_body = "You have been contacted by: $name" . PHP_EOL . PHP_EOL;
+        $e_body = $message;
         $e_reply = "E-mail: $email" . PHP_EOL . PHP_EOL;
         $e_content = "Message:\r\n$message" . PHP_EOL . PHP_EOL;
         $e_url = "\r\nWebsite: $url" . PHP_EOL . PHP_EOL;

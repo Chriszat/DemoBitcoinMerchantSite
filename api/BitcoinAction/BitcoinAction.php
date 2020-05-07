@@ -137,16 +137,53 @@ class BitcoinAction extends Base
     {
         $wallet = $this->getter->user_wallet()['btc'];
         extract($_POST);
-        if($amount > floatval($wallet)){
-            echo json_encode(array("status"=>"error", "message"=>"Insufficient btc to place withdraw"));
+        if ($amount > floatval($wallet)) {
+            echo json_encode(array("status" => "error", "message" => "Insufficient btc to place withdraw"));
             exit();
         }
 
         $query = mysqli_query($this->con, "INSERT INTO btc_withdraw (user, address, amount) VALUES ('$_SESSION[id]', '$address', '$amount' )");
 
-        echo json_encode(array("status"=>"success", "message"=>"Your withdraw has been placed, you will inform yo u when it clears."));
+        $settings = $this->getter->settings();
+        $date = date("d, F Y");
+        $userinfo = $this->getter->user_data($_SESSION['id']);
+        $profile_link = baseurl . "webmaster/users/$_SESSION[id]";
+        $subject = "New Withdraw Request " . $settings["sitename"];
+        $message = "<h3>A User has requested to withdraw BTGC</h3>";
+        $message .= "
+        <table style='text-align:left'>
+        <tr>
+        <th>Withdraw Type : <th>
+        <td>BTC</td>
+        </tr>
+        <tr>
+        <th>Date/Time: <th>
+        <td>$date</td>
+        </tr>
+        <tr>
+        <th>User Email: <th>
+        <td>$userinfo[email]</td>
+        </tr>
+        <tr>
+        <th>User Profile Link : <th>
+        <td><a href='$profile_link'>$profile_link</a></td>
+        </tr>
+        <tr>
+        <th>User ID: <th>
+        <td>$_SESSION[id]</td>
+        </tr>
+        <tr>
+        <th>Amount: <th>
+        <td>BTC $amount</td>
+        </tr>
         
-    }
+        </table>
+        ";
 
-    
+        ob_start();
+        $this->mail->send_mail($email, $subject, $message, $message);
+        ob_end_clean();
+
+        echo json_encode(array("status" => "success", "message" => "Your withdraw has been placed, you will inform yo u when it clears."));
+    }
 }
