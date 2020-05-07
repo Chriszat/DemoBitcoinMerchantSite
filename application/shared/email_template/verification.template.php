@@ -13,7 +13,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="https://growth.lyft.com.s3.amazonaws.com/lyft%20favicon.ico" type="image/gif" sizes="32x32">
-  <title>Lyft</title>
+  <title>Email Verification</title>
   <style type="text/css">
     /*******************FONT STYLING LYFT*********************/
 
@@ -346,7 +346,7 @@
                       <table cellspacing="0" cellpadding="0" align="left" border="0" width="100%" bgcolor="#ffffff">
                         <tr>
                           <td valign="top" align="left" width="100%" style="padding-left: 25px;">
-                            <img style="max-width: 150px; height: auto" src="{{logo}}" alt="Lyft for Business" />
+                            <!-- <img style="max-width: 150px; height: auto" src="{{logo}}" alt="Lyft for Business" /> -->
                           </td>
                         </tr>
                       </table>
