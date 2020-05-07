@@ -79,6 +79,8 @@
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/faqComponent.component.js"></script>
     <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/withdrawhistoryComponent.component.js"></script>
 
+    <script type="text/javascript" src="<?php echo baseurl ?>application/client-app/component/withdrawbtcComponent.componet.js"></script>
+
     
     
     <link href="https://fonts.googleapis.com/css?family=Anton|Black+Han+Sans" rel="stylesheet">
@@ -149,6 +151,13 @@
             </ul>
           </li>
           <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="<?php echo baseurl ?>wallet/accounts/"><i class="ficon icon-wallet"></i></a></li>
+          <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="<?php echo baseurl ?>wallet/mining/">
+              <i class="ficon fab fa-bitcoin"></i>
+          </a></li>
+           <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="<?php echo baseurl ?>wallet/faq/">
+              
+              <i class="ficon fas fa-question"></i>
+          </a></li>
           <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">             <span class="avatar avatar-online"><img src="<?php echo $data['userdata']['image']; ?>" id="identity_pix" alt="avatar"></span><span class="mr-1"><span class="user-name text-bold-700" id="current_btc"><?php echo round($data["current_btc"], 8) ?> BTC</span></span></a>
             <div class="dropdown-menu dropdown-menu-right">             <a class="dropdown-item" href="wallet/profile/"><i class="ft-award"></i><?php echo $data['user_email'] ?></a>
               <div class="dropdown-divider"></div>        </a>
@@ -170,10 +179,22 @@
       <li class="active nav_item"><a ng-href="wallet/"><i class="icon-grid"></i>Dashboard<span class="menu-title" data-i18n=""></span></a>
       
       </li>
+      <li class="nav-item nav_item"><a href="wallet/accounts/usd/deposit/">
+     <i class="fas fa-dollar-sign"></i>
+      Deposit<span class="menu-title" data-i18n=""></span></a>
+      </li>
+      
+      <li class="nav-item nav_item"><a href="wallet/accounts/btc/withdraw/">
+     <i class="fas fa-money-check-alt"></i>
+      Withdraw<span class="menu-title" data-i18n=""></span></a>
+      </li>
+      
       <li class="nav-item nav_item"><a href="wallet/mining/">
      <i class="fab fa-bitcoin"></i>
       Mining<span class="menu-title" data-i18n=""></span></a>
       </li>
+      
+       
       <li class="nav-item nav_item"><a href="wallet/accounts/"><i class="icon-wallet"></i>Wallet<span class="menu-title" data-i18n=""></span></a>
       </li>
       <li class=" nav-item nav_item"><a href="wallet/transactions/"><i class="icon-shuffle"></i>Transactions<span class="menu-title" data-i18n=""></span></a>

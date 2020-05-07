@@ -10,9 +10,8 @@
                     <div class="head-content">
                         <div class="center">
                             <br>
-                            <p style="font-size:20px; font-family: 'Open Sans', sans-serif;"><b>Send </b></p>
-                            <p style="font-size:16px; font-family: 'Open Sans', sans-serif;">How much would you like to send?</p>
-
+                            <p style="font-size:20px; font-family: 'Open Sans', sans-serif;"><b>Withdraw BTC to Your Wallet </b></p>
+                           
                         </div>
                     </div>
                     <br>
@@ -24,7 +23,7 @@
 
                                     <div class="col-md-12">
                                         <fieldset class="form-label-group">
-                                            <input type="text" class="form-control" name="btc_address" id="btc_address" placeholder="Bitcoin Address" required="" autofocus="">
+                                            <input type="text" class="form-control" name="address" id="btc_address" placeholder="Bitcoin Address" required="" autofocus="">
                                             <label for="btc_address">Bitcoin Address <i class="text-danger">*</i></label>
                                         </fieldset>
                                         

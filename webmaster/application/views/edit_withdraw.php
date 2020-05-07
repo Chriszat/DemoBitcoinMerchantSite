@@ -10,19 +10,15 @@
 
         <form class="forms-sample" action="" method="POST">
             <div class="form-group">
-                <label for="btc">Account Name</label>
-                <input type="text"  value="<?php echo set_value("account_name") ?>" id="account_name" name="account_name" class="form-control">
+                <label for="amount">Amount</label>
+                <input type="text"  value="<?php echo set_value("amount") ?>" id="amount" name="amount" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="eth">Account No</label>
-                <input type="text" value="<?php echo set_value("account_no"); ?>" id="account_no" name="account_no" class="form-control">
+                <label for="Amount">BTC Address</label>
+                <input type="text" value="<?php echo set_value("address"); ?>" id="Amount" name="address" class="form-control">
             </div>
 
-            <div class="form-group">
-                <label for="usd">Amount</label>
-                <input type="text" value="<?php echo set_value("amount"); ?>" id="amount" name="amount" class="form-control">
-            </div>
 
             <div class="form-group">
                 <label for="usd">Status</label>
@@ -33,11 +29,7 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="usd">Amount</label>
-               
-                <input type="text" value="<?php echo set_value("amount"); ?>" id="amount" name="amount" class="form-control">
-            </div>
+           
             <br>
                 <label for="">Add to user transaction</label>
                 <input type="checkbox" name="add_transaction">

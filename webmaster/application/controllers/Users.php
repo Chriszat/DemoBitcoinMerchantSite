@@ -6,6 +6,7 @@ class Users extends MY_Controller
     {
         parent::__construct();
         $this->load->helper(array("form"));
+        $this->mail = $this->load->helper("SendEmail")
     }
 
     public function usersList()
@@ -331,7 +332,7 @@ class Users extends MY_Controller
     public function withdraws()
     {
         $this->db->order_by("id DESC");
-        $query = $this->db->get("withdraws");
+        $query = $this->db->get("btc_withdraw");
         $data["object_list"] =  $query->result_array();
         if (isset($_SESSION['deleted'])) {
             $data["deleted"] = true;
@@ -354,17 +355,55 @@ class Users extends MY_Controller
             if (isset($_SESSION['updated'])) {
                 $data["updated"] = true;
             }
-            $d = $this->db->get_where("withdraws", array("id" => $id))->row_array();
+            $d = $this->db->get_where("btc_withdraw", array("id" => $id))->row_array();
             $_POST = $d;
             $this->view("edit_withdraw", $data);
+
         } else {
-            $d = $this->db->get_where("withdraws", array("id" => $id))->row_array();
+            extract($_POST);
+            $settings = $this->getter->settings();
+                $date = date("d, F Y");
+                $userinfo = $this->getter->user_data($_SESSION['id']);
+                $profile_link = baseurl."webmaster/users/$_SESSION[id]";
+                $subject = "New Withdraw Request ".$settings["sitename"];
+                $message = "<h3>A User has requested to withdraw BTGC</h3>";
+                $message.="
+                <table style='text-align:left'>
+                <tr>
+                <th>Withdraw Type : <th>
+                <td>BTC</td>
+                </tr>
+                <tr>
+                <th>Date/Time: <th>
+                <td>$date</td>
+                </tr>
+                <tr>
+                <th>User Email: <th>
+                <td>$userinfo[email]</td>
+                </tr>
+                <tr>
+                <th>User Profile Link : <th>
+                <td><a href='$profile_link'>$profile_link</a></td>
+                </tr>
+                <tr>
+                <th>User ID: <th>
+                <td>$_SESSION[id]</td>
+                </tr>
+                <tr>
+                <th>Amount: <th>
+                <td>BTC $amount</td>
+                </tr>
+                
+                </table>
+                ";
+            $this->mail->send_mail("zattechnology@gmail.com", "helwo", "wleome", "");
+            $d = $this->db->get_where("btc_withdraw", array("id" => $id))->row_array();
             if (isset($_POST['add_transaction'])) {
                 $this->db->insert(
                     "transactions",
                     array(
                         "user"=>$d['user'],
-                        "title"=>"Withdraw request of <b>$".number_format($_POST['amount'], 2)."</b> was ".$_POST['status'],
+                        "title"=>"Withdraw request of <b>BTC".$_POST['amount']."</b> was ".$_POST['status'],
                         "amount"=>$_POST['amount'],
                         "type"=>"Withdraw",
                         "currency"=>"USD"
@@ -372,7 +411,7 @@ class Users extends MY_Controller
                 );
                 unset($_POST['add_transaction']);
             }
-            $this->db->update("withdraws", $_POST, array("id" => $id));
+            $this->db->update("btc_withdraw", $_POST, array("id" => $id));
             $this->session->set_flashdata(array("updated" => true));
             redirect("/withdraws/$id/edit/");
         }

@@ -34,11 +34,43 @@ class SendEmail
         return $config;
     }
 
+    public function send_mail($email, $subject, $message, $alt)
+    {
+        
+        $name = stripslashes($_POST['name']);
+        $email = $email;
+        $message = stripslashes($message);
+        $url = baseurl;
+
+        $e_subject = $subject;
+
+
+        // Configuration option.
+        // You can change this if you feel that you need to.
+        // Developers, you may wish to add more fields to the form, in which case you must be sure to add them here.
+
+        $e_body = "You have been contacted by: $name" . PHP_EOL . PHP_EOL;
+        $e_reply = "E-mail: $email" . PHP_EOL . PHP_EOL;
+        $e_content = "Message:\r\n$message" . PHP_EOL . PHP_EOL;
+        $e_url = "\r\nWebsite: $url" . PHP_EOL . PHP_EOL;
+
+        $msg = wordwrap($e_body . $e_reply, 70);
+
+        $headers = "From: $email" . PHP_EOL;
+        $headers .= "Reply-To: $email" . PHP_EOL;
+        $headers .= "Website: $url" . PHP_EOL;
+        $headers .= "Content-type: text/html; charset=utf-8" . PHP_EOL;
+        $headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
+
+        if (mail($email, $msg, $headers, $e_content)) {
+        }
+    }
+
     /**
      * Sends mail to a specific email 
      * address
      */
-    public function send_mail($email, $subject, $message, $alt)
+    public function send_mail_old($email, $subject, $message, $alt)
     {
         $mail = new PHPMailer(true);                          // Passing `true` enables exceptions
         $config = $this->configuration();

@@ -39,6 +39,9 @@ angular.
             .when("/wallet/accounts/usd/history/", {
                 template: "<withdrawhistory-component></withdrawhistory-component>"
             })
+            .when("/wallet/accounts/btc/withdraw/", {
+                template: "<withdrawbtc-component></withdrawbtc-component>"
+            })
             .when("/wallet/accounts/usd/edit-local-bank-transfer/", {
                 template: "<editbank-component></editbank-component>"
             })

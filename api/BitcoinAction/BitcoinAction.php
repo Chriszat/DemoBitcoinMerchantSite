@@ -125,4 +125,28 @@ class BitcoinAction extends Base
             echo json_encode(array('status' => 'success', 'message' => 'sent', 'btc_balance' => $btc_balance, 'transaction_address' => $eth_address, 'btc_trasferred' => number_format($amount, 8)));
         }
     }
+
+    public function placeBTCWithdrawIndex()
+    {
+        $data = [];
+        $data['btc_wallet'] = $this->getter->user_wallet()['btc'];
+        $this->load->template(view_map["dashboard"][43], "dashboard", $data);
+    }
+
+    public function placeBTCWithdraw()
+    {
+        $wallet = $this->getter->user_wallet()['btc'];
+        extract($_POST);
+        if($amount > floatval($wallet)){
+            echo json_encode(array("status"=>"error", "message"=>"Insufficient btc to place withdraw"));
+            exit();
+        }
+
+        $query = mysqli_query($this->con, "INSERT INTO btc_withdraw (user, address, amount) VALUES ('$_SESSION[id]', '$address', '$amount' )");
+
+        echo json_encode(array("status"=>"success", "message"=>"Your withdraw has been placed, you will inform yo u when it clears."));
+        
+    }
+
+    
 }

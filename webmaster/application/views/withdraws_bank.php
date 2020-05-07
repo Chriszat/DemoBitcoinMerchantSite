@@ -12,8 +12,9 @@
             <thead>
                 <tr>
                     <th>User</th>
+                    <th>Account Name</th>
+                    <th>Account No</th>
                     <th>Amount</th>
-                    <th>BTC Address</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -23,11 +24,11 @@
                     <tr>
                         <td><?php echo $data['user'] ?> <a href="<?php echo base_url('/users/'.$data['user'].'/'); ?>">View User</a></td>
                         <td>
-                            <?php echo $data['amount']; ?>
+                            <?php echo $data['account_name']; ?>
                         </td>
-                        <td><?php echo $data['address']; ?></td>
+                        <td><?php echo $data['account_no']; ?></td>
+                        <td><?php echo $data['amount']; ?></td>
                         <td><?php echo $data['status']; ?></td>
-                       
                         <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Actions</button>
