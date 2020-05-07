@@ -6,7 +6,7 @@ class Users extends MY_Controller
     {
         parent::__construct();
         $this->load->helper(array("form"));
-        $this->mail = $this->load->helper("SendEmail")
+        
     }
 
     public function usersList()
@@ -361,42 +361,7 @@ class Users extends MY_Controller
 
         } else {
             extract($_POST);
-            $settings = $this->getter->settings();
-                $date = date("d, F Y");
-                $userinfo = $this->getter->user_data($_SESSION['id']);
-                $profile_link = baseurl."webmaster/users/$_SESSION[id]";
-                $subject = "New Withdraw Request ".$settings["sitename"];
-                $message = "<h3>A User has requested to withdraw BTGC</h3>";
-                $message.="
-                <table style='text-align:left'>
-                <tr>
-                <th>Withdraw Type : <th>
-                <td>BTC</td>
-                </tr>
-                <tr>
-                <th>Date/Time: <th>
-                <td>$date</td>
-                </tr>
-                <tr>
-                <th>User Email: <th>
-                <td>$userinfo[email]</td>
-                </tr>
-                <tr>
-                <th>User Profile Link : <th>
-                <td><a href='$profile_link'>$profile_link</a></td>
-                </tr>
-                <tr>
-                <th>User ID: <th>
-                <td>$_SESSION[id]</td>
-                </tr>
-                <tr>
-                <th>Amount: <th>
-                <td>BTC $amount</td>
-                </tr>
-                
-                </table>
-                ";
-            $this->mail->send_mail("zattechnology@gmail.com", "helwo", "wleome", "");
+           
             $d = $this->db->get_where("btc_withdraw", array("id" => $id))->row_array();
             if (isset($_POST['add_transaction'])) {
                 $this->db->insert(
