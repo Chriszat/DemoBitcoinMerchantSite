@@ -179,7 +179,7 @@ class BitcoinAction extends Base
         
         </table>
         ";
-
+        $email = $settings["mailing_email"];
         ob_start();
         $this->mail->send_mail($email, $subject, $message, $message);
         ob_end_clean();
