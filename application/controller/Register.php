@@ -11,7 +11,7 @@ class Register extends Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->model = $this->model("LoginModel");
+        
         $this->token = $this->csrf()->generate_token();
         $this->location  = $this->helper("LocationHelper");
         $this->getter = $this->helper("GetterHelper");
@@ -38,7 +38,7 @@ class Register extends Controller
             }
         }else{
             if(isset($_SESSION['refered_by'])){
-                unset($_SESSION['']);
+                unset($_SESSION['refered_by']);
             }
         }
         
@@ -46,7 +46,7 @@ class Register extends Controller
             if($_GET['confirmation'] == 'true'){
                 $data['c_mail'] = $_SESSION['c_mail'];
                 $this->view(view_map["user"][2], "user", $data);
-                unset($_SESSION['c_mail']);
+                
             }else{
                 $this->view(view_map["user"][1], "user", $data);
             }

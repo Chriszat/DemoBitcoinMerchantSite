@@ -8,6 +8,7 @@
     "require": {
         "mobiledetect/mobiledetectlib": "^2.8",
         "endroid/qr-code": "^3.5",
-        "sendgrid/sendgrid": "^7.5"
+        "sendgrid/sendgrid": "^7.5",
+        "mailjet/mailjet-apiv3-php": "^1.4"
     }
 }

@@ -89,8 +89,7 @@ class Reg extends Base
                                 
                                 ob_end_clean();
                                 echo json_encode(array("status"=>"success", "message"=>""));
-                                $_SESSION['c_mail'] = $email;
-                                
+                               
                                 return;
                             }
                         }else{
@@ -157,6 +156,9 @@ class Reg extends Base
                 echo $send_mail;
                 $_SESSION['c_mail'] = $email;
             }
+        }else{
+            echo json_encode(array("status"=>"error", "message"=>"Error resending mail", "session"=>$_SESSION));
+            return;
         }
     }
 

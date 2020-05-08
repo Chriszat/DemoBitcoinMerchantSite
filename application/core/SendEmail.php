@@ -6,6 +6,7 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+use \Mailjet\Resources;
 
 require '../application/shared/phpmailer/phpmailer/src/Exception.php';
 require '../application/shared/phpmailer/phpmailer/src/PHPMailer.php';
@@ -36,7 +37,38 @@ class SendEmail
         return $config;
     }
 
+
     public function send_mail($to_email, $subject, $message, $alt)
+    {
+        $settings = $this->getter->settings();
+        $mj = new \Mailjet\Client('9a5eb72e345717b151fa28c8d8f2c4b3', 'ad4e36e55034641ed1c3b39349f18aff', true, ['version' => 'v3.1']);
+        $body = [
+            'Messages' => [
+                [
+                    'From' => [
+                        'Email' => "support@cryptomineexpress.com",
+                        'Name' => $settings['sitename'],
+                    ],
+                    'To' => [
+                        [
+                            'Email' => $to_email,
+                            'Name' => explode("@", $to_email)[0],
+                        ]
+                    ],
+                    'Subject' => $subject,
+                    'TextPart' => "My first Mailjet email",
+                    'HTMLPart' => $message,
+                    'CustomID' => "AppGettingStartedTest"
+                ]
+            ]
+        ];
+        $response = $mj->post(Resources::$Email, ['body' => $body]);
+        echo json_encode(array('status' => 'success', "message" => "Email sent."));
+        
+        // $response->success() && var_dump($response->getData());
+    }
+
+    public function send_mail_sengrid($to_email, $subject, $message, $alt)
     {
 
         $email = new \SendGrid\Mail\Mail();
@@ -52,7 +84,7 @@ class SendEmail
 
         $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
         try {
-            
+
             $response = $sendgrid->send($email);
             // print $response->statusCode() . "\n";
             // print_r($response->headers());
@@ -64,7 +96,7 @@ class SendEmail
         }
     }
 
-    public function send_mail_old_old($email, $subject, $message, $alt)
+    public function send_mail_php($email, $subject, $message, $alt)
     {
 
         // $name = stripslashes($_POST['name']);
