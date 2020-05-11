@@ -51,7 +51,7 @@ angular.module("register")
         }).then(function(response){
             response = JSON.parse(response);
             if(response.status == 'success'){
-                window.location = location.pathname+'wallet/';
+                window.location = response.redirect
             }else if (response.status == 'error'){
                 element("e").innerHTML = '<p class="text-center h5 text-capitalize red "><span class="red">X</span>&nbsp;&nbsp;&nbsp;Email Not Confirmed</p>';
 
