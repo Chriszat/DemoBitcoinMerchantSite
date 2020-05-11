@@ -13,8 +13,25 @@ angular.module("appCore")
             });
 
             let payWithPayPal = function () {
-                element("aee7c9526a25377b601ed2507bab6839").click();
+                if(deposit_views.hasOwnProperty("with_paypal")){
+                    replaceMainView("with_paypal");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                    listen("upload", "click", uploadDepositProof)
+                    return;
+                }
                 overlay.show();
+                request({
+                    method: "POST",
+                    url: "api/api.py.php?_=Deposit&a=withPayPalView",
+                    formdata: true,
+
+                }).then(function (res) {
+                    overlay.hide();
+                    deposit_views["with_paypal"] = res;
+                    replaceMainView("with_paypal");
+                    listen("payment-form", "submit", processWeChatDeposit)
+                    listen("upload", "click", uploadDepositProof)
+                })
             }
 
             let uploadDepositProof = function () {

@@ -22,11 +22,7 @@
 
                         <div id="c2">
                             <div class="card-body cc" style="user-select:none; padding:10px; padding-left:25px" id="pay_with_paypal">
-                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="display:none">
-                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                <input type="hidden" name="hosted_button_id" value="Y9DAGD222U6W6" />
-                                <button id="aee7c9526a25377b601ed2507bab6839" style="background-image: linear-gradient(100deg, rgb(0, 112, 186), rgb(0, 48, 135));" onclick="" class='primary-button'>Donate </button>
-                            </form>
+                            
                                 <div class="buy-btc">
                                     <div class="btc-head">
                                         <div style="width:40px; height:40px; display:relative">

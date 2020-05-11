@@ -8,6 +8,7 @@ class CronJob extends Base
         $this->mail = $this->load->helper("SendEmail");
         $this->con = $this->connection;
         $this->getter = $this->load->helper("GetterHelper");
+        $this->setter = $this->load->helper("SetterHelper");
         
     }
 
@@ -31,17 +32,24 @@ class CronJob extends Base
 
             if ($value["btc_mined"] >= $mining_plan_info["btc_reward"]) {
                 $id = $value['id'];
+                $users_id = $value["users_id"];
                 mysqli_query($this->con, "UPDATE mining_investments SET status='completed' WHERE id='$id' ");
+                $reward = $value["btc_mined"];
+                $receiving_address =$value["btc_address_id"];
+                mysqli_query($this->con, "UPDATE wallet SET btc=btc+$reward WHERE user='$users_id' ");
+                mysqli_query($this->con, "UPDATE btc_address SET amount_received=amount_received+$reward, balance=balance+$reward WHERE address='$receiving_address' ");
+                $this->setter->set_transaction($users_id, "Mining Reward of $reward BTC credited to your BTC Wallet", "Mining Reward", $reward, $currency="BTC");
                 die();
             } else {
-                $id = $value['id'];
+                $id = $value['id']
+                ;
                 $new_btc_value = round((floatval($value["btc_mined"]) + floatval($final_reward)), 8);
 
                 mysqli_query($this->con, "UPDATE mining_investments SET btc_mined='$new_btc_value' WHERE id='$id' ");
                 $user_id = $value["users_id"];
                 $query  = mysqli_query($this->con, "SELECT * FROM users WHERE id='$user_id' ");
                 $user_info = mysqli_fetch_assoc($query);
-                $mail = new CronMailer();
+                // $mail = new CronMailer();
                 $data = [
                     "email" => $user_info["email"],
                     "subject" => "BITCOIN MINING COMPLETED",

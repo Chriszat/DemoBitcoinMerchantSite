@@ -118,6 +118,10 @@ class Deposit extends Base
         $this->load->template(view_map["dashboard"][30], "dashboard", ["deposit_type" => "western_union"]);
     }
 
+    public function withPayPalView()
+    {
+        $this->load->template(view_map["dashboard"][44], "dashboard", ["deposit_type" => "paypal"]);
+    }
 
     public function processWeChatDeposit()
     {

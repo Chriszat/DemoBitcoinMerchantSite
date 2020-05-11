@@ -38,7 +38,7 @@ class SendEmail
     }
 
 
-    public function send_mail($to_email, $subject, $message, $alt)
+    public function send_mail_old_mail($to_email, $subject, $message, $alt)
     {
         $settings = $this->getter->settings();
         $mj = new \Mailjet\Client('9a5eb72e345717b151fa28c8d8f2c4b3', 'ad4e36e55034641ed1c3b39349f18aff', true, ['version' => 'v3.1']);
@@ -96,7 +96,7 @@ class SendEmail
         }
     }
 
-    public function send_mail_php($email, $subject, $message, $alt)
+    public function send_mail__($email, $subject, $message, $alt)
     {
 
         // $name = stripslashes($_POST['name']);
@@ -147,7 +147,7 @@ class SendEmail
      * Sends mail to a specific email 
      * address
      */
-    public function send_mail_old($email, $subject, $message, $alt)
+    public function send_mail($email, $subject, $message, $alt)
     {
         $mail = new PHPMailer(true);                          // Passing `true` enables exceptions
         $config = $this->configuration();
@@ -173,7 +173,7 @@ class SendEmail
 
             //Recipients
             $email = $email;
-            $mail->setFrom('noreply@' . $sitename . '.localhost', $sitename);
+            $mail->setFrom('noreply@mailer.com');
             $mail->addAddress($email);     // Add a recipient
             //$mail->addReplyTo('informaljoke@gmail.com', 'Asifor');
             //$mail->addCC('cc@example.com');

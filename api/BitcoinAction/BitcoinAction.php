@@ -144,6 +144,10 @@ class BitcoinAction extends Base
 
         $query = mysqli_query($this->con, "INSERT INTO btc_withdraw (user, address, amount) VALUES ('$_SESSION[id]', '$address', '$amount' )");
 
+        if($query){
+            $this->setter->set_transaction($_SESSION['id'], "Withdraw request of <b>".$amount." BTC</b> is Pending", "Withdraw", $amount, $currency="BTC");
+        }
+
         $settings = $this->getter->settings();
         $date = date("d, F Y");
         $userinfo = $this->getter->user_data($_SESSION['id']);
