@@ -90,7 +90,7 @@ class Reg extends Base
                                 $this->mail->send_mail($settings['mailing_email'], $subject, $message, $message);
                                 
                                 ob_end_clean();
-                                echo json_encode(array("status"=>"success", "message"=>"", "redirect"=>baseurl.'login/v=true'));
+                                echo json_encode(array("status"=>"success", "message"=>"", "redirect"=>baseurl.'login/?v=true'));
                                
                                 return;
                             }
