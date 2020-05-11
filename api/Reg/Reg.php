@@ -42,12 +42,12 @@ class Reg extends Base
                     if(!$this->validate->is_exists("users", "email", $email)){
                         if($this->validate->validate_password($password)){
                             $verify_key = $token;
-
+                            $v = 'y';
                             $referal_link = explode("@", $email)[0]."-".substr(strval(bin2hex(random_bytes(16))), 0, 10);
-                            $stmt = mysqli_prepare($con, "INSERT INTO users (email, password, country, verify_key, referal_link) VALUES (?, ?, ?, ?, ?)");
+                            $stmt = mysqli_prepare($con, "INSERT INTO users (email, password, country, verify_key, referal_link, verify) VALUES (?, ?, ?, ?, ?, ?)");
                             
                             $password = md5($password);
-                            mysqli_stmt_bind_param($stmt, "sssss", $email, $password, $country, $verify_key, $referal_link);
+                            mysqli_stmt_bind_param($stmt, "ssssss", $email, $password, $country, $verify_key, $referal_link, $v);
                             $exec = mysqli_stmt_execute($stmt);
                             $last_id = mysqli_insert_id($con);
                             if(isset($_SESSION['refered_by'])){

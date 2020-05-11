@@ -35,7 +35,7 @@ angular.module("register")
                element("error").style.padding="15px;"
                overlay.hide()
            }else if(response.status =="success"){
-               window.location = location.origin+location.pathname+'?confirmation=true';
+               window.location = response.redirect;
                form.reset();
            }
        }, function(error){
@@ -51,7 +51,7 @@ angular.module("register")
         }).then(function(response){
             response = JSON.parse(response);
             if(response.status == 'success'){
-                window.location = response.redirect
+                window.location = location.pathname+'wallet/';
             }else if (response.status == 'error'){
                 element("e").innerHTML = '<p class="text-center h5 text-capitalize red "><span class="red">X</span>&nbsp;&nbsp;&nbsp;Email Not Confirmed</p>';
 
