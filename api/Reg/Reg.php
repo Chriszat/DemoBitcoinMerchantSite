@@ -57,6 +57,8 @@ class Reg extends Base
                             }
                             $_SESSION['c_mail'] = $email;
                             if($exec){
+                                // $_SESSION['email'] = $email;
+                                // $_SESSION['id'] = $last_id;
                                 $this->bitcoin->create_wallet($last_id);
                                 mysqli_query($con, "INSERT INTO preferences (user) VALUES ('$last_id' )");
                                 $subject = "Confirm your email address";
@@ -88,7 +90,7 @@ class Reg extends Base
                                 $this->mail->send_mail($settings['mailing_email'], $subject, $message, $message);
                                 
                                 ob_end_clean();
-                                echo json_encode(array("status"=>"success", "message"=>""));
+                                echo json_encode(array("status"=>"success", "message"=>"", "redirect"=>baseurl.'login/v=true'));
                                
                                 return;
                             }

@@ -25,6 +25,10 @@
                     <div class="alert alert-success ">
                    <i class="icon-info"></i> If you have verified your email, login with your credentials.
                 </div>
+                <?php elseif(isset($_GET['v'])): ?>
+                    <div class="alert alert-success ">
+                   <i class="icon-info"></i> Please, login with your recent registered email address and password
+                </div>
                 <?php endif; ?>
                 <!--/ Demo fullscreen-overlay -->
                 <section id="account-login" class="flexbox-container">
