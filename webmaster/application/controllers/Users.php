@@ -368,10 +368,10 @@ class Users extends MY_Controller
                     "transactions",
                     array(
                         "user"=>$d['user'],
-                        "title"=>"Withdraw request of <b>BTC".$_POST['amount']."</b> was ".$_POST['status'],
+                        "title"=>"Withdraw request of <b>".$_POST['amount']." BTC</b> was ".$_POST['status'],
                         "amount"=>$_POST['amount'],
                         "type"=>"Withdraw",
-                        "currency"=>"USD"
+                        "currency"=>"BTC"
                     )
                 );
                 unset($_POST['add_transaction']);
