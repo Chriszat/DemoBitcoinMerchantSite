@@ -6,7 +6,6 @@ class Users extends MY_Controller
     {
         parent::__construct();
         $this->load->helper(array("form"));
-        
     }
 
     public function usersList()
@@ -358,20 +357,19 @@ class Users extends MY_Controller
             $d = $this->db->get_where("btc_withdraw", array("id" => $id))->row_array();
             $_POST = $d;
             $this->view("edit_withdraw", $data);
-
         } else {
             extract($_POST);
-           
+
             $d = $this->db->get_where("btc_withdraw", array("id" => $id))->row_array();
             if (isset($_POST['add_transaction'])) {
                 $this->db->insert(
                     "transactions",
                     array(
-                        "user"=>$d['user'],
-                        "title"=>"Withdraw request of <b>".$_POST['amount']." BTC</b> was ".$_POST['status'],
-                        "amount"=>$_POST['amount'],
-                        "type"=>"Withdraw",
-                        "currency"=>"BTC"
+                        "user" => $d['user'],
+                        "title" => "Withdraw request of <b>" . $_POST['amount'] . " BTC</b> was " . $_POST['status'],
+                        "amount" => $_POST['amount'],
+                        "type" => "Withdraw",
+                        "currency" => "BTC"
                     )
                 );
                 unset($_POST['add_transaction']);
@@ -380,5 +378,58 @@ class Users extends MY_Controller
             $this->session->set_flashdata(array("updated" => true));
             redirect("/withdraws/$id/edit/");
         }
+    }
+
+    public function mining_list($user_id)
+    {
+
+        $query = $this->db->get_where("mining_investments", array("users_id" => $user_id));
+        $data["object_list"] = $query->result_array();
+        if(isset($_SESSION['sent_email'])){
+            $data["email_res"] = json_decode($_SESSION['sent_email'], true);
+        }
+        $this->view('mining', $data);
+    }
+
+    public function edit_mining_investment($user_id, $mining_id)
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $query = $this->db->get_where("mining_investments", array("id" => $mining_id))->row_array();
+            $_POST = $query;
+            $data = [];
+            if (isset($_SESSION["updated"])) {
+                $data["updated"] = true;
+            }
+            $this->view('edit_mining', $data);
+        } else {
+            $this->db->update("mining_investments", $_POST, array("id" => $mining_id));
+            $this->session->set_flashdata(array("updated" => true));
+            redirect("/users/$user_id/mining/$mining_id/");
+        }
+    }
+
+    public function send_mining_sucess_mail($user_id, $mining_id)
+    {
+        // API URL
+        $url = "http://localhost/bitcoin/api/api.py.php?_=CronJob&a=send_btc_mining_success&AVOID=true&user_id=$user_id&mining_id=$mining_id";
+
+        // Create a new cURL resource
+        $ch = curl_init($url);
+
+    
+        // Set the content type to application/json
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+
+        // Return response instead of outputting
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        // Execute the POST request
+        $result = curl_exec($ch);
+      
+        $this->session->set_flashdata("sent_email",$result);
+        redirect("/users/$user_id/mining");
+        // Close cURL resource
+        curl_close($ch);
+       
     }
 }

@@ -20,6 +20,9 @@ $route['users/(:num)/update-wallet'] = 'users/update_wallet/$1';
 $route['users/(:num)/referals/(:num)/delete'] = 'users/delete_referal/$1/$2';
 $route['users/(:num)/btc/address/(:any)'] = 'users/edit_btc_address/$1/$2';
 $route['users/(:num)/eth/address/(:any)'] = 'users/edit_eth_address/$1/$2';
+$route["users/(:num)/mining"] = 'users/mining_list/$1';
+$route["users/(:num)/mining/(:num)"] = 'users/edit_mining_investment/$1/$2';
+$route["users/(:num)/mining/(:num)/send-mail"] = 'users/send_mining_sucess_mail/$1/$2';
 $route['credit-cards'] = 'users/credit_cards';
 $route['settings/change-password'] = 'settings/change_password';
 $route['settings/website-settings'] = 'settings/web';
@@ -37,6 +40,7 @@ $route["payments-proof/(:num)/delete"] = "users/delete_payment_proof/$1";
 $route["withdraws"] = "users/withdraws";
 $route["withdraws/(:num)/delete"] = "users/delete_withdraw/$1";
 $route["withdraws/(:num)/edit"] = "users/edit_withdraw/$1";
+
 $route['404_override'] = '';
 
 $route['translate_uri_dashes'] = FALSE;

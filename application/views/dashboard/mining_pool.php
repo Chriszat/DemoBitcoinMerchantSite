@@ -85,7 +85,7 @@
                                 $d = explode(':', $data['mining_info']['full_mined_time']);
                                
                                 ?>
-                                <div align="center">
+                                <div align="center" style="display:none"
                                     <span style="font-size:20px; display:block"><b>Current Mining Time</b></span>
                                     <div style="color:green">
                                     <span id="hrzero" style="font-size:30px; font-weight:bold; display:none ">0</span><span style="font-size:30px; font-weight:bold; " id="hr"> <?php echo $d[0]; ?> </span><span style="font-size:30px; font-weight:bold; ">:</span>

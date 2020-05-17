@@ -62,6 +62,7 @@
                                     <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Actions</button>
                                     <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
                                         <a class="dropdown-item" href="<?php echo base_url("/users/$data[id]/"); ?>">User Details</a>
+                                        <a class="dropdown-item" href="<?php echo base_url("/users/$data[id]/mining/"); ?>">Mining Investments</a>
                                         <a class="dropdown-item" href="<?php echo base_url("/users/$data[id]/delete/"); ?>">Delete</a>
                                         <a class="dropdown-item" target="_blank" href='<?php echo base_url("/users/$data[id]/login/"); ?>'>Login Account</a>
                                         <?php if ($settings["confirm_accounts"] == 1) : ?>
