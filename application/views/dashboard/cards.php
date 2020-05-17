@@ -50,17 +50,17 @@
                                             <div class="">
                                                 <p><strong>Your balance:</strong></p>
                                                 <div style="width:50px; height:50px; position:absolute; right:0; top:0">
-                                                    <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/ETH.png" style="width:100%" draggable="false">
+                                                    <img src="81744546ec70b93f065c7321407215727ea39750f52b909dcb/usd.jpg" style="width:100%" draggable="false">
                                                 </div>
-                                                <h1><?php echo round($data['wallet']['eth'], 8) ?> ETH</h1>
+                                                <h1><?php echo number_format($data['wallet']['usd'], 2) ?> USD</h1>
 
                                             </div>
                                             <div class="">
-                                                <a href="wallet/sell/?quote=e">
-                                                    <button type="button" style="background:#673fba!important" class="btn btn-warning round mr-1 mb-0 ">SELL</button>
+                                                <a href="/wallet/accounts/usd/?tab=withdraw">
+                                                    <button type="button" style="background:#673fba!important" class="btn btn-warning round mr-1 mb-0 ">WITHDRAW</button>
                                                 </a>
-                                                <a href="wallet/buy/?quote=e">
-                                                    <button type="button" style="background:#673fba!important" class="btn btn-warning round mr-1 mb-0">BUY</button>
+                                                <a href="/wallet/accounts/usd/deposit/">
+                                                    <button type="button" style="background:#673fba!important" class="btn btn-warning round mr-1 mb-0">DEPOSIT</button>
                                                 </a>
 
 
